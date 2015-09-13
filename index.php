@@ -8,18 +8,18 @@
 </head>
 <body>
 
-<?php
-  echo 'Hello World! <br/>';
-?>
+  <?php
+    echo '<h1> Hello Visitor! </h1>';
+    echo '<h1> This is a place-holder for Project 4 - Something Awesome </h1>';
+    echo '<br/>';
 
-<?php
-  echo 'The requesting browser is: ';
-  echo $_SERVER['HTTP_USER_AGENT'];
-  echo '<br/>';
-  echo 'The remote port is: ';
-  echo $_SERVER['REMOTE_PORT'];
-  echo '<br/>';
-?>
+    echo 'The requesting browser is: ';
+    echo $_SERVER['HTTP_USER_AGENT'];
+    echo '<br/>';
+    echo 'The remote port is: ';
+    echo $_SERVER['REMOTE_PORT'];
+    echo '<br/>';
+  ?>
 
 <!-- Make a comment about which browser is being used -->
 <?php
