@@ -150,6 +150,7 @@ return [
          */
          Barryvdh\Debugbar\ServiceProvider::class,
          Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
+         Collective\Html\HtmlServiceProvider::class,
 
     ],
 
@@ -205,6 +206,8 @@ return [
          * Packages
          */
          'Debugbar' => Barryvdh\Debugbar\Facade::class,
+         'Form' => Collective\Html\FormFacade::class,
+         'Html' => Collective\Html\HtmlFacade::class,
 
     ],
 
