@@ -1,27 +1,79 @@
-## Laravel PHP Framework
+# Laravel PHP Project - P4
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+**Zudbu** is dedicated to providing evidence-based information to people interested in nurturing their body, mind and spirit.  
+	- Evidence based: based on scientific research
+	- Nurturing body, mind and spirit: Promoting health and well-being with a focus on prevention.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+***
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+### Repository Location
+[GitHub gc-cloud E15](https://github.com/gc-cloud/E15P4)
 
-## Official Documentation
+### Live Site Location
+Please visit [p4.zudbu.com](http://p4.zudbu.com).  This domain is dedicated (currently) to my CSCIE15 work.  After CSCIE15 the main site will also be located at [zudbu.com](http://zudbu.com)
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+### Demo location
+Zudbu [youtube video](https://youtu.be/AZXvgetbxvw).
 
-## Contributing
+***
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+### Application Features
+#### Route Map
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+|                PAGE PURPOSE     | METHOD|   URL 	          |  CONTROLLER    |
+|---------------------------------|-------|-------------------|----------------|
+| Home: basic info and navigation	| GET   | /                 |                |
+| Body: physical well-being       | GET   | /body             |                |
+| Mind: mental well-being    	    | GET   | /mind             |                |
+| Spirit: spiritual well-being    | GET   | /spirit           |                |
+| Login 	                        | GET	  | /login            |   			       |
+| Articles: list all articles     | GET   | /articles         |articles@index  |
+| Articles: create  new article	  | GET 	| /articles/new     |articles@create |
+| Articles: post new article      | POST  | /articles/        |articles@store  |
+| Articles: display an article    | GET   | /articles/:id     |articles@show   |
+| Articles: modify an article     | GET   | /articles/:id/edit|articles@edit   |
+| Articles: update an article     | PUT   | /articles/:id     |articles@update |
+| Articles: delete an article     | DELETE| /articles/:id     |articles@destroy|
+| FUTURE:POST COMMENTS ON ARTICLE | PUT?  | /articles/:id     |comments@update |
 
-### License
+#### Articles
+  - Can be browsed by all visitors
+	- Can only be created by users with 'contributor' access
+	- Can only be modified or deleted by the original contributor
+	- Comments to articles can be posted by all registered users
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+#### User Authentication
+  - The login page allows users to sign-up or sign-in
+  - Users with contributor access can see 'create','edit',and 'delete'
+	 buttons
+  - All registered users can see 'comment' and 'like' buttons
+	- XXXXXXX package allows users to sign-in with their Facebook account
+
+### Social Media
+	- Users can share using XXXXX package
+
+## Application Build
+### General features
+- The app uses bootstrap and bootstrap's carousel template.  The site is responsive
+and uses javascript to implement a slide show, collapsible menus and other navigational aids.
+- All the requests use Laravel's routes, controllers and views.  The basic flow is
+  request -> routes -> controller -> view
+- The app is powered with HTML forms.  These forms were implemented using Blade
+- The text generator and the password generator forms take advantage of HTTP
+ requests and  flash messages to keep the values entered by the user (sticky forms)
+- The app was built leveraging several packages including  laravel collective html,
+laravel-debugbar, and Rap2hpoutre's log viewer
+- All custom classes built by me use proper namespacing and are included within the
+  'app' folder to leverage Laravel's autoloading
+- Interaction with database based on RESTful controlles and Eloquent
+- All pages were checked using [W3c's Unicorn validator](https://validator.w3.org/)
+
+***
+
+### Acknowledgements
+- Theme based on bootstrap's carrousel template.
+- This app was built using the Laravel framework. The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+- Images:  - Pictures licensed [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0), via       Wikimedia Commons (except when noted)
+	- image1.jpg by alalalalala
+	- image2.jpg by alalalalala  
