@@ -39,6 +39,7 @@
         <div class="container">
             <div class="content">
                 <div class="title">Laravel 5</div>
+                <h1> Place holder for P4 - Something Awesome!</h1>
             </div>
         </div>
     </body>
