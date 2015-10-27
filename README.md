@@ -6,6 +6,9 @@
 
 ***
 
+### Planning Document
+[P4 Gerardo Castaneda](https://docs.google.com/document/d/1rWIdzVCenmaKI4ymeBS9thRywOPw0vuIh7tHsz6Q9Qg/edit?usp=sharing)
+
 ### Repository Location
 [GitHub gc-cloud E15](https://github.com/gc-cloud/E15P4)
 
@@ -75,5 +78,7 @@ laravel-debugbar, and Rap2hpoutre's log viewer
 - Theme based on bootstrap's carrousel template.
 - This app was built using the Laravel framework. The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
 - Images:  - Pictures licensed [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0), via       Wikimedia Commons (except when noted)
-	- image1.jpg by alalalalala
-	- image2.jpg by alalalalala  
+- [Creative Commons](https://creativecommons.org/publicdomain/zero/1.0/deed.en)
+	- barbeque.jpg pixabay
+	- paddle.jpg pixabay  
+	- runners.jpg pixabay

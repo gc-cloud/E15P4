@@ -16,6 +16,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/jumbotron.css" rel="stylesheet">
+    <link href="css/carousel.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -50,6 +51,19 @@
           <a class="navbar-brand" href="#">Zudbu Home</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+              </ul>
+            </li>
+          </ul>
           <form class="navbar-form navbar-right">
             <div class="form-group">
               <input type="text" placeholder="Email" class="form-control">
@@ -67,7 +81,58 @@
     <div class="jumbotron">
       <div class="container">
         <h1>Zudbu</h1>
-        <p>The source for evidence-based information to nurture your body, mind and spirit.</p>
+        <p>Reliable information to nurture your body, mind and spirit.</p>
+
+            <!-- Carousel
+            ================================================== -->
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+              <!-- Indicators -->
+              <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                  <img class="first-slide" src="images/broccoli.jpg" alt="First slide">
+                  <div class="container">
+                    <div class="carousel-caption">
+                      <h1>Broccoli?.</h1>
+                      <p>WHO press release #240 lists processed meats as carcinogenic.</p>
+                      <p><a class="btn btn-lg btn-primary" href="#" role="button">More &raquo;</a></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="item">
+                  <img class="second-slide" src="images/fitness.jpg" alt="Second slide">
+                  <div class="container">r
+                    <div class="carousel-caption">
+                      <h1>Working out.</h1>
+                      <p>Studies show 30-45 minutes 3 times a week is ideal</p>
+                      <p><a class="btn btn-lg btn-primary" href="#" role="button">More &raquo;</a></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="item">
+                  <img class="third-slide" src="images/meditation.jpg" alt="Third slide">
+                  <div class="container">
+                    <div class="carousel-caption">
+                      <h1>Live Longer.</h1>
+                      <p>Find a sense of purpose.</p>
+                      <p><a class="btn btn-lg btn-primary" href="#" role="button">More &raquo;</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div><!-- /.carousel -->
         {!! Form::open(array('url' => '/logs','class'=>'form navbar-form navbar-left searchform')) !!}
           {!! Form::text('search', null,
                            array('required',
