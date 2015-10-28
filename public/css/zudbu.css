@@ -98,6 +98,9 @@ max-height: 350px !important;
 .carousel-inner > .item >  img.small{
   display: block;
 }
+.carousel-inner > .item >  img.medium  {
+  display: none;
+}
 .carousel-inner > .item >  img.big  {
   display: none;
 }
@@ -119,8 +122,11 @@ max-height: 350px !important;
   .carousel-inner > .item >  img.small{
     display: none;
   }
-  .carousel-inner > .item >  img.big  {
+  .carousel-inner > .item >  img.medium  {
     display: block;
+  }
+  .carousel-inner > .item >  img.big  {
+    display: none;
   }
 
   /* Navbar positioning foo */
@@ -157,5 +163,14 @@ max-height: 350px !important;
 @media (min-width: 992px) {
   .featurette-heading {
     margin-top: 120px;
+  }
+  .carousel-inner > .item >  img.small{
+    display: none;
+  }
+  .carousel-inner > .item >  img.medium  {
+    display: none;
+  }
+  .carousel-inner > .item >  img.big  {
+    display: block;
   }
 }

@@ -96,6 +96,7 @@
                 <div class="item active">
                   <!-- <img class="first-slide" src="images/broccoli.jpg" alt="First slide" > -->
                   <img class="small" src="images/broccoli_350.jpg" alt="First slide" >
+                  <img class="medium" src="images/broccoli_720.jpg" alt="First slide" >
                   <img class="big" src="images/broccoli.jpg" alt="First slide" >
 
                   <div class="container">
@@ -109,6 +110,7 @@
                 <div class="item slider-size">
                   <!-- <img class="second-slide" src="images/fitness.jpg" alt="Second slide" > -->
                   <img class="small" src="images/fitness_350.jpg" alt="Second slide" >
+                  <img class="medium" src="images/fitness_720.jpg" alt="Second slide" >
                   <img class="big" src="images/fitness.jpg" alt="Second slide" >
 
                   <div class="container">r
@@ -121,6 +123,7 @@
                 </div>
                 <div class="item slider-size">
                  <img  class="small" src="images/meditation_350.jpg" alt="Third slide" >
+                 <img  class="medium" src="images/meditation_720.jpg" alt="Third slide" >
                  <img  class="big" src="images/meditation.jpg" alt="Third slide">
                   <div class="container">
                     <div class="carousel-caption">
