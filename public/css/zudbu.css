@@ -1,11 +1,7 @@
 /* Override Bootstrap defaults with Zudbu specific CSS to */
 
 body {
-    /*font-family: 'Lato', sans-serif;*/
-    /*font-family: 'Raleway', sans-serif;*/
     font-family: 'Ubuntu Condensed', sans-serif;
-    /*font-family: 'Cuprum', sans-serif;*/
-
 }
 
 /* Search button*/
@@ -17,9 +13,10 @@ body {
 -------------------------------------------------- */
 
 .jumbotron {
-    padding-top: 20px;
-    padding-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
+
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
@@ -43,10 +40,22 @@ body {
   top: 0;
   left: 0;
   min-width: 100%;
- height: 350px;
+  height: 350px;
 }
 
-
+/* Center and crop slides to fit screen size */
+.slide-01{
+    background: url('../images/broccoli.jpg') no-repeat center center;
+    background-size: cover;
+}
+.slide-02{
+    background: url('../images/fitness.jpg') no-repeat center center;
+    background-size: cover;
+}
+.slide-03{
+    background: url('../images/meditation.jpg') no-repeat center center;
+    background-size: cover;
+}
 
 /* MARKETING CONTENT
 -------------------------------------------------- */
@@ -94,20 +103,7 @@ max-height: 350px !important;
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 
-/* Display small images as default*/
-.carousel-inner > .item >  img.small{
-  display: block;
-}
-.carousel-inner > .item >  img.medium  {
-  display: none;
-}
-.carousel-inner > .item >  img.big  {
-  display: none;
-}
 
-
-
-/* done with carousel images */
 
 
 @media screen and (min-width: 768px){
@@ -118,16 +114,7 @@ max-height: 350px !important;
 
 
 @media (min-width: 768px) {
-  /* Display larger images */
-  .carousel-inner > .item >  img.small{
-    display: none;
-  }
-  .carousel-inner > .item >  img.medium  {
-    display: block;
-  }
-  .carousel-inner > .item >  img.big  {
-    display: none;
-  }
+
 
   /* Navbar positioning foo */
   .navbar-wrapper {
@@ -164,13 +151,5 @@ max-height: 350px !important;
   .featurette-heading {
     margin-top: 120px;
   }
-  .carousel-inner > .item >  img.small{
-    display: none;
-  }
-  .carousel-inner > .item >  img.medium  {
-    display: none;
-  }
-  .carousel-inner > .item >  img.big  {
-    display: block;
-  }
+
 }

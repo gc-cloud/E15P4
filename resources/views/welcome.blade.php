@@ -20,13 +20,10 @@
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="assets/js/ie-emulation-modes-warning.js"></script>
+    <!-- <script src="assets/js/ie-emulation-modes-warning.js"></script> -->
 
     <!-- Laravel nice font and app specific CSS -->
-    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css'>
     <!-- <link href="/css/app.css" rel="stylesheet" type="text/css"> THIS IS THE GULP CSS-->
     <link href="/css/zudbu.css" rel="stylesheet" type="text/css">
 
@@ -93,47 +90,27 @@
                 <li data-target="#myCarousel" data-slide-to="2"></li>
               </ol>
               <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                  <!-- <img class="first-slide" src="images/broccoli.jpg" alt="First slide" > -->
-                  <img class="small" src="images/broccoli_350.jpg" alt="First slide" >
-                  <img class="medium" src="images/broccoli_720.jpg" alt="First slide" >
-                  <img class="big" src="images/broccoli.jpg" alt="First slide" >
-
-                  <div class="container">
-                    <div class="carousel-caption">
+                <div class="item active slide-01">
+                      <div class="carousel-caption">
                       <h1>Broccoli?.</h1>
                       <p>WHO lists processed meats as carcinogenic.</p>
                       <p><a class="btn btn-lg btn-primary" href="#" role="button">More &raquo;</a></p>
                     </div>
                   </div>
-                </div>
-                <div class="item slider-size">
-                  <!-- <img class="second-slide" src="images/fitness.jpg" alt="Second slide" > -->
-                  <img class="small" src="images/fitness_350.jpg" alt="Second slide" >
-                  <img class="medium" src="images/fitness_720.jpg" alt="Second slide" >
-                  <img class="big" src="images/fitness.jpg" alt="Second slide" >
-
-                  <div class="container">r
-                    <div class="carousel-caption">
+                <div class="item slider-size slide-02">
+                      <div class="carousel-caption">
                       <h1>Working out.</h1>
                       <p>30-45 minutes 3 times a week is ideal</p>
                       <p><a class="btn btn-lg btn-primary" href="#" role="button">More &raquo;</a></p>
                     </div>
                   </div>
-                </div>
-                <div class="item slider-size">
-                 <img  class="small" src="images/meditation_350.jpg" alt="Third slide" >
-                 <img  class="medium" src="images/meditation_720.jpg" alt="Third slide" >
-                 <img  class="big" src="images/meditation.jpg" alt="Third slide">
-                  <div class="container">
-                    <div class="carousel-caption">
+                <div class="item slider-size slide-03">
+                      <div class="carousel-caption">
                       <h1>Live Longer.</h1>
                       <p>Find a sense of purpose.</p>
                       <p><a class="btn btn-lg btn-primary" href="#" role="button">More &raquo;</a></p>
                     </div>
                   </div>
-
-                </div>
               </div>
               <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
