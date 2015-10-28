@@ -94,6 +94,19 @@ max-height: 350px !important;
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 
+/* Display small images as default*/
+.carousel-inner > .item >  img.small{
+  display: block;
+}
+.carousel-inner > .item >  img.big  {
+  display: none;
+}
+
+
+
+/* done with carousel images */
+
+
 @media screen and (min-width: 768px){
 .carousel-caption {
     padding-bottom: 40px;
@@ -102,6 +115,14 @@ max-height: 350px !important;
 
 
 @media (min-width: 768px) {
+  /* Display larger images */
+  .carousel-inner > .item >  img.small{
+    display: none;
+  }
+  .carousel-inner > .item >  img.big  {
+    display: block;
+  }
+
   /* Navbar positioning foo */
   .navbar-wrapper {
     margin-top: 20px;
