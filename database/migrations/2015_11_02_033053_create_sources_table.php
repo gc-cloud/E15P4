@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReferencesArticlesTable extends Migration
+class CreateSourcesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,10 @@ class CreateReferencesArticlesTable extends Migration
      */
     public function up()
     {
-      Schema::create('references_articles', function (Blueprint $table) {
+      Schema::create('sources', function (Blueprint $table) {
           $table->increments('id');
-          $table->integer('references_id');
-          $table->integer('articles_id');
+          $table->string('description');
+          $table->string('url');
           $table->timestamps();
       });
     }
@@ -27,6 +27,6 @@ class CreateReferencesArticlesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('references_articles');
+        Schema::drop('sources');
     }
 }
