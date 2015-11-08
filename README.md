@@ -76,6 +76,8 @@ laravel-debugbar, and Rap2hpoutre's log viewer
 
 ### Acknowledgements
 - Theme based on bootstrap's carrousel template.
+- Packages
+	- nesbot/carbon
 - This app was built using the Laravel framework. The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
 - Images:  - Pictures licensed [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0), via       Wikimedia Commons (except when noted)
 - [Creative Commons](https://creativecommons.org/publicdomain/zero/1.0/deed.en)
