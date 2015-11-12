@@ -35,5 +35,12 @@ class ArticlesTableSeeder extends Seeder
       'body' => 'Sleep depravation can lead to decreased performance, stress, irritation,
                 and in extreme cases death.',
       ]);
+
+      DB::table('articles')->insert([
+      'title' => 'Find purpose',
+      'summary' => 'Finding your purpose in life can make you happier',
+      'body' => 'Whether it is raising your children, mastering a musical instrument, helping society or
+                  other things, it is statistically proven that you will be happier.',
+      ]);
     }
 }
