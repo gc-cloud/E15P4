@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCommentsUsersTable extends Migration
+class CreateArticleCommentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,15 @@ class CreateCommentsUsersTable extends Migration
      */
     public function up()
     {
-      Schema::create('comments_users', function (Blueprint $table) {
+      Schema::create('article_comment', function (Blueprint $table) {
+          $table->integer('article_id')->unsigned();
+          $table->foreign('article_id')->references('id')
+          ->on('articles')->onDelete('cascade');
+
           $table->integer('comment_id')->unsigned();
           $table->foreign('comment_id')->references('id')
           ->on('comments')->onDelete('cascade');
 
-          $table->integer('user_id')->unsigned();
-          $table->foreign('user_id')->references('id')
-          ->on('users')->onDelete('cascade');
-          
           $table->timestamps();
       });
     }
@@ -32,6 +32,6 @@ class CreateCommentsUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('comments_users');
+        Schema::drop('article_comment');
     }
 }

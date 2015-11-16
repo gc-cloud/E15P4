@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateArticlesUsersTable extends Migration
+class CreateArticleUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateArticlesUsersTable extends Migration
      */
     public function up()
     {
-      Schema::create('articles_users', function (Blueprint $table) {
+      Schema::create('article_user', function (Blueprint $table) {
           $table->integer('article_id')->unsigned();
           $table->foreign('article_id')->references('id')
           ->on('articles')->onDelete('cascade');
@@ -20,7 +20,7 @@ class CreateArticlesUsersTable extends Migration
           $table->integer('user_id')->unsigned();
           $table->foreign('user_id')->references('id')
           ->on('users')->onDelete('cascade');
-          
+
           $table->timestamps();
       });
     }
@@ -32,6 +32,6 @@ class CreateArticlesUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('articles_users');
+        Schema::drop('article_user');
     }
 }

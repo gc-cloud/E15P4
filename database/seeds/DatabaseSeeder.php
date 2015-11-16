@@ -20,12 +20,12 @@ class DatabaseSeeder extends Seeder
         $this->call(ArticlesTableSeeder::class);
         $this->call(SourcesTableSeeder::class);
         $this->call(CommentsTableSeeder::class);
-        $this->call(ArticlesCommentsTableSeeder::class);
-        $this->call(CommentsUsersTableSeeder::class);
+        $this->call(ArticleCommentTableSeeder::class);
+        $this->call(CommentUserTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
-        $this->call(ArticlesCategoriesTableSeeder::class);
+        $this->call(ArticleCategoryTableSeeder::class);
         $this->call(SourcesTableSeeder::class);
-        $this->call(ArticlesSourcesTableSeeder::class);
+        $this->call(ArticleSourceTableSeeder::class);
 
         Model::reguard();
     }

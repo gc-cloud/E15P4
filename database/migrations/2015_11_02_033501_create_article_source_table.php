@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateArticlesSourcesTable extends Migration
+class CreateArticleSourceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateArticlesSourcesTable extends Migration
      */
     public function up()
     {
-      Schema::create('articles_sources', function (Blueprint $table) {
+      Schema::create('article_source', function (Blueprint $table) {
           $table->integer('article_id')->unsigned();
           $table->foreign('article_id')->references('id')
           ->on('articles')->onDelete('cascade');
@@ -20,7 +20,7 @@ class CreateArticlesSourcesTable extends Migration
           $table->integer('source_id')->unsigned();
           $table->foreign('source_id')->references('id')
           ->on('sources')->onDelete('cascade');
-          
+
           $table->timestamps();
       });
     }
@@ -32,6 +32,6 @@ class CreateArticlesSourcesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('articles_sources');
+        Schema::drop('article_source');
     }
 }
