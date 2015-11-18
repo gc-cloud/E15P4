@@ -16,6 +16,7 @@ class ArticlesTableSeeder extends Seeder
       'bottomline' => 'Exercising three times a week for 30 minutes makes sense.',
       'body' => 'No exercise increases your risk of heart attacks, too much exercise
             also increases the risk of heart attacks.  ',
+      'user_id' => 2,
       ]);
 
 
@@ -25,6 +26,7 @@ class ArticlesTableSeeder extends Seeder
                     can be dangerous to your health.',
       'body' => 'Studies show that moderate drinking that is spread over time can reduce risk of CHI.
                 Drinking more alcohol can increase risk of multiple cancers, liver failure and obesity  ',
+      'user_id' => 2,
       ]);
 
 
@@ -33,6 +35,7 @@ class ArticlesTableSeeder extends Seeder
       'bottomline' => 'Sleeping 9 hours a day maximizes your brain potential.',
       'body' => 'Sleep depravation can lead to decreased performance, stress, irritation,
                 and in extreme cases death.',
+      'user_id' => 3,
       ]);
 
       DB::table('articles')->insert([
@@ -40,6 +43,7 @@ class ArticlesTableSeeder extends Seeder
       'bottomline' => 'Having a purpose in life can make you happier.',
       'body' => 'Whether it is raising your children, mastering a musical instrument, helping society or
                   other things, it is statistically proven that you will be happier.',
+      'user_id' => 3,
       ]);
     }
 }

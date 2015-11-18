@@ -7,10 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
   /**
-  * Get the post that owns the comment.
+  * Get the article that owns the comment.
   */
  public function article()
  {
-     return $this->belongsToMany('App\Article');
+     return $this->belongsTo('App\Article');
  }
+
+ /**
+ * Get the user that owns the comment.
+ */
+public function user()
+{
+    return $this->belongsTo('App\User');
+}
+
+
 }

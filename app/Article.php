@@ -7,11 +7,29 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
   /**
-     * Get the comments for the blog post.
+   * The categories that belong to the article.
+   */
+  public function categories()
+  {
+      return $this->hasMany('App\Category');
+  }
+
+  /**
+     * Get the sources for the article.
+     */
+    public function sources()
+    {
+        return $this->hasMany('App\Source');
+    }
+
+
+  /**
+     * Get the comments for the article.
      */
     public function comments()
     {
-        return $this->belongsToMany('App\Comment');
+        return $this->hasMany('App\Comment');
     }
+
 
 }
