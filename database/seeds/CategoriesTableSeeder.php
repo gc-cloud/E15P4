@@ -11,14 +11,16 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-      DB::table('categories')->insert([
-        'category' => 'body',
-      ]);
-      DB::table('categories')->insert([
-        'category' => 'mind',
-      ]);
-      DB::table('categories')->insert([
-        'category' => 'spirit',
-      ]);
+
+      /* Alternative approach */
+      $data = [
+        'body', 'mind','spirit','nutrition','exercise','stress',
+        'processed food','pesticides','organic','alcohol'];
+
+       foreach($data as $categoryName) {
+           $category = new \App\Category();
+           $category->name = $categoryName;
+           $category->save();
+       }
     }
 }
