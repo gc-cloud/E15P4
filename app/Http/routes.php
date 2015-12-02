@@ -20,18 +20,12 @@ if(App::environment('local')){
   Route::match(['get','post'],'logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 };
 
-Route::get('/practice', function() {
-    $random = new Random();
-    return $random->getRandomString(8);
-    $data = Array('foo' => 'bar');
-    Debugbar::info($data);
-    Debugbar::error('Error!');
-    Debugbar::warning('Watch out…');
-    Debugbar::addMessage('Another message', 'mylabel');
+/* Test
+-----------------------------------------*/
 
-    return 'Practice';
+Route::controller('/test','TestController');
 
-});
+
 
 // /* Show logs only in local environment */
 // if(App::environment('local')) {
