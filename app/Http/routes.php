@@ -11,11 +11,57 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+/* Authorization Routes
+-----------------------*/
+
+# Show login form
+Route::get('/login', 'Auth\AuthController@getLogin');
+# Process login form
+Route::post('/login', 'Auth\AuthController@postLogin');
+# Process logout
+Route::get('/logout', 'Auth\AuthController@getLogout');
+# Show registration form
+Route::get('/register', 'Auth\AuthController@getRegister');
+# Process registration form
+Route::post('/register', 'Auth\AuthController@postRegister');
+
+Route::get('/confirm-login-worked', function() {
+    # You may access the authenticated user via the Auth facade
+    $user = Auth::user();
+    if($user) {
+        echo 'You are logged in.';
+        dump($user->toArray());
+    } else {
+        echo 'You are not logged in.';
+    }
+    return;
 });
 
 
+
+
+/* Main Application Routes
+------------------------*/
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/','ArticleController@home');
+
+Route::get('/articles','ArticleController@index');
+
+Route::get('/articles/show/{title?}','ArticleController@show');
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/articles/create', 'ArticleController@create');
+    Route::post('/articles/create', 'ArticleController@store');
+    Route::get('/articles/edit/{id?}', 'ArticleController@edit');
+    Route::post('/articles/edit', 'ArticleController@update');
+});
+
+/* Route to show logs in local environment
+------------------------------------------*/
 if(App::environment('local')){
   Route::match(['get','post'],'logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 };
@@ -26,14 +72,8 @@ if(App::environment('local')){
 Route::controller('/test','TestController');
 
 
-
-// /* Show logs only in local environment */
-// if(App::environment('local')) {
-//     Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
-// };
-
-
-/* Debug DB */
+/* Debug DB
+-----------------------------------------*/
 Route::get('/debug', function() {
 
     echo '<pre>';
