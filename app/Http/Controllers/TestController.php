@@ -102,7 +102,7 @@ class TestController extends Controller
        echo '<h1>Test 7: New user with new article </h1>';
        $author = new \App\User; # authors are stored in the users table
        $author->name = 'Mark MD';
-       $author->email = 'mark7@bingmail2.com';
+       $author->email = 'mark8@bingmail2.com';
        $author->password = 'DifficultP2s!';
        $author->role_id = '1';
        $author->save();
@@ -137,5 +137,68 @@ class TestController extends Controller
       dump($author->toArray());
       return ;
   }
+
+
+  /**
+  * Get all the articles with their authors
+  */
+  function getTest9() {
+      echo '<h1> Test 9: Eager loading of articles with authors</h1>';
+       # Eager load the authors with the articles
+       $articles = \App\Article::with('author')->get();
+       foreach($articles as $article) {
+           echo $article->author->name.' wrote "'.$article->title.'"<br>';
+       }
+       dump($articles->toArray());
+       return;
+  }
+
+  /**
+  * Get a single article with its categories
+  */
+  function getTest10() {
+      echo '<h1> Test 10: Get a single article with all its categories</h1>';
+      $article = \App\Article::where('title','=','Wine?')->first();
+      echo 'Article "'.$article->title.'" has the following categories: ';
+      foreach($article->categories as $category) {
+          echo $category->name.' ';
+      }
+      return ;
+  }
+
+
+    /**
+    * Get all the articles , eagerly loading the categories
+    */
+    function getTest11() {
+        echo '<h1> Test 11: Get all the articles, eagerloading all the categories</h1>';
+        $articles = \App\Article::with('categories')->get();
+        foreach($articles as $article) {
+            echo '<br> Article "'.$article->title.'" has the following categories: ';
+            $result=$article->categories;
+            foreach($article->categories as $category) {
+                echo $category->name.' ';
+            }
+        }
+        dump($articles);
+        }
+
+
+
+    /**
+    * Demonstrating working with users
+    */
+    function getTest12() {
+    # Get the current logged in user
+    $user = \Auth::user();
+        if($user) {
+            echo 'Hi logged in user '.$user->name.'<br>';
+        }
+        # Get a user from the database
+        $user = \App\User::where('name','like','Jamal')->first();
+        echo 'Hi '.$user->name.'<br>';
+    }
+
+
 
 }
