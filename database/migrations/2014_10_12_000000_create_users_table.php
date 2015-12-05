@@ -3,6 +3,9 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+
+/** This table stores all types of users including visitors, authenticated users and authors*/
+
 class CreateUsersTable extends Migration
 {
     /**
@@ -24,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->integer('role_id')->unsigned();
             $table->foreign('role_id')->references('id')
             ->on('roles')->onDelete('cascade');
-            
+
             $table->rememberToken();
 
             $table->timestamps();

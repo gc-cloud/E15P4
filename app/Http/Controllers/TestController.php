@@ -22,7 +22,7 @@ class TestController extends Controller
                     can be dangerous to your health.',
       'body' => 'Studies show that moderate drinking that is spread over time can reduce risk of CHI.
                 Drinking more alcohol can increase risk of multiple cancers, liver failure and obesity  ',
-      'user_id' => 2,
+      'author_id' => 2,
       ]);
       return;
 
@@ -63,7 +63,7 @@ class TestController extends Controller
       $article->title = 'Obesity';
       $article->bottomline = 'Excess fat makes you want to pee';
       $article->body = 'Studies show that excess fat increases the risk of enlarged prostate';
-      $article->user_id = 3;
+      $article->author_id = 3;
       $article->save(); // Something is buggy here. Adding more than one
       return;
   }
@@ -83,16 +83,59 @@ class TestController extends Controller
   /**
    * Querying on the Model vs. the Collection
    */
-    function getTest6() {
-        // Query Responsibility
-        echo '<h1>Test 6: query responsibility </h1>';
-        $articles = \App\Article::orderBy('id','DESC')->get();
-        $first = $articles->first();
-        $last  = $articles->last();
-        dump($articles);
-        dump($first);
-        dump($last);
-        return;
-   }
+  function getTest6() {
+      // Query Responsibility
+      echo '<h1>Test 6: query responsibility </h1>';
+      $articles = \App\Article::orderBy('id','DESC')->get();
+      $first = $articles->first();
+      $last  = $articles->last();
+      dump($articles);
+      dump($first);
+      dump($last);
+      return;
+  }
+
+   /**
+    * Associate a new author with a new article
+    */
+    function getTest7() {
+       echo '<h1>Test 7: New user with new article </h1>';
+       $author = new \App\User; # authors are stored in the users table
+       $author->name = 'Mark MD';
+       $author->email = 'mark7@bingmail2.com';
+       $author->password = 'DifficultP2s!';
+       $author->role_id = '1';
+       $author->save();
+       dump($author->toArray());
+
+
+       $article = new \App\Article;
+       $article->title = "Cellphones";
+       $article->bottomline = 'Cellphones are low microwave emmitters, avoid using them all day long';
+       $article->body = 'Must people would agree that a few minutes in the sun are nice, while several hours a day would damage your skin.  Cellphones are very similar,
+       they emit a type of "light" that differes from sun light only on the frequency.  ';
+       echo 'article text ok';
+       $article->author()->associate($author); # <--- Associate the author with this article
+       $article->save();
+       dump($article->toArray());
+       return;
+     }
+
+  /**
+  * Get a single article with its author
+  */
+  function getTest8() {
+    echo '<h1>Test 8: Retrieved first article and related author </h1>';
+      $article = \App\Article::first();
+      # Get the author for  this article using the "user" dynamic property
+      # "user" corresponds to the the relationship method defined in the Article model
+      $author = $article->author;
+
+      # Output
+      echo $article->title.' was written by '.$author->name.'.';
+      dump($article->toArray());
+      dump($author->toArray());
+      return ;
+  }
 
 }

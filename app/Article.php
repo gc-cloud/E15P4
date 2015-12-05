@@ -32,4 +32,9 @@ class Article extends Model
     }
 
 
+    /* Article belongs to on user. */
+    public function author() {
+     return $this->belongsTo('\App\User');
+    }
+
 }

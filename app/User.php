@@ -10,6 +10,9 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
+/** The user model covers all types of users, including visitors, authenticated
+  * users, and authors of articles
+  */
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
                                     CanResetPasswordContract
@@ -43,5 +46,10 @@ class User extends Model implements AuthenticatableContract,
     public function role()
     {
         return $this->belongsTo('App\Role');
+    }
+
+    /*User has many articles. Define a one-to-many relationship.*/
+    public function article() {
+     return $this->hasMany('\App\Article');
     }
 }
