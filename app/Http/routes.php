@@ -51,14 +51,14 @@ Route::get('/','ArticleController@home');
 
 Route::get('/articles','ArticleController@index');
 
-Route::get('/articles/show/{title?}','ArticleController@show');
+Route::get('/articles/show/{id?}','ArticleController@show');
 
-Route::group(['middleware' => 'auth'], function() {
+//Route::group(['middleware' => 'auth'], function() {
     Route::get('/articles/create', 'ArticleController@create');
     Route::post('/articles/create', 'ArticleController@store');
     Route::get('/articles/edit/{id?}', 'ArticleController@edit');
     Route::post('/articles/edit', 'ArticleController@update');
-});
+//});
 
 /* Route to show logs in local environment
 ------------------------------------------*/
@@ -70,6 +70,7 @@ if(App::environment('local')){
 -----------------------------------------*/
 
 Route::controller('/test','TestController');
+Route::controller('/page','PageController');
 
 
 /* Debug DB

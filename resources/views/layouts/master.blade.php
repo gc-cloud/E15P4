@@ -12,11 +12,11 @@
     <title>Zudbu</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/jumbotron.css" rel="stylesheet">
-    <link href="css/carousel.css" rel="stylesheet">
+    <link href="../css/jumbotron.css" rel="stylesheet">
+    <link href="../css/carousel.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -25,7 +25,7 @@
     <!-- Laravel nice font and app specific CSS -->
     <link href='https://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
     <!-- <link href="/css/app.css" rel="stylesheet" type="text/css"> THIS IS THE GULP CSS-->
-    <link href="/css/zudbu.css" rel="stylesheet" type="text/css">
+    <link href="../css/zudbu.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -35,11 +35,7 @@
   </head>
 
   <body>
-    @if(\Session::has('flash_message'))
-       <div class='flash_message'>
-           {{ \Session::get('flash_message') }}
-       </div>
-    @endif
+
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
@@ -50,18 +46,18 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Zudbu Home</a>
+          <a class="navbar-brand" href="/">Home</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li class="active"><a href="/articles">Body</a></li>
+            <li><a href="/articles/create">Mind</a></li>
+            <li><a href="/articles/edit/{id?}">Spirit</a></li>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contribute<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
+                <li><a href="/articles/create">New Article</a></li>
+                <li><a href="/articles/edit/{id?}">Edit Article</a></li>
                 <li><a href="#">Something else here</a></li>
               </ul>
             </li>
@@ -75,7 +71,7 @@
             </div>
             <button type="submit" class="btn btn-success">Sign in</button>
           </form>
-          {!! Form::open(array('url' => '/logs','class'=>'form navbar-form navbar-left searchform')) !!}
+          {!! Form::open(array('url' => '/articles','class'=>'form navbar-form navbar-left searchform')) !!}
             {!! Form::text('search', null,
                              array('required',
                                   'class'=>'form-control search',
@@ -86,11 +82,14 @@
       </div>
     </nav>
 
+
+
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
         {{-- Main page content will be yielded here --}}
         @yield('title')
+
         @yield('content')
       </div>
     </div>
@@ -102,6 +101,11 @@
 
 
     <div class="container">
+      @if(\Session::has('flash_message'))
+         <div class='flash_message'>
+             {{ \Session::get('flash_message') }}
+         </div>
+      @endif
       <hr>
       <footer>
         <p>&copy; Zudbu 2015</p>

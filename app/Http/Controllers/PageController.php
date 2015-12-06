@@ -7,7 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Seeder;
 
-class TestController extends Controller
+class PageController extends Controller
 {
   /**
  * Insert using the Query Builder
@@ -199,8 +199,26 @@ class TestController extends Controller
         echo 'Hi '.$user->name.'<br>';
     }
 
+    /**
+    * Get all the articles , eagerly loading the categories
+    */
+    function getBody() {
+        echo '<h1> Body Wellness Articles</h1>';
+        $articles = \App\Article::with('categories')->get();
+        foreach($articles as $article) {
+            echo '<br> Article "'.$article->title.'" has the following categories: ';
+            $result=$article->categories;
+            foreach($article->categories as $category) {
+                echo $category->name.' ';
+            }
+        }
+        dump($articles);
 
 
+        // USE our ORM book model to retrieve all the articles, pass to view
+        $articles = \App\Article::orderBy('id','DESC')->get();
+        return view("articles.index", compact('articles'));
+        }
 
 
 }
