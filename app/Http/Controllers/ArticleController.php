@@ -66,6 +66,9 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
+      // Keep old input
+      $request->flash();
+
       // Validate the request data
       $this->validate($request, [
           'title' => 'required|min:5',
@@ -125,7 +128,30 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+      $article = \App\Article::find($id);
+      if(is_null($article)) {
+          \Session::flash('flash_message','Article not found.');
+
+          return redirect('\articles');
+      }
+
+      //TO_DO: Get content speific to Article and return to view to pre-populate fields
+      /* Provide list of valid categories*/
+      $categories = \App\Category::orderby('name','ASC')->get();
+      $categories_for_select = [];
+      foreach($categories as $category) {
+          $categories_for_select[$category->id] = $category->name;
+      }
+
+      /* Provide list of valid authors*/
+      $authors = \App\User::orderby('name','ASC')->get();
+      $authors_for_select = [];
+      foreach($authors as $author) {
+          $authors_for_select[$author->id] = $author->name;
+      }
+
+      return view('articles.edit', compact('article','categories_for_select', 'authors_for_select'));
+
     }
 
     /**
@@ -137,7 +163,7 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        echo "form update here";
     }
 
     /**
