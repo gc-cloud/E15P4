@@ -131,12 +131,12 @@ class ArticleController extends Controller
       $article = \App\Article::find($id);
       if(is_null($article)) {
           \Session::flash('flash_message','Article not found.');
-
           return redirect('\articles');
       }
 
       //TO_DO: Get content speific to Article and return to view to pre-populate fields
       /* Provide list of valid categories*/
+
       $categories = \App\Category::orderby('name','ASC')->get();
       $categories_for_select = [];
       foreach($categories as $category) {
@@ -150,7 +150,7 @@ class ArticleController extends Controller
           $authors_for_select[$author->id] = $author->name;
       }
 
-      return view('articles.edit', compact('article','categories_for_select', 'authors_for_select'));
+      return view('articles.edit', compact('article','categories_for_select', 'authors_for_select','id'));
 
     }
 
@@ -161,9 +161,24 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        echo "form update here";
+      // Validation
+      $article = \App\Article::find($request->id);
+      // dump($article);
+      $article->title = $request->title;
+      $article->bottomline = $request->bottomline;
+      $article->body = $request->body;
+      //$article->category = $request->category; // To-Do:  loop categories and save in pivot table
+      $article->author_id = $request->author;
+      # Invoke the Eloquent save() method
+      # This will generate a new row in the `books` table, with the above data
+      $article->save();
+
+
+
+      \Session::flash('flash_message','Your article was updated.');
+      return redirect('/articles/show/'.$request->id);
     }
 
     /**

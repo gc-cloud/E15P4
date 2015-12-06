@@ -8,9 +8,11 @@
 
     <h1>Edit Article</h1>
     @include('errors')
-    
+
     <!-- using Form::model allows to bind the fields to the existing values-->
     {!! Form::model($article, array('url' => 'articles/edit')) !!}
+          <input type='hidden' name='id' value='{{ $article->id }}'>
+          
           <div class='form-group'>
             {!!Form::label('Title:')!!}<br>
             {!!Form::text('title')!!}<br>
