@@ -1,42 +1,15 @@
 @extends('layouts.master')
 
 @section('title')
+  <h2> Add a new Article </h2>
 @stop
 
 @section('content')
-  <h1> Add a new Article </h1>
-  @include('errors')
-  {!! Form::open(array('url' => 'articles/create')) !!}
-        <div class='form-group'>
-          {!!Form::label('Title:')!!}<br>
-          {!!Form::text('title')!!}<br>
-        </div>
 
-        <div class='form-group'>
-          {!!Form::label('Bottomline')!!}<br>
-          {!!Form::text('bottomline')!!}<br>
-        </div>
-        <div class='form-group'>
-          {!!Form::label('Body:')!!}<br>
-          {!!Form::textarea('body')!!}<br>
-        </div>
-        <div class='form-group'>
-          {!!Form::label('Category:')!!}<br>
-          <select name='category' id='category'>
-            @foreach($categories_for_select as $category_id => $category_name)
-               <option value='{{ $category_id }}'> {{ $category_name }} </option>
-           @endforeach
-          </select>
-        </div>
-        <div class='form-group'>
-          {!!Form::label('Author:')!!}<br>
-          <select name='author' id='author'>
-            @foreach($authors_for_select as $author_id => $author_name)
-               <option value='{{ $author_id }}'> {{ $author_name }} </option>
-           @endforeach
-          </select>
-        </div>
-        {!! Form::submit('Add Article', array('class' => 'btn btn-primary')) !!}
+  @include('errors')
+
+  {!! Form::open(array('url' => 'articles/create')) !!}
+    @include('articles.content')
   {!! Form::close() !!}
 @stop
 

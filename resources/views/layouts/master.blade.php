@@ -50,9 +50,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/articles">Body</a></li>
-            <li><a href="/articles/create">Mind</a></li>
-            <li><a href="/articles/edit/{id?}">Spirit</a></li>
+            <li class="active"><a href="/articles/body">Body</a></li>
+            <li><a href="/articles/mind">Mind</a></li>
+            <li><a href="/articles/spirit">Spirit</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contribute<span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -88,6 +88,7 @@
     <div class="jumbotron">
       <div class="container">
         {{-- Main page content will be yielded here --}}
+        <h1>Zudbu</h1> <!--To do: Replace with a nice logo-->
         @yield('title')
 
         @yield('content')

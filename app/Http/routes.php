@@ -49,7 +49,7 @@ Route::get('/confirm-login-worked', function() {
 
 Route::get('/','ArticleController@home');
 
-Route::get('/articles','ArticleController@index');
+Route::get('/articles/{main_category?}','ArticleController@index');
 
 Route::get('/articles/show/{id?}','ArticleController@show');
 

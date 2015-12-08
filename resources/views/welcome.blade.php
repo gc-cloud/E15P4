@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('title')
-  <h1>Zudbu</h1>
   <p>Reliable information to nurture your body, mind and spirit.</p>
 @stop
 

@@ -181,7 +181,7 @@ class TestController extends Controller
             }
         }
         dump($articles);
-        }
+    }
 
 
 
