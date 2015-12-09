@@ -7,8 +7,7 @@
 
 @section('content')
 
-  @if($id)
-
+  @if($article->id)
     <h3>The bottomline</h3>
     <p>{{$article->bottomline}}</p>
     <h3>Why</h3>

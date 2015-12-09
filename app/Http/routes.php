@@ -15,15 +15,10 @@
 /* Authorization Routes
 -----------------------*/
 
-# Show login form
 Route::get('/login', 'Auth\AuthController@getLogin');
-# Process login form
 Route::post('/login', 'Auth\AuthController@postLogin');
-# Process logout
 Route::get('/logout', 'Auth\AuthController@getLogout');
-# Show registration form
 Route::get('/register', 'Auth\AuthController@getRegister');
-# Process registration form
 Route::post('/register', 'Auth\AuthController@postRegister');
 
 Route::get('/confirm-login-worked', function() {
@@ -39,26 +34,23 @@ Route::get('/confirm-login-worked', function() {
 });
 
 
-
-
-/* Main Application Routes
-------------------------*/
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::get('/','ArticleController@home');
-
-Route::get('/articles/{main_category?}','ArticleController@index');
-
-Route::get('/articles/show/{id?}','ArticleController@show');
-
-//Route::group(['middleware' => 'auth'], function() {
+/* Edit and create routes -  available only to logged in Users
+---------------------------------------------------------------*/
+Route::group(['middleware' => 'auth'], function() {
     Route::get('/articles/create', 'ArticleController@create');
     Route::post('/articles/create', 'ArticleController@store');
+    Route::get('/articles/edit/', 'ArticleController@showOwnArticles');
     Route::get('/articles/edit/{id?}', 'ArticleController@edit');
     Route::post('/articles/edit', 'ArticleController@update');
-//});
+});
+
+
+/* Main Application Routes - Allow everyone to browse articles
+--------------------------------------------------------------*/
+
+Route::get('/','WelcomeController@index');
+Route::get('/articles/{main_category?}','ArticleController@index');
+Route::get('/articles/show/{id?}','ArticleController@show');
 
 /* Route to show logs in local environment
 ------------------------------------------*/

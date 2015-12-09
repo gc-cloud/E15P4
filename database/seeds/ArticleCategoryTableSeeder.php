@@ -16,16 +16,16 @@ class ArticleCategoryTableSeeder extends Seeder
         'category_id' => 1,
       ]);
       DB::table('article_category')->insert([
+        'article_id' => 1,
+        'category_id' => 2,
+      ]);
+      DB::table('article_category')->insert([
+        'article_id' => 2,
+        'category_id' => 3,
+      ]);
+      DB::table('article_category')->insert([
         'article_id' => 2,
         'category_id' => 1,
-      ]);
-      DB::table('article_category')->insert([
-        'article_id' => 2,
-        'category_id' => 4,
-      ]);
-      DB::table('article_category')->insert([
-        'article_id' => 2,
-        'category_id' => 10,
       ]);
       DB::table('article_category')->insert([
         'article_id' => 3,

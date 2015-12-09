@@ -12,20 +12,9 @@
       {!!Form::label('Body:')!!}<br>
       {!!Form::textarea('body')!!}<br>
     </div>
-    <div class='form-group'>
-      {!!Form::label('Category:')!!}<br>
-      <select name='category' id='category'>
-        @foreach($categories_for_select as $category_id => $category_name)
-           <option value='{{ $category_id }}'> {{ $category_name }} </option>
-       @endforeach
-      </select>
-    </div>
+
     <div class='form-group'>
       {!!Form::label('Author:')!!}<br>
-      <select name='author_id' id='author_id'>
-        @foreach($authors_for_select as $author_id => $author_name)
-           <option value='{{ $author_id }}'> {{ $author_name }} </option>
-       @endforeach
-      </select>
+      <input type="text" name="author" value='{{ $author->name }}' readonly hidden><br>
+      <input type="text" name="author_id" value='{{ $author->id }}' readonly hidden><br>
     </div>
-    {!! Form::submit('Save Article', array('class' => 'btn btn-primary')) !!}

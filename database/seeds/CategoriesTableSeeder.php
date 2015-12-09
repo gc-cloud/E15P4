@@ -13,9 +13,7 @@ class CategoriesTableSeeder extends Seeder
     {
 
       /* Alternative approach */
-      $data = [
-        'body', 'mind','spirit','nutrition','exercise','stress',
-        'processed food','pesticides','organic','alcohol'];
+      $data = ['body', 'mind','spirit'];
 
        foreach($data as $categoryName) {
            $category = new \App\Category();

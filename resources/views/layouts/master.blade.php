@@ -57,7 +57,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contribute<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="/articles/create">New Article</a></li>
-                <li><a href="/articles/edit/{id?}">Edit Article</a></li>
+                <li><a href="/articles/edit">Edit Article</a></li>
                 <li><a href="#">Something else here</a></li>
               </ul>
             </li>
@@ -71,13 +71,18 @@
             </div>
             <button type="submit" class="btn btn-success">Sign in</button>
           </form>
-          {!! Form::open(array('url' => '/articles','class'=>'form navbar-form navbar-left searchform')) !!}
+
+          <!-- Future: Search box -->
+          <!-- {!! Form::open(array('url' => '/articles','class'=>'form navbar-form navbar-left searchform')) !!}
             {!! Form::text('search', null,
                              array('required',
                                   'class'=>'form-control search',
                                   'placeholder'=>'Search for articles...')) !!}
             {!!Form::submit('Search &raquo;', array('class' => 'btn btn-default btn-success search'))!!}
-          {!! Form::close() !!}
+          {!! Form::close() !!} -->
+
+
+
         </div><!--/.navbar-collapse -->
       </div>
     </nav>

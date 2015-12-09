@@ -8,25 +8,12 @@ use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
-  /**
-   * Display articles in home page
-   *
-   * @return \Illuminate\Http\Response
-   */
-  public function home(Request $request)
-  {
-    // USE our ORM book model to retrieve all the articles, pass to view
-    dump(\Auth::id());
-    $articles = \App\Article::where('author_id',\Auth::id())->orderBy('id','DESC')->get();
-    return view("welcome", compact('articles'));
-  }
-
 
     /**
      * Display a listing of Articles for the selected category.
      * If no category is selected, display all articles.
      * @return \Illuminate\Http\Response
-     */
+     *------------------------------------------------------*/
     public function index(Request $request, $main_category = null)
     {
       /* Eager load articles with categories, most recent first. */
@@ -63,25 +50,18 @@ class ArticleController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     *----------------------------------------------------*/
     public function create(Request $request)
     {
-      /* Provide list of valid categories*/
-      $categories = \App\Category::orderby('name','ASC')->get();
-      $categories_for_select = [];
-      foreach($categories as $category) {
-          $categories_for_select[$category->id] = $category->name;
-      }
 
+      /* Get list of all categories */
+      $categoryModel = new \App\Category();
+      $categories_for_checkboxes = $categoryModel->getCategoriesForCheckboxes();
 
-      /* Provide list of valid authors*/
-      $authors = \App\User::orderby('name','ASC')->get();
-      $authors_for_select = [];
-      foreach($authors as $author) {
-          $authors_for_select[$author->id] = $author->name;
-      }
+      /* Author is logged-in user*/
+      $author = \Auth::user();
 
-      return view('articles.create', compact('categories_for_select', 'authors_for_select'));
+      return view('articles.create', compact('categories_for_checkboxes', 'author'));
     }
 
     /**
@@ -89,7 +69,7 @@ class ArticleController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     */
+     *-------------------------------------------------------------*/
     public function store(Request $request)
     {
       // Keep old input
@@ -105,19 +85,25 @@ class ArticleController extends Controller
       # Instantiate a new Model object
       $article = new \App\Article();
 
-      # Set the parameters
-      # Note how each parameter corresponds to a field in the table
-      # Todo : read about mass assignments to avoid verbose code
+      /*Set the parameters. each parameter corresponds to a field in the table. Save
+      creates a new row in the table*/
       $article->title = $request->title;
       $article->bottomline = $request->bottomline;
       $article->body = $request->body;
-      // To-Do:  loop categories and save in pivot table
       $article->author_id = $request->author_id;
-
-      # Invoke the Eloquent save() method
-      # This will generate a new row in the `articles` table, with the above data
+          // To-Do:  loop categories and save in pivot table
+          //To-Do: move four lines above to model or use mass assignment
       $article->save();
 
+
+      /* loop categories and save in pivot table */
+      if ($request->categories){
+        $categories = $request->categories;
+      }
+      else {
+        $categories = [];
+      }
+      $article->categories()->sync($categories);
 
       /* Search database to get ID of new title  */
       // To- do: Fix flash message not showing
@@ -128,23 +114,37 @@ class ArticleController extends Controller
         \Session::flash('flash_message','Oops! There was an error saving the article');
       }
 
-      // fetch all books
+      // fetch all articles
       $articles = \App\Article::all();
       return view("articles.index", compact('articles'));
     }
 
     /**
-     * Display the specified resource.
+     * Display all articles
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+     *-----------------------------------------------------------*/
     public function show($id = null)
     {
 
       $article = \App\Article::find($id);
       return view('articles.show', compact('article', 'id'));
     }
+
+    /**
+     * Display articles that belong to logged in user.
+     *
+     * @return \Illuminate\Http\Response
+     *---------------------------------------------------------*/
+    public function showOwnArticles(Request $request)
+    {
+      // USE our ORM book model to retrieve all the articles, pass to view
+      $main_category = 'My Own';
+      $articles = \App\Article::where('author_id',\Auth::id())->orderBy('id','DESC')->get();
+      return view("articles.index", compact('articles','main_category'));
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -154,31 +154,29 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-      dump(\Auth::id());
+    //  $author = \Auth::user();
 
-      $article = \App\Article::find($id);
+      /* Get Article to Edit*/
+      $article = \App\Article::with('categories','author')->find($id);
       if(is_null($article)) {
           \Session::flash('flash_message','Article not found.');
           return redirect('\articles');
       }
 
-      //TO_DO: Get content speific to Article and return to view to pre-populate fields
-      /* Provide list of valid categories*/
+      /* Get list of all categories */
+      $categoryModel = new \App\Category();
+      $categories_for_checkboxes = $categoryModel->getCategoriesForCheckboxes();
 
-      $categories = \App\Category::orderby('name','ASC')->get();
-      $categories_for_select = [];
-      foreach($categories as $category) {
-          $categories_for_select[$category->id] = $category->name;
+      /* Get categories currently assigned to  this Article */
+      $categories_for_article = [];
+      foreach ($article->categories as $category) {
+        $categories_for_article[] = $category->id;
       }
 
-      /* Provide list of valid authors*/
-      $authors = \App\User::orderby('name','ASC')->get();
-      $authors_for_select = [];
-      foreach($authors as $author) {
-          $authors_for_select[$author->id] = $author->name;
-      }
-
-      return view('articles.edit', compact('article','categories_for_select', 'authors_for_select','id'));
+      /* Get Author */
+      $author = $article->author;
+      return view('articles.edit', compact('article','categories_for_checkboxes',
+      'categories_for_article','author'));
 
     }
 
@@ -191,28 +189,38 @@ class ArticleController extends Controller
      */
     public function update(Request $request)
     {
+
+      //dump($request->toArray);
+
       // Validation
       $this->validate($request, [
           'title' => 'required|min:5',
           'bottomline' => 'required|max:150',
           'body' => 'required|min:5|max:1500',
       ]);
-      dump($request);
+
+      /* Set the parameters. each parameter corresponds to a field in the table. Save
+      creates a new row in the table*/
       $article = \App\Article::find($request->id); // {id} is defined at the route
-      // dump($article);
       $article->title = $request->title;
       $article->bottomline = $request->bottomline;
       $article->body = $request->body;
-      //$article->category = $request->category; // To-Do:  loop categories and save in pivot table
+          //  dump($request->category);
       $article->author_id = $request->author_id;
-      # Invoke the Eloquent save() method
-      # This will generate a new row in the `books` table, with the above data
       $article->save();
 
+      /* Save categories in pivot table */
+      if ($request->categories){
+        $categories = $request->categories;
+      }
+      else {
+        $categories = [];
+      }
+      $article->categories()->sync($categories);
 
-
+      /* Confirm article was updated */
       \Session::flash('flash_message','Your article was updated.');
-      return redirect('/articles/show/'.$request->id);
+      return view('articles.show', compact('article'));
     }
 
     /**

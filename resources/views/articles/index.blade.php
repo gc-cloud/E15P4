@@ -1,16 +1,15 @@
 @extends('layouts.master')
-
 @section('title')
 
 
-  <h2>{{ ucfirst(trans($main_category )) }} articles.</h2>
-@stop
 
 @section('content')
 
 @foreach($articles as $article)
     <div>
       <h2>{{ $article->title }}</h2>
+      <p>{{$article->bottomline}}</p>
+      <a href='/articles/edit/{{$article->id}}'>Edit</a><br>
     </div>
 @endforeach
 
