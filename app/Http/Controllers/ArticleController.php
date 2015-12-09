@@ -44,7 +44,7 @@ class ArticleController extends Controller
        });
       }
       /* Make upper case for proper display.To-Do: move to CSS */
-      $main_category =  ucfirst(trans($main_category));
+    //  $main_category =  ucfirst(trans($main_category));
 
       return view("articles.index", compact('articles','title'));
     }
@@ -229,15 +229,47 @@ class ArticleController extends Controller
       $show_edit = TRUE; // present edit link after rendering
       return view('articles.show', compact('article','show_edit'));
     }
+    /**
+     * Confirm deletion of an article.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getConfirmDelete($id)
+    {
+        $article = \App\Article::find($id);
+        return view('articles.delete',compact('article'));
+    }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete the specified article from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+      //Set title for return page
+      $title = 'All Articles';
+
+      // Find article, redirect to welcome page if article not found
+      $article = \App\Article::find($id);
+      if(is_null($article)){
+        \Session::flash('flash_message'.'Article not found');
+        $articles = \App\Article::orderBy('id','DESC')->get();
+        return redirect('/');
+      }
+
+      // If article found remove references and delete
+      if($article->categories()){
+        $article->categories()->detach();
+      }
+      \Session::flash('flash_message',$article->title.' was deleted.');
+      $article->delete();
+
+
+      // Get updated list of articles and send user to welcome page
+      $articles = \App\Article::orderBy('id','DESC')->get();
+      return view("articles.index", compact('articles','title'));
     }
 }
