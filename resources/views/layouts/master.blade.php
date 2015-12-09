@@ -18,9 +18,6 @@
     <link href="/css/jumbotron.css" rel="stylesheet">
     <link href="/css/carousel.css" rel="stylesheet">
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <!-- <script src="assets/js/ie-emulation-modes-warning.js"></script> -->
 
     <!-- Laravel nice font and app specific CSS -->
     <link href='https://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
@@ -58,7 +55,6 @@
               <ul class="dropdown-menu">
                 <li><a href="/articles/create">New Article</a></li>
                 <li><a href="/articles/edit">Edit Article</a></li>
-                <li><a href="#">Something else here</a></li>
               </ul>
             </li>
           </ul>
@@ -81,8 +77,6 @@
             {!!Form::submit('Search &raquo;', array('class' => 'btn btn-default btn-success search'))!!}
           {!! Form::close() !!} -->
 
-
-
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
@@ -93,9 +87,9 @@
     <div class="jumbotron">
       <div class="container">
         {{-- Main page content will be yielded here --}}
-        <h1>Zudbu</h1> <!--To do: Replace with a nice logo-->
+        <h1 class="inline">Zudbu</h1> <!--To do: Replace with a nice logo-->
+        <p> nurture your body, mind and spirit.</p>
         @yield('title')
-
         @yield('content')
       </div>
     </div>
@@ -107,13 +101,16 @@
 
 
     <div class="container">
-      @if(\Session::has('flash_message'))
-         <div class='flash_message'>
-             {{ \Session::get('flash_message') }}
-         </div>
-      @endif
+
       <hr>
       <footer>
+        @if(\Session::has('flash_message'))
+           <div class='flash_message'>
+               {{ \Session::get('flash_message') }}
+           </div>
+        @else
+          <h1>NO flash</h2>
+        @endif
         <p>&copy; Zudbu 2015</p>
       </footer>
     </div> <!-- /container -->
@@ -123,7 +120,5 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="/dist/js/bootstrap.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="sassets/js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>

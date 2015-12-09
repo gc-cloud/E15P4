@@ -23,9 +23,10 @@ class ArticleController extends Controller
       We use $selected_articles to track the ID's of the articles that apply. */
       $selected_articles = [];
       if(!$main_category){
-         $main_category = 'All';
+         $title = 'All Articles';
       } else {
         /* Find the articles that belong to the category selected */
+        $title = 'Articles for '.ucfirst ($main_category);
         foreach($articles as $article) {
           foreach($article->categories as $category) {
             if($category->name==$main_category){
@@ -43,7 +44,7 @@ class ArticleController extends Controller
       /* Make upper case for proper display.To-Do: move to CSS */
       $main_category =  ucfirst(trans($main_category));
 
-      return view("articles.index", compact('articles','main_category'));
+      return view("articles.index", compact('articles','title'));
     }
 
     /**
@@ -88,6 +89,7 @@ class ArticleController extends Controller
       /*Set the parameters. each parameter corresponds to a field in the table. Save
       creates a new row in the table*/
       $article->title = $request->title;
+      $title = $request->title;
       $article->bottomline = $request->bottomline;
       $article->body = $request->body;
       $article->author_id = $request->author_id;
@@ -116,7 +118,7 @@ class ArticleController extends Controller
 
       // fetch all articles
       $articles = \App\Article::all();
-      return view("articles.index", compact('articles'));
+      return view("articles.show", compact('article'));
     }
 
     /**
@@ -141,8 +143,9 @@ class ArticleController extends Controller
     {
       // USE our ORM book model to retrieve all the articles, pass to view
       $main_category = 'My Own';
+      $title = "Articles owned by ".\Auth::user()->name;
       $articles = \App\Article::where('author_id',\Auth::id())->orderBy('id','DESC')->get();
-      return view("articles.index", compact('articles','main_category'));
+      return view("articles.index", compact('articles','main_category','title'));
     }
 
 

@@ -6,7 +6,10 @@
 
 @section('content')
   @include('errors')
-  {!! Form::open(array('url' => 'articles/create')) !!}
+@stop
+
+@section('body')
+  {!! Form::open(array('url' => 'articles/create','class'=>'border')) !!}
     @include('articles.content')
     <div class='form-group'>
       {!!Form::label('Categories:')!!}<br>
@@ -16,7 +19,4 @@
     </div>
     {!! Form::submit('Save Article', array('class' => 'btn btn-primary')) !!}
   {!! Form::close() !!}
-@stop
-
-@section('body')
 @stop

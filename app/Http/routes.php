@@ -41,7 +41,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/articles/create', 'ArticleController@store');
     Route::get('/articles/edit/', 'ArticleController@showOwnArticles');
     Route::get('/articles/edit/{id?}', 'ArticleController@edit');
-    Route::post('/articles/edit', 'ArticleController@update');
+    Route::post('/articles/edit/{id?}', 'ArticleController@update');
+    Route::put('/articles/edit/{id?}', 'ArticleController@destroy');
 });
 
 

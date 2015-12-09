@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-  <p>Reliable information to nurture your body, mind and spirit.</p>
+  <h2>Featured Articles</h2>
 @stop
 
 
@@ -51,7 +51,7 @@
 @stop
 
 @section('body')
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-md-4">
       <h2>Body</h2>
       <p>Healthy eating. Maintain a healthy environment. Stretching. Breathing. Working out. Yoga. Massage.  Sleeping. Resting. Sex. Cosmetics. </p>
@@ -67,14 +67,16 @@
       <p>Meditation.  Purpose. Awareness. Gratitude. Music. Gardening. Letting go. Friends and family. Social networks. Hobbies. Volunteer. </p>
       <p><a class="btn btn-default" href="#" role="button">View articles &raquo;</a></p>
     </div>
-  </div>
+  </div> -->
 
   <h1>All Articles.</h1>
   @foreach($articles as $article)
-      <div>
+      <div class="border">
           <h2>{{ $article->title }}</h2>
-          <p>{{$article->bottomline}}</p>
+          <p> {{$article->bottomline}}</p>
+          <a href='/articles/show/{{$article->id}}'> more</a><br>
           <!-- <img src='{{ $article->mainImage }}'> ADD a cool image here-->
       </div>
+      <br>
   @endforeach
 @stop

@@ -13,8 +13,7 @@
       {!!Form::textarea('body')!!}<br>
     </div>
 
-    <div class='form-group'>
-      {!!Form::label('Author:')!!}<br>
+    <div class='form-group invisible'>
       <input type="text" name="author" value='{{ $author->name }}' readonly hidden><br>
       <input type="text" name="author_id" value='{{ $author->id }}' readonly hidden><br>
     </div>

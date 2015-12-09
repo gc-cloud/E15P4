@@ -57,8 +57,22 @@ body {
     background-size: cover;
 }
 
-/* MARKETING CONTENT
+/* Display formatting
 -------------------------------------------------- */
+.border {
+    border-width:thin;
+    border-style: solid;
+    border-color: #efefef;
+    padding: .5em;
+}
+
+.invisible {
+  display: none;
+}
+
+.inline {
+  display: inline;
+}
 
 /* Center align the text within the three columns below the carousel */
 .marketing .col-lg-4 {
@@ -118,6 +132,9 @@ ul.errors {
     background-color:yellow;
     font-weight:bold;
 }
+
+
+
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */
