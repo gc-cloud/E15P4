@@ -74,6 +74,10 @@ body {
   display: inline;
 }
 
+.headeritem {
+  color: #9d9d9d;
+}
+
 /* Center align the text within the three columns below the carousel */
 .marketing .col-lg-4 {
   margin-bottom: 40px;

@@ -22,6 +22,8 @@
         <h1>No Article specified</h1>
     @endif
       <!-- To do, display only for contributors -->
-      <a href='/articles/edit/{{$article->id}}'>Edit</a><br>
+      @if(isset($show_edit))
+        <a href='/articles/edit/{{$article->id}}'>Edit</a><br>
+      @endif
   </div>
 @stop

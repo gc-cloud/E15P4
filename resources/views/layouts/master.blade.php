@@ -50,6 +50,9 @@
             <li class="active"><a href="/articles/body">Body</a></li>
             <li><a href="/articles/mind">Mind</a></li>
             <li><a href="/articles/spirit">Spirit</a></li>
+
+            <!-- show contribute menu to authenticated users -->
+            @if($user)
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contribute<span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -57,16 +60,33 @@
                 <li><a href="/articles/edit">Edit Article</a></li>
               </ul>
             </li>
+            @endif
           </ul>
-          <form class="navbar-form navbar-right">
-            <div class="form-group">
-              <input type="text" placeholder="Email" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-          </form>
+
+          <!-- Sign-in/Register or Logout -->
+          {!! Form::open(array('url' => '/login','class' => 'navbar-form navbar-right')) !!}
+          @if($user)
+              <p class="headeritem">Logged in as {{ $user->name }}</p>
+              <p><a href='/logout'>Logout</a></p>
+            @else
+              <div class='form-group'>
+                  <input type='text' name='email' id='email' placeholder="Email" value='{{ old('email') }}' class="form-control">
+              </div>
+
+              <div class='form-group'>
+                  <input type='password' name='password' id='password' placeholder="Password" value='{{ old('password') }}' class="form-control">
+              </div>
+
+              <!-- <div class='form-group'>
+                  <input type='checkbox' name='remember' id='remember'>
+                  <label for='remember' class='checkboxLabel'>Remember me</label>
+              </div> -->
+              <button type='submit' class='btn btn-primary'>Login</button>
+              <p class="headeritem">Not a user?<a href='/register'>  Register </a></p>
+              @endif
+
+
+          {!! Form::close() !!}
 
           <!-- Future: Search box -->
           <!-- {!! Form::open(array('url' => '/articles','class'=>'form navbar-form navbar-left searchform')) !!}

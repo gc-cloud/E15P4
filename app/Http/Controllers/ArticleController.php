@@ -16,6 +16,8 @@ class ArticleController extends Controller
      *------------------------------------------------------*/
     public function index(Request $request, $main_category = null)
     {
+
+
       /* Eager load articles with categories, most recent first. */
       $articles = \App\Article::with('categories')->orderBy('id','DESC')->get();
 
@@ -26,7 +28,7 @@ class ArticleController extends Controller
          $title = 'All Articles';
       } else {
         /* Find the articles that belong to the category selected */
-        $title = 'Articles for '.ucfirst ($main_category);
+        $title = 'Articles to nurture your '.ucfirst ($main_category);
         foreach($articles as $article) {
           foreach($article->categories as $category) {
             if($category->name==$main_category){
@@ -118,7 +120,8 @@ class ArticleController extends Controller
 
       // fetch all articles
       $articles = \App\Article::all();
-      return view("articles.show", compact('article'));
+      $show_edit = TRUE; // present edit link after rendering
+      return view("articles.show", compact('article','show_edit'));
     }
 
     /**
@@ -142,10 +145,10 @@ class ArticleController extends Controller
     public function showOwnArticles(Request $request)
     {
       // USE our ORM book model to retrieve all the articles, pass to view
-      $main_category = 'My Own';
+      $show_edit = TRUE;
       $title = "Articles owned by ".\Auth::user()->name;
       $articles = \App\Article::where('author_id',\Auth::id())->orderBy('id','DESC')->get();
-      return view("articles.index", compact('articles','main_category','title'));
+      return view("articles.index", compact('articles','show_edit','title'));
     }
 
 
@@ -223,7 +226,8 @@ class ArticleController extends Controller
 
       /* Confirm article was updated */
       \Session::flash('flash_message','Your article was updated.');
-      return view('articles.show', compact('article'));
+      $show_edit = TRUE; // present edit link after rendering
+      return view('articles.show', compact('article','show_edit'));
     }
 
     /**

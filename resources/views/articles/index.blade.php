@@ -16,7 +16,9 @@
         <h2>{{ $article->title }}</h2>
         <p> {{$article->bottomline}}</p>
         <a href='/articles/show/{{$article->id}}'> more</a><br>
-        <a href='/articles/edit/{{$article->id}}'>Edit</a><br>
+        @if(isset($show_edit))
+          <a href='/articles/edit/{{$article->id}}'>Edit</a><br>
+        @endif
         <!-- <img src='{{ $article->mainImage }}'> ADD a cool image here-->
     </div>
     <br>
