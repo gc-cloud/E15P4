@@ -39,7 +39,7 @@ Route::get('/confirm-login-worked', function() {
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/articles/create', 'ArticleController@create');
     Route::post('/articles/create', 'ArticleController@store');
-    Route::get('/articles/edit/', 'ArticleController@showOwnArticles');
+    Route::get('/articles/edit/search', 'ArticleController@showOwnArticles');
     Route::get('/articles/edit/{id?}', 'ArticleController@edit');
     Route::post('/articles/edit/{id?}', 'ArticleController@update');
     Route::put('/articles/edit/{id?}', 'ArticleController@destroy');

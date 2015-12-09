@@ -18,6 +18,7 @@
         <a href='/articles/show/{{$article->id}}'> more</a><br>
         @if(isset($show_edit))
           <a href='/articles/edit/{{$article->id}}'>Edit</a><br>
+          <a href='/articles/confirm-delete/{{$article->id}}'>Delete</a><br>
         @endif
         <!-- <img src='{{ $article->mainImage }}'> ADD a cool image here-->
     </div>

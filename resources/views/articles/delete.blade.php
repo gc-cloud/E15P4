@@ -10,6 +10,7 @@
 @section('body')
 <h2> Are you sure you want to delete :<em> {{ $article->title }}</em> ?</h2>
 <h2><a href="/articles/delete/{{ $article->id }}"> Yes, delete forever </a></h2>
+<h2><a href="/articles/edit/search"> No,  go back to my articles </a></h2>
   <div class="border">
     @if($article->id)
       <h3>The bottomline</h3>

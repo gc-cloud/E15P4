@@ -146,6 +146,7 @@ class ArticleController extends Controller
     {
       // USE our ORM book model to retrieve all the articles, pass to view
       $show_edit = TRUE;
+      $show_delete = TRUE;
       $title = "Articles owned by ".\Auth::user()->name;
       $articles = \App\Article::where('author_id',\Auth::id())->orderBy('id','DESC')->get();
       return view("articles.index", compact('articles','show_edit','title'));
@@ -226,8 +227,15 @@ class ArticleController extends Controller
 
       /* Confirm article was updated */
       \Session::flash('flash_message','Your article was updated.');
-      $show_edit = TRUE; // present edit link after rendering
-      return view('articles.show', compact('article','show_edit'));
+      // $show_edit = TRUE; // present edit link after rendering
+      // return view('articles.show', compact('article','show_edit'));
+
+
+      // Send to edit page
+      $show_edit = TRUE;
+      $title = "Articles owned by ".\Auth::user()->name;
+      $articles = \App\Article::where('author_id',\Auth::id())->orderBy('id','DESC')->get();
+      return view("articles.index", compact('articles','show_edit','title'));
     }
     /**
      * Confirm deletion of an article.
@@ -264,12 +272,17 @@ class ArticleController extends Controller
       if($article->categories()){
         $article->categories()->detach();
       }
-      \Session::flash('flash_message',$article->title.' was deleted.');
+      \Session::flash('flash_message',' Your article was deleted.');
       $article->delete();
 
+      // Send to edit page
+      $show_edit = TRUE;
+      $title = "Articles owned by ".\Auth::user()->name;
+      $articles = \App\Article::where('author_id',\Auth::id())->orderBy('id','DESC')->get();
+      return view("articles.index", compact('articles','show_edit','title'));
 
       // Get updated list of articles and send user to welcome page
-      $articles = \App\Article::orderBy('id','DESC')->get();
-      return view("articles.index", compact('articles','title'));
+      // $articles = \App\Article::orderBy('id','DESC')->get();
+      // return view("articles.index", compact('articles','title'));
     }
 }

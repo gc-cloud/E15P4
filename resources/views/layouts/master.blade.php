@@ -57,7 +57,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contribute<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="/articles/create">New Article</a></li>
-                <li><a href="/articles/edit">Edit Article</a></li>
+                <li><a href="/articles/edit/search">Edit/Delete Article</a></li>
               </ul>
             </li>
             @endif
