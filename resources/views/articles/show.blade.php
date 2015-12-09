@@ -14,7 +14,7 @@
       <h3>The bottomline</h3>
       <p>{{$article->bottomline}}</p>
       <h3>Why</h3>
-      <p>{{$article->body}}</p>
+      <p>{!!$article->body!!}</p>
       <!-- <img src='{{ $article->mainImage }}'> ADD a cool image here-->
       <h3>References</h3>
       <p> Here we will display a list of references</p>
