@@ -239,14 +239,24 @@ class ArticleController extends Controller
         $categories = [];
       }
       $article->categories()->sync($categories);
+      dump($categories);
+
+      /* Save references in pivot table */
+      if ($request->sources){
+        $sources= $request->sources;
+      }
+      else {
+        $sources = [];
+      }
+      dump($sources);
+    //  $article->sources()->sync($sources);
+
 
       /* Confirm article was updated */
       \Session::flash('flash_message','Your article was updated.');
-      // $show_edit = TRUE; // present edit link after rendering
-      // return view('articles.show', compact('article','show_edit'));
 
 
-      // Send to edit page
+      /* Send to edit selection page */
       $show_edit = TRUE;
       $title = "Articles owned by ".\Auth::user()->name;
       $articles = \App\Article::where('author_id',\Auth::id())->orderBy('id','DESC')->get();

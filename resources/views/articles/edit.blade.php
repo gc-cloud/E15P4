@@ -27,14 +27,18 @@
     <div class='form-group' id="dynamicInput">
       <h2>References:</h2>
       @foreach($sources_for_article as $source)
-        {!!Form::label('Reference / URL :')!!}
-        {!!Form::text('source', $source->source,array('class'=>'form-control'))!!}<br>
-        {!!Form::text('url', $source->url, array('class'=>'form-control'))!!}<br>
+        {!!Form::text('sources[]',$source->id,array('hidden'))!!}
+        {!!Form::label('Reference / URL :')!!}{!!$source->id!!}
+        {!!Form::text('sources2[]', $source->source,array('class'=>'form-control'))!!}<br>
+        {!!Form::text('urls[]', $source->url, array('class'=>'form-control'))!!}<br>
       @endforeach
     </div>
 
     {!! Form::button('Add References', array('onClick'=>'addInput("dynamicInput");', 'class' => 'btn btn-primary')) !!}
-    {!! Form::submit('Save Article', array('class' => 'btn btn-primary')) !!}
+
+    <div class='form-group'>
+      {!! Form::submit('Save Article', array('class' => 'btn btn-primary')) !!}
+    </div>
   {!! Form::close() !!}
 
 <!-- Script for  dynamic addition of elements -->
