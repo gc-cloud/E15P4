@@ -212,22 +212,24 @@ class ArticleController extends Controller
     public function update(Request $request)
     {
 
-      //dump($request->toArray);
-
-      // Validation
+      /* Make sure submitted values are valid */
       $this->validate($request, [
           'title' => 'required|min:5',
           'bottomline' => 'required|max:150',
           'body' => 'required|min:5|max:2500',
       ]);
 
-      /* Set the parameters. each parameter corresponds to a field in the table. Save
-      creates a new row in the table*/
-      $article = \App\Article::find($request->id); // {id} is defined at the route
+
+      /* Get Article to Update*/
+      $article = \App\Article::with('sources')->find($request->id);
+
+
+
+      /* Save the values in the articles table.  Should we use update???*/
+  //    $article = \App\Article::find($request->id); // {id} is defined at the route
       $article->title = $request->title;
       $article->bottomline = $request->bottomline;
       $article->body = $request->body;
-          //  dump($request->category);
       $article->author_id = $request->author_id;
       $article->save();
 
@@ -242,29 +244,25 @@ class ArticleController extends Controller
       $article->categories()->sync($categories);
 
 
-      /* Update previously existing references.  */
-      if ($request->urls && $request->sources && $request->ids){
+      /* Update references. Since the user can add and delete on the
+      client side, we first cleanup the original values and then add
+      what was left.*/
+      foreach ($article->sources as $source) {
+        $source->delete();
+      }
+      if ($request->urls && $request->sources){
         for ($i=0; $i < count($request->sources); $i++) {
-          $source = \App\Source::find($request->ids[$i]);
+          $source = new \App\Source;
           $source->source = $request->sources[$i];
           $source->url = $request->urls[$i];
-          $source->update();
+          $source->article_id = $request->id;
+          $source->save();
         }
       }
       else {
         \Session::flash('flash_message'.'There was a problem with the update');
       }
 
-      /* Add new references.  */
-      if ($request->newUrls && $request->newSources){
-        for ($i=0; $i < count($request->newSources); $i++) {
-          $source = new \App\Source;
-          $source->source = $request->newSources[$i];
-          $source->url = $request->newUrls[$i];
-          $source->article_id = $request->id;
-          $source->save();
-        }
-      }
 
     //  $article->sources()->sync($sources);
 
@@ -317,14 +315,12 @@ class ArticleController extends Controller
       \Session::flash('flash_message',' Your article was deleted.');
       $article->delete();
 
-      // Send to edit page
+      // Get updated list of articles and send to edit selection page
       $show_edit = TRUE;
       $title = "Articles owned by ".\Auth::user()->name;
       $articles = \App\Article::where('author_id',\Auth::id())->orderBy('id','DESC')->get();
       return view("articles.index", compact('articles','show_edit','title'));
 
-      // Get updated list of articles and send user to welcome page
-      // $articles = \App\Article::orderBy('id','DESC')->get();
-      // return view("articles.index", compact('articles','title'));
+
     }
 }

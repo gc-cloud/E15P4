@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::put('/articles/edit/{id?}', 'ArticleController@destroy');
     Route::get('/articles/confirm-delete/{id?}', 'ArticleController@getConfirmDelete');
     Route::get('/articles/delete/{id?}', 'ArticleController@destroy');
+    Route::get('/sources/delete/{id?}', 'SourceController@destroy');
 
 });
 
