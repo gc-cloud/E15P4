@@ -57,26 +57,6 @@ body {
     background-size: cover;
 }
 
-/* Display formatting
--------------------------------------------------- */
-.border {
-    border-width:thin;
-    border-style: solid;
-    border-color: #efefef;
-    padding: .5em;
-}
-
-.invisible {
-  display: none;
-}
-
-.inline {
-  display: inline;
-}
-
-.headeritem {
-  color: #9d9d9d;
-}
 
 /* Center align the text within the three columns below the carousel */
 .marketing .col-lg-4 {
@@ -126,6 +106,32 @@ ul.errors {
     list-style-type:none;
 }
 
+
+/* Display formatting
+-------------------------------------------------- */
+.border {
+    border-width:thin;
+    border-style: solid;
+    border-color: #efefef;
+    padding: .5em;
+}
+
+.invisible {
+  display: none;
+}
+
+.inline {
+  display: inline;
+}
+
+.headeritem {
+  color: #9d9d9d;
+}
+
+.entryField {
+  width: 30em;
+}
+
 .flash_message {
     width:100%;
     font-size: 1.5em;
@@ -143,9 +149,6 @@ ul.errors {
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */
-
-
-
 
 @media screen and (min-width: 768px){
 .carousel-caption {
