@@ -1,18 +1,18 @@
 
     <div class='form-group'>
-      {!!Form::label('Title:')!!}<br>
-      {!!Form::text('title',null,array('class'=>'entryField'))!!}<br>
+      <h2>Title:</h2>
+      {!!Form::text('title',null,array('class'=>'form-control'))!!}<br>
     </div>
 
 
     <div class='form-group'>
-      {!!Form::label('Bottomline')!!}<br>
-      {!!Form::text('bottomline',null,array('class'=>'entryField'))!!}<br>
+      <h2>Bottomline:<h2>
+      {!!Form::text('bottomline',null,array('class'=>'form-control'))!!}<br>
     </div>
 
     <div class='form-group'>
-      {!!Form::label('Body:')!!}<br>
-      {!!Form::textarea('body',null,array('class'=>'entryField'))!!}<br>
+      <h2>Body</h2>
+      {!!Form::textarea('body',null,array('class'=>'form-control'))!!}<br>
     </div>
 
     <div class='form-group invisible'>
