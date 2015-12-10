@@ -13,10 +13,10 @@ class ArticlesTableSeeder extends Seeder
     {
       DB::table('articles')->insert([
       'title' => 'Exercise: How much?',
-      'bottomline' => 'Exercise three times a week for 30-45 minutes.',
+      'bottomline' => 'Exercise 150 minutes spread over multiple times a week.',
       'body' => '
-            <p>There is strong evidence that dequate levels of physical activity
-            have a number of health benefits, including:</p>
+            <p>There is strong evidence linking  adequate levels of physical activity
+            with numerous health benefits such as:</p>
             <ul>
               <li>Lower rates of all-cause mortality, coronary heart disease,
               high blood pressure, stroke, type 2 diabetes, colon cancer and breast
@@ -31,9 +31,15 @@ class ArticlesTableSeeder extends Seeder
               role limitations</li>
             </ul>
 
-            <p>Of course, everything has limits and exercise is no exception.  It is
-            important to know when to stop exercise to prevent joint damage,
-            dehydration, and in extreme cases heart attacks</p>
+            <p>Conversely, lack of physical activity has been linked to a several
+            health problems.  A report from the American Heart Association identified
+            physical inactivity as the fourth major modifiable risk factor of
+            Cardiovascular Health Disease, joining smoking, hypertension and
+            dyslipidemia (an abnormal amount of lipids/fat in the blood).</p>
+
+            <p>Everything has limits and exercise is no exception.  It is
+            important to know when to stop exercising to prevent joint damage,
+            dehydration, and in extreme cases heart attacks.  Learn to listen to your body.</p>
 
             <p>According to the world healt organization, the recommended amount of
              physical activity varies by age group:</p>
@@ -55,37 +61,34 @@ class ArticlesTableSeeder extends Seeder
 
 
       DB::table('articles')->insert([
-      'title' => 'Processed meat ?',
+      'title' => 'Broccoli?',
       'bottomline' => 'Processed meat contains various chemicals that are harmful to health.',
       'body' => '<p>Processed meat is meat that has been preserved by curing, salting, smoking,
                   addition of preservatives, or canning.</p>
 
                  <p>Some examples of processed meat include:</p>
                  <ul>
-                   <li>sausages</li>
-                   <li>salami</li>
-                   <li>bacon</li>
-                   <li>corned beef</li>
-                   <li>beef jerky</li>
-                   <li>canned meat</li>
+                   <li>Sausages</li>
+                   <li>Salami</li>
+                   <li>Bacon</li>
+                   <li>Ham</li>
+                   <li>Beef Jerky</li>
+                   <li>Canned Meat</li>
                  </ul>
-                 <p>During processing, meat that was previously fresh ends up
-                 containing various chemicals that are harmful to health. Several studies
+                 <p>During processing, meat  ends up containing various chemicals that are harmful to health. Several studies
                  have linked processed meat with increased risk or diseases including high blood
-                 pressure, heart disease, bowel and stomach cancer.</p>
+                 pressure, heart disease, bowel and stomach cancer. In a controversial move,
+                 the World Health Organization added processed meat to their list or carcinogens in 2015</p>
 
-                 <p> Recently, the World Health Organization added processed meat to
-                 their list or carcinogens</p>
-
-                 <p> You should try to limit your consumption of processed
+                 <p> The take away message is that you should try to limit your consumption of processed
                  meat and follow a diet based on fresh products.  It is important that these
-                 products contain diverse and sufficient amouts of protein and other nutrients</p>',
+                 products contain diverse and sufficient amouts of protein and other nutrients.</p>',
       'author_id' => 1,
       ]);
 
       DB::table('articles')->insert([
       'title' => 'Red or white?',
-      'bottomline' => 'Limit your alcohol intake to three drinks spread over each week.',
+      'bottomline' => 'Limit your alcohol intake to three drinks each week.',
       'body' => '
                 <p>Over the years, scientists have studied and documented the role of alcohol
                 in the development of a number of medical problems such as:</p>
@@ -95,28 +98,27 @@ class ArticlesTableSeeder extends Seeder
                   <li>Fetal abnormalities</li>
                   <li>Liver cirrhosis and increased risk of liver failure</li>
                   <li>Obesity (which is associated with several other health issues including
-                  cardiovascular problems, metabolic syndrome,and benign prostatic hyperplasia
-                  in the case of abdominal obesity)</li>
-                  <li>Reincidence and new lesions in patients with Coronary Heart Disease</li>
+                  cardiovascular problems, metabolic syndrome,and benign prostatic hyperplasia)</li>
+                  <li>Reincidence and new lesions in patients with Coronary Heart Disease (CHD)</li>
                 </ul>
 
 
                 <p>In the past couple of decades,  however, epidemiologic studies have
                 documented an association between moderate alcohol consumption and
-                lower risk for coronary heart disease (CHD). Much remains to be
+                lower risk for CHD. Much remains to be
                  learned about this association, the extent to which it is due specifically
                  to alcohol and not to other associated lifestyle factors, and what
                  the biological mechanisms of such an effect might be.
                  Some of the theories suggest that these effects are
-                at least in part linked with the blod thinning effect of alcohol, and
+                (at least in part) linked with the blood thinning effect of alcohol, and
                 certain compounds (such as resveratrol) found in red wine (and red grape juice).
                 All in all, the benefits of drinking alcohol are probably overstated
                 and can be obtained with very small amounts of alcohol consumption. </p>
 
                 <p> Based on the evidence, it is probably a good idea to limit alcohol intake
                 to moderate levels (three drinks spread out over a given week).  If you are going to enjoy
-                a glass of wine do it because you like it and not because you want to
-                have a healthy heart, for that you are
+                a glass of wine do it because you like it, and not because you want to
+                have a healthy heart. For the latter, you are
                  better off eating in moderation (a mediterranean diet
                  is a good idea), reducing your stress levels, and exercising regularly</p>',
       'author_id' => 1,
@@ -132,8 +134,8 @@ class ArticlesTableSeeder extends Seeder
                 the risk of having high blood pressure, heart disease, and other
                 medical conditions. There is also a correlation between the lack of sleep and
                 the likelihood of developing obesity and diabetes.
-                Some studies suggest associations between lack of sleep and
-                cognitive functioning as well as intelligence development.</p>
+                Some studies suggest associations between lack of sleep and diminished
+                cognitive functioning and intelligence development.</p>
 
                 <p> During sleep, the  body produces hormones that fuel growth
                 in children, boost muscle mass,
@@ -141,16 +143,16 @@ class ArticlesTableSeeder extends Seeder
                 infections. </p>
 
 
-                <p> Tips to get a good night\'s sleep</p>
+                <p><strong> Tips to get a good night\'s sleep</strong></p>
                 <ul>
                   <li>Go to bed and wake up at the same time every day.</li>
-                  <li>Avoid caffeine and nicotine.</li>
-                  <li>Don’t exercise too late in the day.</li>
-                  <li>Avoid alcoholic drinks before bed.</li>
-                  <li>Avoid large meals and beverages late at night.</li>
+                  <li>Avoid caffeine and nicotine</li>
+                  <li>Don’t exercise too late in the day</li>
+                  <li>Avoid alcoholic drinks before bed</li>
+                  <li>Avoid large meals and beverages late at night</li>
                   <li>Relax before bed</li>
                   <li>Remove distractions such as noises, bright lights,
-                   an uncomfortable bed, or a TV or computer in the bedroom.</li>
+                   an uncomfortable bed, or a TV or computer in the bedroom</li>
                    <li>For children, avoid long periods of daily television exposure</li>
                 </ul>',
       'author_id' => 2,
@@ -160,8 +162,8 @@ class ArticlesTableSeeder extends Seeder
       'title' => 'Inner peace',
       'bottomline' => 'Meditation helps you find inner peace',
       'body' => '
-                <p>Once considered ritual, the benefits of "mindfulness" meditation, in which people learn
-                to watch their thoughts and feelings without judging them, have been
+                <p>Once considered ritual, the benefits of mindfulness meditation (in which people learn
+                to watch their thoughts and feelings without judging them) have been
                 documented in several studies. </p>
                 <ul>
                   <li>Reduced stress and anxiety</li>
@@ -181,28 +183,33 @@ class ArticlesTableSeeder extends Seeder
       'title' => 'Meditation and intelligence',
       'bottomline' => 'Mindfulness Meditation can improve learning effectiveness, attention and memory .',
       'body' => '
-                <p></p>
+                <p>Studies have shown that mindfulness meditation may improve well-being in
+                healthy individuals.  A study published in 2014 reported that an 8 week
+                mindfulness meditation program improved scores in three character
+                scales describing </p>
                 <ul>
-                  <li>Ability to make better choices</li>
-                  <li></li>
-                  <li></li>
+                  <li>Intrapersonal (self-directedness)</li>
+                  <li>Interpersonal (cooperativeness)</li>
+                  <li>Transpersonal (self-trascendence)</li>
                 </ul>
-                <p></p>
-                <p></p>
+                <p>To note, the benefits were significant only in those groups who were
+                engaged in consistent daily meditation practice(versus the group that
+                attended training but did not have consistent home practice).</p>
+                <p>A different study including 282 subjects found that one semester of
+                mindfulness meditation was able to improve learning effectiveness,
+                attention and memory aspects of cognitive performance.  Compared
+                to the control group, the subjects doing meditation exhibited
+                significantly better performance for computer cognitive tasks including: </p>
                 <ul>
-                  <li>Boosts memory</li>
-                  <li></li>
-                  <li></li>
-                </ul>
-                <p></p>
-
-
-                ',
+                  <li>Digital vigilance</li>
+                  <li>Choice reaction time</li>
+                  <li>Spatial working memory</li>
+                </ul>',
       'author_id' => 2,
       ]);
 
       DB::table('articles')->insert([
-      'title' => 'Spirituality',
+      'title' => 'Achieve Unity',
       'bottomline' => 'Spirituality may enhance physical, psychological and cognitive well being',
       'body' => '
                 <p>Spirituality is considered an important aspect of wellness.

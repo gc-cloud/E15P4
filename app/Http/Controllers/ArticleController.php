@@ -133,8 +133,16 @@ class ArticleController extends Controller
     public function show($id = null)
     {
 
-      $article = \App\Article::find($id);
-      return view('articles.show', compact('article', 'id'));
+      $article = \App\Article::with('sources')->find($id);
+
+      /* Get sources currently assigned to  this Article */
+      $sources_for_article = [];
+      foreach ($article->sources as $source) {
+        $sources_for_article[] = $source;
+      }
+      //dump($sources_for_article);
+
+      return view('articles.show', compact('article', 'id','sources_for_article'));
     }
 
     /**
@@ -164,7 +172,7 @@ class ArticleController extends Controller
     //  $author = \Auth::user();
 
       /* Get Article to Edit*/
-      $article = \App\Article::with('categories','author')->find($id);
+      $article = \App\Article::with('categories','author','sources')->find($id);
       if(is_null($article)) {
           \Session::flash('flash_message','Article not found.');
           return redirect('\articles');
@@ -180,10 +188,17 @@ class ArticleController extends Controller
         $categories_for_article[] = $category->id;
       }
 
+      /* Get sources currently assigned to  this Article */
+      $sources_for_article = [];
+      foreach ($article->sources as $source) {
+        $sources_for_article[] = $source;
+      }
+      //dump($sources_for_article);
+
       /* Get Author */
       $author = $article->author;
       return view('articles.edit', compact('article','categories_for_checkboxes',
-      'categories_for_article','author'));
+      'categories_for_article','sources_for_article','author'));
 
     }
 

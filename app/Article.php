@@ -15,7 +15,7 @@ class Article extends Model
   }
 
   /**
-     * Get the sources for the article.
+     * Get the references for the article.
      */
     public function sources()
     {

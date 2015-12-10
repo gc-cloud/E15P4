@@ -13,5 +13,5 @@ class Source extends Model
  {
      return $this->belongsTo('App\Article');
  }
- 
+
 }

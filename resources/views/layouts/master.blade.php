@@ -66,8 +66,7 @@
           <!-- Sign-in/Register or Logout -->
           {!! Form::open(array('url' => '/login','class' => 'navbar-form navbar-right')) !!}
           @if($user)
-              <p class="headeritem">Logged in as {{ $user->name }}</p>
-              <p><a href='/logout'>Logout</a></p>
+              <p class="headeritem">Logged in as {{ $user->name }} <a href='/logout'> [ Logout ]</a></p>
             @else
               <div class='form-group'>
                   <input type='text' name='email' id='email' placeholder="Email" value='{{ old('email') }}' class="form-control">

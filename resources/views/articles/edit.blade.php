@@ -21,6 +21,12 @@
           <input {{$checked}} type = "checkbox" name="categories[]" value='{{ $category_id }}'> {{ $category_name }} <br>
        @endforeach
     </div>
+    <div class='form-group'>
+      {!!Form::label('Sources:')!!}<br>
+        @foreach($sources_for_article as $source)
+        <a href='{{$source->url}}'>{{$source->source}}</a><br>
+       @endforeach
+    </div>
     {!! Form::submit('Save Article', array('class' => 'btn btn-primary')) !!}
   {!! Form::close() !!}
 @stop

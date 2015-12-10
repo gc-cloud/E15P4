@@ -18,15 +18,18 @@ class SourcesTableSeeder extends Seeder
         'article_id'=>1,
       ]);
 
-      DB::table('sources')->insert([
-        'source' => 'Physical activity and young people',
-        'url'=>'http://www.who.int/dietphysicalactivity/factsheet_young_people/en/',
-        'article_id'=>1,
-      ]);
 
       DB::table('sources')->insert([
         'source' => 'Physical activity and adults',
-        'url'=>'http://www.who.int/dietphysicalactivity/factsheet_adults/en/',
+        'url'=>'http://ajcn.nutrition.org/content/79/5/913S.full',
+        'article_id'=>1,
+      ]);
+
+
+      DB::table('sources')->insert([
+        'source' => 'The evolution of physical activity recommendations:
+        how much is enough?',
+        'url'=>'http://www.who.int/dietphysicalactivity/factsheet_young_people/en/',
         'article_id'=>1,
       ]);
 
@@ -47,7 +50,7 @@ class SourcesTableSeeder extends Seeder
 
       DB::table('sources')->insert([
         'source' => 'Processed meat and colorectal cancer: a review of
-        epidemiologic and experimental evidenc',
+        epidemiologic and experimental evidence',
         'url'=>'http://www.ncbi.nlm.nih.gov/pubmed/18444144',
         'article_id'=>2,
       ]);
@@ -77,12 +80,6 @@ class SourcesTableSeeder extends Seeder
         'source' => 'Alcohol and liver disease in Europe - simple measures
         have the potential to prevent tens of thousands of premature deaths.',
         'url'=>'http://www.ncbi.nlm.nih.gov/pubmed/26592352',
-        'article_id'=>3,
-      ]);
-
-      DB::table('sources')->insert([
-        'source' => 'French Paradox',
-        'url'=>'https://en.wikipedia.org/wiki/French_paradox',
         'article_id'=>3,
       ]);
 
@@ -131,7 +128,7 @@ class SourcesTableSeeder extends Seeder
 
 
       DB::table('sources')->insert([
-        'source' => 'Guid to healthy sleep',
+        'source' => 'Guide to healthy sleep',
         'url'=>'http://www.nhlbi.nih.gov/files/docs/public/sleep/healthysleepfs.pdf',
         'article_id'=>4,
       ]);
@@ -206,7 +203,7 @@ class SourcesTableSeeder extends Seeder
       ]);
 
       DB::table('sources')->insert([
-        'source' => 'Hmproving personality/character traits in individuals with
+        'source' => 'Improving personality/character traits in individuals with
         alcohol dependence: the influence of mindfulness-oriented meditation.',
         'url'=>'http://www.ncbi.nlm.nih.gov/pubmed/25585050',
         'article_id'=>5,
