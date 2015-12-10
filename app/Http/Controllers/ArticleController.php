@@ -231,7 +231,8 @@ class ArticleController extends Controller
       $article->author_id = $request->author_id;
       $article->save();
 
-      /* Save categories in pivot table */
+      /* Save categories in pivot table.  Use sync method
+      since we have a many to many relationship */
       if ($request->categories){
         $categories = $request->categories;
       }
@@ -239,16 +240,30 @@ class ArticleController extends Controller
         $categories = [];
       }
       $article->categories()->sync($categories);
-      dump($categories);
 
-      /* Save references in pivot table */
-      if ($request->sources){
-        $sources= $request->sources;
+
+      /* Update references.  First we confirm there were no errors */
+      $sources = [];
+      if ($request->urls && $request->sources && $request->ids){
+        echo ('we have sources and urls <br>');
+        dump($request->sources);
+        if (count($request->urls )==count($request->sources)){
+          echo ('the count is consistent, lets update <br>');
+          for ($i=0; $i < count($request->sources); $i++) {
+            $source = \App\Source::find($request->ids[$i]);
+            $source->source = $request->sources[$i];
+            $source->url = $request->urls[$i];
+            $source->update();
+            echo ("The new source is:<br>".$source->id."<br>".$source->source."<br> ".$source->url."<br>");
+          }
+        }
       }
       else {
-        $sources = [];
+        echo ('there was a problem saving,<br>');
       }
-      dump($sources);
+      dump($categories);
+
+
     //  $article->sources()->sync($sources);
 
 

@@ -27,10 +27,10 @@
     <div class='form-group' id="dynamicInput">
       <h2>References:</h2>
       @foreach($sources_for_article as $source)
-        {!!Form::text('sources[]',$source->id,array('hidden'))!!}
         {!!Form::label('Reference / URL :')!!}{!!$source->id!!}
-        {!!Form::text('sources2[]', $source->source,array('class'=>'form-control'))!!}<br>
-        {!!Form::text('urls[]', $source->url, array('class'=>'form-control'))!!}<br>
+        {!!Form::text('ids[]',$source->id,array('hidden'))!!}
+        {!!Form::text('sources[]', $source->source,array('class'=>'form-control','id'=>'$source->id'))!!}<br>
+        {!!Form::text('urls[]', $source->url, array('class'=>'form-control','id'=>'$source->id'))!!}<br>
       @endforeach
     </div>
 
