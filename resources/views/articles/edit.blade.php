@@ -22,11 +22,19 @@
        @endforeach
     </div>
     <div class='form-group'>
-      {!!Form::label('Sources:')!!}<br>
-        @foreach($sources_for_article as $source)
-        <a href='{{$source->url}}'>{{$source->source}}</a><br>
-       @endforeach
+      {!!Form::label('References:')!!}<br>
+      <ul>
+        <?php $i=1; ?>
+         @foreach($sources_for_article as $source)
+         <!-- <li><a href='{{$source->url}}'>{{$source->source}}</a></li> -->
+         <?php echo '<p>Reference: '. $i.' </p>' ?>
+         {!!Form::text('url', $source->url, array('size'=>100))!!}<br>
+         {!!Form::text('source', $source->source,array('size'=>100))!!}<br> <br>
+         <?php $i++; ?>
+        @endforeach
+      </ul>
     </div>
+
     {!! Form::submit('Save Article', array('class' => 'btn btn-primary')) !!}
   {!! Form::close() !!}
 @stop

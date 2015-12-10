@@ -82,7 +82,7 @@ class ArticleController extends Controller
       $this->validate($request, [
           'title' => 'required|min:5',
           'bottomline' => 'required|max:150',
-          'body' => 'required|min:5|max:1500',
+          'body' => 'required|min:5|max:2500',
       ]);
 
       # Instantiate a new Model object
@@ -218,7 +218,7 @@ class ArticleController extends Controller
       $this->validate($request, [
           'title' => 'required|min:5',
           'bottomline' => 'required|max:150',
-          'body' => 'required|min:5|max:1500',
+          'body' => 'required|min:5|max:2500',
       ]);
 
       /* Set the parameters. each parameter corresponds to a field in the table. Save

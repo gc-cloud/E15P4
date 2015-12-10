@@ -106,8 +106,15 @@
     <div class="jumbotron">
       <div class="container">
         {{-- Main page content will be yielded here --}}
+        @if(Session::has('flash_message'))
+          <br>
+           <div class="flash_message" >
+               <h3>{{Session::get('flash_message') }}</h3>
+           </div>
+        @endif
         <h1 class="inline">Zudbu</h1> <!--To do: Replace with a nice logo-->
         <p> nurture your body, mind and spirit.</p>
+
         @yield('title')
         @yield('content')
       </div>
@@ -123,13 +130,6 @@
 
       <hr>
       <footer>
-        @if(\Session::has('flash_message'))
-           <div class='flash_message'>
-               {{ \Session::get('flash_message') }}
-           </div>
-        @else
-          <h1>NO flash</h2>
-        @endif
         <p>&copy; Zudbu 2015</p>
       </footer>
     </div> <!-- /container -->
