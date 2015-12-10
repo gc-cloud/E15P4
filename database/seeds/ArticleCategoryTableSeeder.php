@@ -15,27 +15,75 @@ class ArticleCategoryTableSeeder extends Seeder
         'article_id' => 1,
         'category_id' => 1,
       ]);
+
       DB::table('article_category')->insert([
         'article_id' => 1,
         'category_id' => 2,
       ]);
-      DB::table('article_category')->insert([
-        'article_id' => 2,
-        'category_id' => 3,
-      ]);
+
       DB::table('article_category')->insert([
         'article_id' => 2,
         'category_id' => 1,
       ]);
+
       DB::table('article_category')->insert([
         'article_id' => 3,
-        'category_id' => 2,
+        'category_id' =>1,
       ]);
+
       DB::table('article_category')->insert([
         'article_id' => 4,
+        'category_id' =>1,
+      ]);
+
+      DB::table('article_category')->insert([
+        'article_id' => 4,
+        'category_id' =>2,
+      ]);
+
+
+      DB::table('article_category')->insert([
+        'article_id' => 5,
+        'category_id' =>2,
+      ]);
+
+      DB::table('article_category')->insert([
+        'article_id' => 5,
+        'category_id' =>3,
+      ]);
+
+
+      DB::table('article_category')->insert([
+        'article_id' => 6,
+        'category_id' => 1,
+      ]);
+
+      DB::table('article_category')->insert([
+        'article_id' => 6,
+        'category_id' => 2,
+      ]);
+
+      DB::table('article_category')->insert([
+        'article_id' => 6,
         'category_id' => 3,
       ]);
 
+      DB::table('article_category')->insert([
+        'article_id' => 6,
+        'category_id' => 2,
+      ]);
+
+
+      DB::table('article_category')->insert([
+        'article_id' => 7,
+        'category_id' => 3,
+      ]);
+
+
+      DB::table('article_category')->insert([
+        'article_id' => 8,
+        'category_id' => 3,
+      ]);
       /* Alternate approach use loops
         # First, create an array of all the articles we want to associate categories with
         # The *key* will be the article title, and the *value* will be an array of categories.
@@ -58,7 +106,7 @@ class ArticleCategoryTableSeeder extends Seeder
               $category = \App\Category::where('name','LIKE',$categoryName)->first();
 
               # Connect category  to this article
-              $article->categoris()->save($category);
+              $article->categories()->save($category);
           }
 
         }
