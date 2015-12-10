@@ -2,9 +2,9 @@
 function addInput(divName){
           var newdiv = document.createElement('div');
           newdiv.innerHTML = '<label>Reference / URL :</label>'+
-          '<input class="form-control" name="sources[]" type ="text" '+
+          '<input class="form-control" name="newSources[]" type ="text" '+
                     'placeholder="Display text"><br>'+
-          '<input class="form-control" name="urls[]" type ="text"'+
+          '<input class="form-control" name="newUrls[]" type ="text"'+
                     'placeholder="URL"><br>';
           document.getElementById(divName).appendChild(newdiv);
 }

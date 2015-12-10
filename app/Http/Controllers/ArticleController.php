@@ -242,27 +242,29 @@ class ArticleController extends Controller
       $article->categories()->sync($categories);
 
 
-      /* Update references.  First we confirm there were no errors */
-      $sources = [];
+      /* Update previously existing references.  */
       if ($request->urls && $request->sources && $request->ids){
-        echo ('we have sources and urls <br>');
-        dump($request->sources);
-        if (count($request->urls )==count($request->sources)){
-          echo ('the count is consistent, lets update <br>');
-          for ($i=0; $i < count($request->sources); $i++) {
-            $source = \App\Source::find($request->ids[$i]);
-            $source->source = $request->sources[$i];
-            $source->url = $request->urls[$i];
-            $source->update();
-            echo ("The new source is:<br>".$source->id."<br>".$source->source."<br> ".$source->url."<br>");
-          }
+        for ($i=0; $i < count($request->sources); $i++) {
+          $source = \App\Source::find($request->ids[$i]);
+          $source->source = $request->sources[$i];
+          $source->url = $request->urls[$i];
+          $source->update();
         }
       }
       else {
-        echo ('there was a problem saving,<br>');
+        \Session::flash('flash_message'.'There was a problem with the update');
       }
-      dump($categories);
 
+      /* Add new references.  */
+      if ($request->newUrls && $request->newSources){
+        for ($i=0; $i < count($request->newSources); $i++) {
+          $source = new \App\Source;
+          $source->source = $request->newSources[$i];
+          $source->url = $request->newUrls[$i];
+          $source->article_id = $request->id;
+          $source->save();
+        }
+      }
 
     //  $article->sources()->sync($sources);
 
