@@ -24,48 +24,54 @@ class ArticleController extends Controller
 
       /* If a category is given, filter $articles,otherwise display all articles
       We use $selected_articles to track the ID's of the articles that apply. */
-      $selected_articles = [];
       if(!$main_category){
          $title = 'All Articles';
       } else {
         /* Find the articles that belong to the category selected */
         $title = 'Articles to nurture your '.ucfirst ($main_category);
-        foreach($articles as $article) {
-          foreach($article->categories as $category) {
-            if($category->name==$main_category){
-              global $selected_articles; // Refer to previously defined variable
-              $selected_articles[] = $article->id;
-            }
-          }
-        }
-        /* Filter collection to selected articles with a call in function*/
-       $articles = $articles->filter(function ($article) {
-           global $selected_articles;
-           return in_array($article->id, $selected_articles);
-       });
+        $articleModel = new \App\Article();
+        $articles = $articleModel->filterArticles($articles, $main_category);
       }
-
       return view("articles.index", compact('articles','title'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display articles that belong to logged in user.
+     *
+     * @return \Illuminate\Http\Response
+     *---------------------------------------------------------*/
+    public function showOwnArticles(Request $request)
+    {
+      // USE our ORM book model to retrieve all the articles, pass to view
+      $show_edit = TRUE;
+      $show_delete = TRUE;
+      $title = "Articles owned by ".\Auth::user()->name;
+      $articles = \App\Article::where('author_id',\Auth::id())->orderBy('id','DESC')->get();
+      return view("articles.index", compact('articles','show_edit','title'));
+    }
+
+
+    /**
+     * Show the form for creating a new Article.
      *
      * @return \Illuminate\Http\Response
      *----------------------------------------------------*/
     public function create(Request $request)
     {
-
-      \Input::flash();
-
       /* Get list of all categories */
       $categoryModel = new \App\Category();
       $categories_for_checkboxes = $categoryModel->getCategoriesForCheckboxes();
 
+
       /* Author is logged-in user*/
       $author = \Auth::user();
 
-      return view('articles.create', compact('categories_for_checkboxes', 'author'));
+      /* Instantiate a new Model object.  We will then pass it to the view
+      to re-populate fields in case validation fails.  The view needs to use
+      Form::model to get the values automatically */
+      $article = new \App\Article();
+
+      return view('articles.create', compact('article','categories_for_checkboxes', 'author'));
     }
 
     /**
@@ -75,27 +81,44 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      *-------------------------------------------------------------*/
 
-    public function store(ArticleRequest $request)
+    //public function store(ArticleRequest $request)
+    public function store(Request $request)
     {
 
-      /* Note to grader: Custom validation is performed
-      in ArticleRequest */
-
-
-      # Instantiate a new Model object
+      /* Instantiate a new article . Set the parameters revering them
+      from the request. We then validate and save the article in the database
+      if validation passes*/
       $article = new \App\Article();
-
-      /*Set the parameters. each parameter corresponds to a field in the table. Save
-      creates a new row in the table*/
       $article->title = $request->title;
       $title = $request->title;
       $article->bottomline = $request->bottomline;
       $article->body = $request->body;
       $article->author_id = $request->author_id;
           //To-Do: move four lines above to model or use mass assignment
+
+      /* Custom Validator.  If rules are not met we get a list of all values
+      to and pass them to the create view to repopulate the original fields.
+      FOr t his to work, the view needs to use Form::Model
+      To-do: move to ArticleRequest. */
+      $rules = [
+        'title' => 'required|min:10',
+        'bottomline' => 'required|max:150',
+        'body' => 'required|min:5|max:2500',
+      ];
+      $validator = \Validator::make($request->all(), $rules);
+      if ($validator->fails())
+      {
+        $categoryModel = new \App\Category();
+        $categories_for_checkboxes = $categoryModel->getCategoriesForCheckboxes();
+        $author = $article->author;
+        return view("articles.create", compact('article','categories_for_checkboxes', 'author'))->withErrors($validator->errors());
+      }
+
       $article->save();
 
-      /* loop categories and save in pivot table */
+      /* Now that the article is saved, we loop categories and save in pivot
+      table. Since articles and categories have a many to many relationship
+      we use the sync method  */
       if ($request->categories){
         $categories = $request->categories;
       }
@@ -104,40 +127,17 @@ class ArticleController extends Controller
       }
       $article->categories()->sync($categories);
 
-      /* Search database to get ID of new title  */
-      $newArticle = \App\Article::where('Title',$article->title)->get()->sortBy('id')->last();
-      if ($newArticle){
-        \Session::flash('flash_message',' Article Saved');
-      } else {
-        \Session::flash('flash_message','There was an error saving the article');
-      }
+      /* Update sources.*/
+      $sourceModel = new \App\Source();
+      $sourceModel->updateArticleSources($article->sources, $request, $article->id);
 
-
-      /* Update sources. Since the user can add and delete at will on the
-      client side, we first cleanup the original values and then add
-      the new ones.*/
-      foreach ($article->sources as $source) {
-        $source->delete();
-      }
-      if ($request->urls && $request->sources){
-        for ($i=0; $i < count($request->sources); $i++) {
-          $source = new \App\Source;
-          $source->source = $request->sources[$i];
-          $source->url = $request->urls[$i];
-          $source->article_id = $newArticle->id;
-          $source->save();
-        }
-      }
-
-
-  // To-do:  Reuse redundant code between create and edit
 
       /* Confirm article was saved.  Send to edit selection page */
       \Session::flash('flash_message','Your article was saved.');
       $show_edit = TRUE;
       $title = "Articles owned by ".\Auth::user()->name;
       $articles = \App\Article::where('author_id',\Auth::id())->orderBy('id','DESC')->get();
-      return view("articles.index", compact('articles','show_edit','title'));
+      return view("articles.index", compact('article','articles','show_edit','title'));
 
     }
 
@@ -159,21 +159,6 @@ class ArticleController extends Controller
       }
 
       return view('articles.show', compact('article', 'id','sources_for_article'));
-    }
-
-    /**
-     * Display articles that belong to logged in user.
-     *
-     * @return \Illuminate\Http\Response
-     *---------------------------------------------------------*/
-    public function showOwnArticles(Request $request)
-    {
-      // USE our ORM book model to retrieve all the articles, pass to view
-      $show_edit = TRUE;
-      $show_delete = TRUE;
-      $title = "Articles owned by ".\Auth::user()->name;
-      $articles = \App\Article::where('author_id',\Auth::id())->orderBy('id','DESC')->get();
-      return view("articles.index", compact('articles','show_edit','title'));
     }
 
 
@@ -251,21 +236,9 @@ class ArticleController extends Controller
       }
       $article->categories()->sync($categories);
 
-      /* Update sources. Since the user can add and delete at will on the
-      client side, we first cleanup the original values and then add
-      the new ones.*/
-      foreach ($article->sources as $source) {
-        $source->delete();
-      }
-      if ($request->urls && $request->sources){
-        for ($i=0; $i < count($request->sources); $i++) {
-          $source = new \App\Source;
-          $source->source = $request->sources[$i];
-          $source->url = $request->urls[$i];
-          $source->article_id = $request->id;
-          $source->save();
-        }
-      }
+      /* Update sources.*/
+      $sourceModel = new \App\Source();
+      $sourceModel->updateArticleSources($article->sources, $request,$request->id);
 
       /* Confirm article was updated */
       \Session::flash('flash_message','Your article was updated.');
@@ -312,6 +285,8 @@ class ArticleController extends Controller
       /* If article found remove references and delete */
       if($article->categories()){
         $article->categories()->detach();
+
+        
       }
       \Session::flash('flash_message',' Your article was deleted.');
       $article->delete();

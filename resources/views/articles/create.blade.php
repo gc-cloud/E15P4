@@ -9,7 +9,9 @@
 @stop
 
 @section('body')
-  {!! Form::open(array('url' => 'articles/create','class'=>'border')) !!}
+{{-- Form::model binds the fields to the existing values--}}
+
+{!! Form::model($article,array('url' => 'articles/create','class'=>'border')) !!}
     @include('articles.content')
     <div class='form-group'>
       {!!Form::label('Categories:')!!}<br>
@@ -17,9 +19,18 @@
            <input type = "checkbox" name="categories[]" value='{{ $category_id }}'> {{ $category_name }} <br>
        @endforeach
     </div>
+    {{-- Add / edit references. We start with one set. THe user can add more with javasript  --}}
     <div class='form-group' id="dynamicSourceInput">
       <h2>Sources:</h2>
+      {!!Form::label('Source /  URL')!!}
+      {!!Html::link('sources/delete/'.'0',' [delete]')!!}
+      {!!Form::text('ids[]',0,array('hidden'))!!}
+      {!!Form::text('sources[]', null,array('class'=>'form-control'))!!}<br>
+      {!!Form::url('urls[]', null, array('class'=>'form-control'))!!}<br>
     </div>
+
+
+
     <div class='form-group'>
       {!! Form::button('Add Sources', array('onClick'=>'addInput("dynamicSourceInput");', 'class' => 'btn btn-primary')) !!}
       {!! Form::submit('Save Article', array('class' => 'btn btn-primary')) !!}
