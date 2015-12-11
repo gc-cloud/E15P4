@@ -42,7 +42,7 @@ class ArticleController extends Controller
      *---------------------------------------------------------*/
     public function showOwnArticles(Request $request)
     {
-      // USE our ORM book model to retrieve all the articles, pass to view
+      /* Retrieve all the articles, pass to view */
       $show_edit = TRUE;
       $show_delete = TRUE;
       $title = "Articles owned by ".\Auth::user()->name;
@@ -66,11 +66,9 @@ class ArticleController extends Controller
       /* Author is logged-in user*/
       $author = \Auth::user();
 
-      /* Instantiate a new Model object.  We will then pass it to the view
-      to re-populate fields in case validation fails.  The view needs to use
-      Form::model to get the values automatically */
+      /* Instantiate a new article and pass it to the view re-populate
+      if validation fails.  The view needs to use Form::model to get the values*/
       $article = new \App\Article();
-
       return view('articles.create', compact('article','categories_for_checkboxes', 'author'));
     }
 
@@ -85,20 +83,13 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
 
-      /* Instantiate a new article . Set the parameters revering them
-      from the request. We then validate and save the article in the database
-      if validation passes*/
-      $article = new \App\Article();
-      $article->title = $request->title;
-      $title = $request->title;
-      $article->bottomline = $request->bottomline;
-      $article->body = $request->body;
-      $article->author_id = $request->author_id;
-          //To-Do: move four lines above to model or use mass assignment
+      /* Instantiate a new article . Set the $fillable parameters to those on the request.
+      If validation is successfule save the article in the database*/
+      $article = \App\Article::create($request->input());
+
 
       /* Custom Validator.  If rules are not met we get a list of all values
       to and pass them to the create view to repopulate the original fields.
-      FOr t his to work, the view needs to use Form::Model
       To-do: move to ArticleRequest. */
       $rules = [
         'title' => 'required|min:10',
@@ -111,12 +102,13 @@ class ArticleController extends Controller
         $categoryModel = new \App\Category();
         $categories_for_checkboxes = $categoryModel->getCategoriesForCheckboxes();
         $author = $article->author;
-        return view("articles.create", compact('article','categories_for_checkboxes', 'author'))->withErrors($validator->errors());
+        return view("articles.create", compact('article','categories_for_checkboxes',
+                                  'author'))->withErrors($validator->errors());
       }
 
       $article->save();
 
-      /* Now that the article is saved, we loop categories and save in pivot
+      /* When article is saved, loop categories and save in pivot
       table. Since articles and categories have a many to many relationship
       we use the sync method  */
       if ($request->categories){
@@ -217,14 +209,10 @@ class ArticleController extends Controller
           'body' => 'required|min:5|max:2500',
       ]);
 
-      /* Get Article to be updated.  Get new values from
-      $request and update the articles table.*/
+      /* Get Article to be updated.  Set the $fillable parameters to those on
+      the request.If validation is successfule save the article*/
       $article = \App\Article::with('sources')->find($request->id);
-      $article->title = $request->title;
-      $article->bottomline = $request->bottomline;
-      $article->body = $request->body;
-      $article->author_id = $request->author_id;
-      $article->update();
+      $article->fill($request->input())->update();
 
       /* Save categories in pivot table.  Use sync method
       since we have a many to many relationship */
@@ -286,7 +274,7 @@ class ArticleController extends Controller
       if($article->categories()){
         $article->categories()->detach();
 
-        
+
       }
       \Session::flash('flash_message',' Your article was deleted.');
       $article->delete();
