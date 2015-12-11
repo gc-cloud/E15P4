@@ -6,6 +6,7 @@
 
 
 @section('content')
+  @include('errors')
 
 <!-- Carousel
 ================================================== -->

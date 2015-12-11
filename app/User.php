@@ -28,7 +28,7 @@ class User extends Model implements AuthenticatableContract,
 
     /**
      * The attributes that are mass assignable.
-     *
+     * Added role_id to Laravel's default
      * @var array
      */
     protected $fillable = ['name', 'email', 'password', 'role_id'];

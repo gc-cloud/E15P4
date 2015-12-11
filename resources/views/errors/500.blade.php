@@ -1,4 +1,4 @@
 @extends('layouts.master')
 @section('title')
-  <h2>Be right back - gone fishin'</h2>
+  <h2>Yikes! something is not working.</h2>
 @stop

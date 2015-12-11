@@ -27,7 +27,7 @@ class AuthController extends Controller
     protected $redirectPath = '/';
 
     # Where should the user be redirected to if their login fails?
-    protected $loginPath = '/login';
+    protected $loginPath = '/';
 
     # Where should the user be redirected to after logging out?
     protected $redirectAfterLogout = '/';
@@ -92,4 +92,12 @@ class AuthController extends Controller
         \Session::flash('flash_message','You have been logged out.');
         return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
     }
+
+    /*Override defaults for failed login*/
+    protected function getFailedLoginMessage()
+    {
+      \Session::flash('flash_message','We don\'t recognize the login credentials your provided');
+      return ;
+    }
+
 }
