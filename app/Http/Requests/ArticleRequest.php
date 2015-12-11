@@ -25,7 +25,7 @@ class ArticleRequest extends Request
     public function rules()
     {
       $rules = [
-        'title' => 'required|min:15',
+        'title' => 'required|min:10',
         'bottomline' => 'required|max:150',
         'body' => 'required|min:5|max:2500',
       ];
@@ -34,7 +34,7 @@ class ArticleRequest extends Request
       if($this->request->get('sources')){
         foreach($this->request->get('sources') as $key => $val)
         {
-          $rules['sources.'.$key] = 'required|min:15';
+          $rules['sources.'.$key] = 'required|min:10';
         }
       }
 
@@ -48,7 +48,7 @@ class ArticleRequest extends Request
       }
       /*Future: develop custom validation rule to analyze number of
       Categories and confirm at least one has been selected*/
-      
+
       return $rules;
     }
 
@@ -60,7 +60,7 @@ class ArticleRequest extends Request
         foreach($this->request->get('sources') as $key => $val)
         {
           $messages['sources.'.$key.'.required'] = 'The Source field '.$key.' is required.';
-          $messages['sources.'.$key.'.min'] = 'The Source field '.$key.' must be at least 15 characters.';
+          $messages['sources.'.$key.'.min'] = 'The Source field '.$key.' must be at least 10 characters.';
         }
       }
       /*Loop through urls to produce custome messages */
@@ -68,7 +68,7 @@ class ArticleRequest extends Request
         foreach($this->request->get('urls') as $key => $val)
         {
           $messages['urls.'.$key.'.required'] = 'The URL field '.$key.' is required.';
-          $messages['urls.'.$key.'.url'] = 'The URL field '.$key.' must be a valid URL.';
+          $messages['urls.'.$key.'.url'] = 'The URL field '.$key.' must be properly formatted.';
         }
       }
       return $messages;

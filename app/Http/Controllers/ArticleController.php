@@ -56,6 +56,8 @@ class ArticleController extends Controller
     public function create(Request $request)
     {
 
+      \Input::flash();
+
       /* Get list of all categories */
       $categoryModel = new \App\Category();
       $categories_for_checkboxes = $categoryModel->getCategoriesForCheckboxes();
@@ -92,8 +94,6 @@ class ArticleController extends Controller
       $article->author_id = $request->author_id;
           //To-Do: move four lines above to model or use mass assignment
       $article->save();
-      echo "Save ok<br>";
-      dump($article);
 
       /* loop categories and save in pivot table */
       if ($request->categories){
@@ -103,8 +103,6 @@ class ArticleController extends Controller
         $categories = [];
       }
       $article->categories()->sync($categories);
-      echo "CAtegory synch ok <br>";
-      dump($categories);
 
       /* Search database to get ID of new title  */
       $newArticle = \App\Article::where('Title',$article->title)->get()->sortBy('id')->last();
@@ -113,10 +111,6 @@ class ArticleController extends Controller
       } else {
         \Session::flash('flash_message','There was an error saving the article');
       }
-      echo "New Article ok <br>";
-      dump($newArticle);
-
-
 
 
       /* Update sources. Since the user can add and delete at will on the
@@ -135,8 +129,6 @@ class ArticleController extends Controller
         }
       }
 
-      echo "Soures update ok <br>";
-      dump($source);
 
   // To-do:  Reuse redundant code between create and edit
 
@@ -232,8 +224,6 @@ class ArticleController extends Controller
      */
     public function update(Request $request)
     {
-      echo "RExeived request<br>";
-      dump($request);
 
       /* Make sure submitted values are valid */
       $this->validate($request, [
@@ -241,18 +231,6 @@ class ArticleController extends Controller
           'bottomline' => 'required|max:150',
           'body' => 'required|min:5|max:2500',
       ]);
-
-      // foreach($request->get('urls') as $key=>$val)
-      // {
-      //   $url = (string)$url;
-      //   echo ($url);
-      //   $this->validate($request, [
-      //
-      //       $url => 'required|url',
-      //   ]);
-      //
-      // }
-
 
       /* Get Article to be updated.  Get new values from
       $request and update the articles table.*/

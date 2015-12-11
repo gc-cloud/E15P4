@@ -33,6 +33,10 @@
         <input type='password' name='password_confirmation' id='password_confirmation' class="form-control">
     </div>
 
+    <div class='form-group invisible'>
+      <input type="text" name="role_id" id="role_id" value=1 readonly hidden><br>
+    </div>
+
     <button type='submit' class='btn btn-primary'>Register</button>
 </form>
 @stop
