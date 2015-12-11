@@ -18,21 +18,28 @@
       <!-- <img src='{{ $article->mainImage }}'> ADD a cool image here-->
       <h3>Sources</h3>
       <ul>
-         @foreach($sources_for_article as $source)
-         <li><a href='{{$source->url}}'>{{$source->source}}</a></li>
-        @endforeach
+      @foreach($sources_for_article as $source)
+        <li><a href='{{$source->url}}'>{{$source->source}}</a></li>
+      @endforeach
       </ul>
-     </div>
+
     @else
-        <h1>No Article specified</h1>
+      <h1>No Article specified</h1>
     @endif
-
-    <!-- @if(isset($show_edit))
-      <a href='/articles/edit/{{$article->id}}'>Edit</a><br>
-    @endif -->
-
+  </div>
+  <div>
       <a href='/'>-> All articles</a><br>
   </div>
+  <h3>Comments</h3>
+  <hr>
+  <div>
+    @foreach($comments_for_article as $comment)
+      <h4 class="user inline">{{$comment->user->name}} </h4>
+      <p > {{$comment->comment}}</p>
+    <hr>
+    @endforeach
+  </div>
+
 
 
 @stop

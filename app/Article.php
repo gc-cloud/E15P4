@@ -45,6 +45,17 @@ class Article extends Model
      return $this->belongsTo('\App\User');
     }
 
+
+    /**
+         * Get all of the users commenting on the Article.
+         */
+        public function users()
+        {
+            return $this->hasManyThrough('App\User', 'App\Comment');
+        }
+
+
+
     /* Select Articles for a given category. This function is used to
     select articles to be displayed in the Welcome, Body, Mind and
     Spirit pages.  We frist get a collection and then filter it

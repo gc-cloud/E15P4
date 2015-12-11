@@ -142,7 +142,7 @@ class ArticleController extends Controller
     public function show($id = null)
     {
 
-      $article = \App\Article::with('sources')->find($id);
+      $article = \App\Article::with('sources', 'comments')->find($id);
 
       /* Get sources currently assigned to  this Article */
       $sources_for_article = [];
@@ -150,7 +150,14 @@ class ArticleController extends Controller
         $sources_for_article[] = $source;
       }
 
-      return view('articles.show', compact('article', 'id','sources_for_article'));
+      /* Get sources currently assigned to  this Article */
+      $comments_for_article = [];
+      foreach ($article->comments as $comment) {
+        $comments_for_article[] = $comment;
+      }
+
+
+      return view('articles.show', compact('article', 'id','sources_for_article','comments_for_article'));
     }
 
 
