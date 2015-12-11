@@ -67,7 +67,7 @@ if(App::environment('local')){
 -----------------------------------------*/
 
 Route::controller('/test','TestController');
-Route::controller('/page','PageController');
+
 
 
 /* Debug DB

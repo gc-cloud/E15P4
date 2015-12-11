@@ -15,7 +15,7 @@ class WelcomeController extends Controller
    *----------------------------------*/
   public function index(Request $request)
   {
-    // USE our ORM book model to retrieve all the articles, pass to view
+    /* Retrieve all the articles, pass to view */
     $articles = \App\Article::orderBy('id','DESC')->get();
     return view("welcome", compact('articles'));
   }

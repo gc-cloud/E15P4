@@ -27,7 +27,7 @@ class Authenticate
 
     /**
      * Handle an incoming request.
-     *
+     * This is an override of the original method
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
      * @return mixed

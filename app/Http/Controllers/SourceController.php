@@ -9,92 +9,23 @@ use App\Http\Controllers\Controller;
 class SourceController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
+     * Remove the specified source from the database.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-      //Set title for return page
-      $title = 'All Articles';
-
-      // Find article, redirect to welcome page if article not found
+      /* Find source, redirect to edit page if source not found */
       $source = \App\Source::find($id);
       if(is_null($source)){
-        \Session::flash('flash_message'.'Source not found');
-        return Redirect::back()->with('message','Operation Successful !');
+        return \Redirect::back()->with('message','Source not found!');
       }
 
-      // If source found delete and confirm
-      \Session::flash('flash_message',' Source was deleted.');
+      /* If source found delete and send back to original page.
+      No flash message needed since user will have visual confirmation
+      on the form. */
       $source->delete();
-
-      return Redirect::back()->with('message','Operation Successful !');
+      return \Redirect::back();
     }
 }

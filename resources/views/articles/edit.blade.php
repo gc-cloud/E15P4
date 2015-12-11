@@ -9,12 +9,12 @@
 @stop
 
 @section('body')
-  <!-- Form::model binds the fields to the existing values-->
+  {{-- Form::model binds the fields to the existing values--}}
   {!! Form::model($article, array('url' => 'articles/edit/{{$article_id}}','class'=>'border')) !!}
     @include('articles.content')
     <input type='hidden' name='id' value='{{ $article->id }}'>
 
-    <!-- Add categories, show as checked if they were previously selected -->
+    {{-- Add categories, show as checked if they were previously selected --}}
     <div class='form-group'>
       <h2>Categories:</h2>
       @foreach($categories_for_checkboxes as $category_id => $category_name)
@@ -23,27 +23,25 @@
       @endforeach
     </div>
 
-    <!-- Add / edit references  -->
-    <div class='form-group' id="dynamicInput">
-      <h2>References:</h2>
-      @foreach($sources_for_article as $source)
-        {!!Form::label('Reference / URL :')!!}{!!$source->id!!}
-        {!!Form::text('ids[]',$source->id,array('hidden'))!!}
-        {!!Form::text('sources[]', $source->source,array('class'=>'form-control','id'=>'$source->id'))!!}<br>
-        {!!Form::text('urls[]', $source->url, array('class'=>'form-control','id'=>'$source->id'))!!}<br>
-      @endforeach
-    </div>
+      {{-- Add / edit references  --}}
+      <div class='form-group' id="dynamicSourceInput">
+        <h2>Sources:</h2>
+        @foreach($sources_for_article as $source)
+          {!!Form::label('Source /  URL')!!}
+          {!!Html::link('sources/delete/'.$source->id,' [delete]')!!}
+          {!!Form::text('ids[]',$source->id,array('hidden'))!!}
+          {!!Form::text('sources[]', $source->source,array('class'=>'form-control'))!!}<br>
+          {!!Form::url('urls[]', $source->url, array('class'=>'form-control'))!!}<br>
 
-    {!! Form::button('Add References', array('onClick'=>'addInput("dynamicInput");', 'class' => 'btn btn-primary')) !!}
+        @endforeach
+      </div>
 
     <div class='form-group'>
+      {!! Form::button('Add Sources', array('onClick'=>'addInput("dynamicSourceInput");', 'class' => 'btn btn-primary')) !!}
       {!! Form::submit('Save Article', array('class' => 'btn btn-primary')) !!}
     </div>
   {!! Form::close() !!}
 
-<!-- Script for  dynamic addition of elements -->
+{{-- Script for  dynamic addition of elements --}}
 <script src="/js/Zudbu.js" ></script>
-
-
-
 @stop

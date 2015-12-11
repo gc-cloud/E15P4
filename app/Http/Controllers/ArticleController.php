@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use App\Http\Requests\ArticleRequest;
 use App\Http\Controllers\Controller;
+
 
 class ArticleController extends Controller
 {
@@ -16,7 +18,6 @@ class ArticleController extends Controller
      *------------------------------------------------------*/
     public function index(Request $request, $main_category = null)
     {
-
 
       /* Eager load articles with categories, most recent first. */
       $articles = \App\Article::with('categories')->orderBy('id','DESC')->get();
@@ -43,8 +44,6 @@ class ArticleController extends Controller
            return in_array($article->id, $selected_articles);
        });
       }
-      /* Make upper case for proper display.To-Do: move to CSS */
-    //  $main_category =  ucfirst(trans($main_category));
 
       return view("articles.index", compact('articles','title'));
     }
@@ -69,21 +68,17 @@ class ArticleController extends Controller
 
     /**
      * Store a newly created article in the database.
-     *
-     * @param  \Illuminate\Http\Request  $request
+     * We use ArticleRequest to process custom validation rules
+     * @param  \Illuminate\Http\Request\ArticleRequest  $request
      * @return \Illuminate\Http\Response
      *-------------------------------------------------------------*/
-    public function store(Request $request)
-    {
-      // Keep old input
-      $request->flash();
 
-      // Validate the request data
-      $this->validate($request, [
-          'title' => 'required|min:5',
-          'bottomline' => 'required|max:150',
-          'body' => 'required|min:5|max:2500',
-      ]);
+    public function store(ArticleRequest $request)
+    {
+
+      /* Note to grader: Custom validation is performed
+      in ArticleRequest */
+
 
       # Instantiate a new Model object
       $article = new \App\Article();
@@ -95,10 +90,10 @@ class ArticleController extends Controller
       $article->bottomline = $request->bottomline;
       $article->body = $request->body;
       $article->author_id = $request->author_id;
-          // To-Do:  loop categories and save in pivot table
           //To-Do: move four lines above to model or use mass assignment
       $article->save();
-
+      echo "Save ok<br>";
+      dump($article);
 
       /* loop categories and save in pivot table */
       if ($request->categories){
@@ -108,20 +103,50 @@ class ArticleController extends Controller
         $categories = [];
       }
       $article->categories()->sync($categories);
+      echo "CAtegory synch ok <br>";
+      dump($categories);
 
       /* Search database to get ID of new title  */
-      // To- do: Fix flash message not showing
       $newArticle = \App\Article::where('Title',$article->title)->get()->sortBy('id')->last();
       if ($newArticle){
         \Session::flash('flash_message',' Article Saved');
       } else {
-        \Session::flash('flash_message','Oops! There was an error saving the article');
+        \Session::flash('flash_message','There was an error saving the article');
+      }
+      echo "New Article ok <br>";
+      dump($newArticle);
+
+
+
+
+      /* Update sources. Since the user can add and delete at will on the
+      client side, we first cleanup the original values and then add
+      the new ones.*/
+      foreach ($article->sources as $source) {
+        $source->delete();
+      }
+      if ($request->urls && $request->sources){
+        for ($i=0; $i < count($request->sources); $i++) {
+          $source = new \App\Source;
+          $source->source = $request->sources[$i];
+          $source->url = $request->urls[$i];
+          $source->article_id = $newArticle->id;
+          $source->save();
+        }
       }
 
-      // fetch all articles
-      $articles = \App\Article::all();
-      $show_edit = TRUE; // present edit link after rendering
-      return view("articles.show", compact('article','show_edit'));
+      echo "Soures update ok <br>";
+      dump($source);
+
+  // To-do:  Reuse redundant code between create and edit
+
+      /* Confirm article was saved.  Send to edit selection page */
+      \Session::flash('flash_message','Your article was saved.');
+      $show_edit = TRUE;
+      $title = "Articles owned by ".\Auth::user()->name;
+      $articles = \App\Article::where('author_id',\Auth::id())->orderBy('id','DESC')->get();
+      return view("articles.index", compact('articles','show_edit','title'));
+
     }
 
     /**
@@ -140,7 +165,6 @@ class ArticleController extends Controller
       foreach ($article->sources as $source) {
         $sources_for_article[] = $source;
       }
-      //dump($sources_for_article);
 
       return view('articles.show', compact('article', 'id','sources_for_article'));
     }
@@ -169,8 +193,6 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-    //  $author = \Auth::user();
-
       /* Get Article to Edit*/
       $article = \App\Article::with('categories','author','sources')->find($id);
       if(is_null($article)) {
@@ -193,7 +215,6 @@ class ArticleController extends Controller
       foreach ($article->sources as $source) {
         $sources_for_article[] = $source;
       }
-      //dump($sources_for_article);
 
       /* Get Author */
       $author = $article->author;
@@ -211,6 +232,8 @@ class ArticleController extends Controller
      */
     public function update(Request $request)
     {
+      echo "RExeived request<br>";
+      dump($request);
 
       /* Make sure submitted values are valid */
       $this->validate($request, [
@@ -219,19 +242,26 @@ class ArticleController extends Controller
           'body' => 'required|min:5|max:2500',
       ]);
 
+      // foreach($request->get('urls') as $key=>$val)
+      // {
+      //   $url = (string)$url;
+      //   echo ($url);
+      //   $this->validate($request, [
+      //
+      //       $url => 'required|url',
+      //   ]);
+      //
+      // }
 
-      /* Get Article to Update*/
+
+      /* Get Article to be updated.  Get new values from
+      $request and update the articles table.*/
       $article = \App\Article::with('sources')->find($request->id);
-
-
-
-      /* Save the values in the articles table.  Should we use update???*/
-  //    $article = \App\Article::find($request->id); // {id} is defined at the route
       $article->title = $request->title;
       $article->bottomline = $request->bottomline;
       $article->body = $request->body;
       $article->author_id = $request->author_id;
-      $article->save();
+      $article->update();
 
       /* Save categories in pivot table.  Use sync method
       since we have a many to many relationship */
@@ -243,10 +273,9 @@ class ArticleController extends Controller
       }
       $article->categories()->sync($categories);
 
-
-      /* Update references. Since the user can add and delete on the
+      /* Update sources. Since the user can add and delete at will on the
       client side, we first cleanup the original values and then add
-      what was left.*/
+      the new ones.*/
       foreach ($article->sources as $source) {
         $source->delete();
       }
@@ -259,17 +288,9 @@ class ArticleController extends Controller
           $source->save();
         }
       }
-      else {
-        \Session::flash('flash_message'.'There was a problem with the update');
-      }
-
-
-    //  $article->sources()->sync($sources);
-
 
       /* Confirm article was updated */
       \Session::flash('flash_message','Your article was updated.');
-
 
       /* Send to edit selection page */
       $show_edit = TRUE;
@@ -277,6 +298,8 @@ class ArticleController extends Controller
       $articles = \App\Article::where('author_id',\Auth::id())->orderBy('id','DESC')->get();
       return view("articles.index", compact('articles','show_edit','title'));
     }
+
+
     /**
      * Confirm deletion of an article.
      *
@@ -297,10 +320,10 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-      //Set title for return page
+      /* Set title for return page*/
       $title = 'All Articles';
 
-      // Find article, redirect to welcome page if article not found
+      /* Find article, redirect to welcome page if article not found */
       $article = \App\Article::find($id);
       if(is_null($article)){
         \Session::flash('flash_message'.'Article not found');
@@ -308,14 +331,14 @@ class ArticleController extends Controller
         return redirect('/');
       }
 
-      // If article found remove references and delete
+      /* If article found remove references and delete */
       if($article->categories()){
         $article->categories()->detach();
       }
       \Session::flash('flash_message',' Your article was deleted.');
       $article->delete();
 
-      // Get updated list of articles and send to edit selection page
+      /* Get updated list of articles and send to edit selection page */
       $show_edit = TRUE;
       $title = "Articles owned by ".\Auth::user()->name;
       $articles = \App\Article::where('author_id',\Auth::id())->orderBy('id','DESC')->get();

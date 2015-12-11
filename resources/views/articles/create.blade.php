@@ -17,6 +17,14 @@
            <input type = "checkbox" name="categories[]" value='{{ $category_id }}'> {{ $category_name }} <br>
        @endforeach
     </div>
-    {!! Form::submit('Save Article', array('class' => 'btn btn-primary')) !!}
+    <div class='form-group' id="dynamicSourceInput">
+      <h2>Sources:</h2>
+    </div>
+    <div class='form-group'>
+      {!! Form::button('Add Sources', array('onClick'=>'addInput("dynamicSourceInput");', 'class' => 'btn btn-primary')) !!}
+      {!! Form::submit('Save Article', array('class' => 'btn btn-primary')) !!}
+    </div>
   {!! Form::close() !!}
+  {{-- Script for  dynamic addition of elements --}}
+  <script src="/js/Zudbu.js" ></script>
 @stop
