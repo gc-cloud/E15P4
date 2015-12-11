@@ -67,15 +67,13 @@ class AuthController extends Controller
     {
         /* Get the role id of a reader */
         $role = \App\Role::where('role','reader')->first();
-        dump($role->id);
-        dump($data);
 
-        /* Save the user. Default role to reader */
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'role_id' => $data['role_id'],
+            'role_id' => $role->id,
+
         ]);
     }
 
