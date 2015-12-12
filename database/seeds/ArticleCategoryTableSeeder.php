@@ -84,14 +84,21 @@ class ArticleCategoryTableSeeder extends Seeder
         'article_id' => 8,
         'category_id' => 3,
       ]);
-      /* Alternate approach use loops
-        # First, create an array of all the articles we want to associate categories with
+
+
+
+      /* For the comments seeder we use an alternate approach with loops. First,
+      we create an array or the articles we want to associate postings,
+
+      categories with 
         # The *key* will be the article title, and the *value* will be an array of categories.
         $articles =[
           'Exercise: How much?' => ['body', 'mind','spirit','exercise','stress'],
           'Wine?' => ['body', 'mind','spirit','nutrition',
           'pesticides','organic','alcohol'],
           'Find purpose' => ['mind','spirit'],
+          'Is sleeping really necessary?' => ['body', 'mind','spirit','stress']
+          'Is sleeping really necessary?' => ['body', 'mind','spirit','stress']
           'Is sleeping really necessary?' => ['body', 'mind','spirit','stress']
         ];
 
@@ -109,8 +116,7 @@ class ArticleCategoryTableSeeder extends Seeder
               $article->categories()->save($category);
           }
 
-        }
-    ------*/
+        }*/
 
 
 

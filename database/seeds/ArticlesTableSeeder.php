@@ -239,7 +239,7 @@ class ArticlesTableSeeder extends Seeder
       ]);
 
       DB::table('articles')->insert([
-      'title' => 'Spirituality can help deal with addictions',
+      'title' => 'Spirituality and addictions',
       'bottomline' => 'Regular spiritual practice is associated with significantly higher remission for drug abuse.',
       'body' => '
                 <p>The connection between religion/spirituality and deviance,

@@ -20,6 +20,34 @@ class UsersTableSeeder extends Seeder
       ]);
 
       DB::table('users')->insert([
+        'name' => 'Joe',
+        'email' => 'joe@zudbu.com',
+        'password' => bcrypt('helloworld'),
+        'role_id' => 1,
+      ]);
+
+      DB::table('users')->insert([
+        'name' => 'Paco',
+        'email' => 'paco@zudbu.com',
+        'password' => bcrypt('helloworld'),
+        'role_id' => 2,
+      ]);
+
+      DB::table('users')->insert([
+        'name' => 'Shele',
+        'email' => 'shele@zudbu.com',
+        'password' => bcrypt('helloworld'),
+        'role_id' => 3,
+      ]);
+
+      DB::table('users')->insert([
+        'name' => 'Bill',
+        'email' => 'bill@zudbu.com',
+        'password' => bcrypt('helloworld'),
+        'role_id' => 2,
+      ]);
+
+      DB::table('users')->insert([
         'name' => 'Jill',
         'email' => 'jill@harvard.edu',
         'password' => bcrypt('helloworld'),
@@ -33,33 +61,6 @@ class UsersTableSeeder extends Seeder
         'role_id' => 3,
       ]);
 
-      DB::table('users')->insert([
-        'name' => 'Joe Reader',
-        'email' => 'joereader@gmail.com',
-        'password' => bcrypt('helloworld'),
-        'role_id' => 1,
-      ]);
-
-      DB::table('users')->insert([
-        'name' => 'Joe Contributor',
-        'email' => 'joecontributor@gmail.com',
-        'password' => bcrypt('helloworld'),
-        'role_id' => 2,
-      ]);
-
-      DB::table('users')->insert([
-        'name' => 'Joe Administrator',
-        'email' => 'joeadministrator@gmail.com',
-        'password' => bcrypt('helloworld'),
-        'role_id' => 3,
-      ]);
-
-      DB::table('users')->insert([
-        'name' => 'Billy Shakespeare',
-        'email' => 'writer@facemail.com',
-        'password' => bcrypt('helloworld'),
-        'role_id' => 2,
-      ]);
 
 
     }
