@@ -161,7 +161,6 @@ class ArticleController extends Controller
       }else{
         $reader = \App\User::where('email','guest@zudbu.com')->first();
       }
-      // dump($user);
       return view('articles.show', compact('article', 'id','sources_for_article','comments_for_article','reader'));
     }
 

@@ -14,16 +14,14 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-     public function store($id, Request $request)
+     public function store(Request $request)
      {
         /* Instantiate a new comment. Set the $fillable parameters to those
         on the request.If validation is successful save the comment in the
         database and go back to the source article */
-        // dump($id);
-        // dump($request);
         $comment = new \App\Comment;
         $comment->comment = $request->comment;
-        $comment->article_id = $id;
+        $comment->article_id = $request->article_id;
         $comment->user_id = $request->user_id;
         $comment->save();
         return back();

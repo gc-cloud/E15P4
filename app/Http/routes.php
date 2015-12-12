@@ -21,18 +21,6 @@ Route::get('/logout', 'Auth\AuthController@getLogout');
 Route::get('/register', 'Auth\AuthController@getRegister');
 Route::post('/register', 'Auth\AuthController@postRegister');
 
-Route::get('/confirm-login-worked', function() {
-    # You may access the authenticated user via the Auth facade
-    $user = Auth::user();
-    if($user) {
-        echo 'You are logged in.';
-        dump($user->toArray());
-    } else {
-        echo 'You are not logged in.';
-    }
-    return;
-});
-
 
 /* Edit and create routes -  available only to logged in Users
 ---------------------------------------------------------------*/
@@ -56,7 +44,7 @@ Route::group(['middleware' => 'auth'], function() {
 Route::get('/','WelcomeController@index');
 Route::get('/articles/{main_category?}','ArticleController@index');
 Route::get('/articles/show/{id?}','ArticleController@show');
-Route::post('/articles/comment/{id?}','CommentController@store');
+Route::post('/articles/comment/','CommentController@store');
 
 /* Route to show logs in local environment
 ------------------------------------------*/
