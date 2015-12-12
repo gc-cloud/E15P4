@@ -16,8 +16,8 @@ class CommentController extends Controller
      */
      public function store(Request $request)
      {
-        /* Instantiate a new comment. Set the $fillable parameters to those
-        on the request.If validation is successful save the comment in the
+        /* Instantiate a new comment. Set parameters to match
+         the request. Save the comment in the
         database and go back to the source article */
         $comment = new \App\Comment;
         $comment->comment = $request->comment;

@@ -11,7 +11,6 @@ class CommentsTableSeeder extends Seeder
      */
     public function run()
     {
-
       /* Create an array of articles and comments. */
         $articles =[
           'Exercise: How much?' =>[
