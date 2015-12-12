@@ -154,14 +154,15 @@ class ArticleController extends Controller
         $comments_for_article[] = $comment;
       }
 
-      /* If user is logged in, set their name, else set to guest */
+      /* If user is logged in, set their name, else set to guest.  Using $reader
+        as name since $user is globally available for Auth checking*/
       if(\Auth::check()){
-        $user = \Auth::user();
+        $reader = \Auth::user();
       }else{
-        $user = \App\User::where('email','guest@zudbu.com')->first();
+        $reader = \App\User::where('email','guest@zudbu.com')->first();
       }
       // dump($user);
-      return view('articles.show', compact('article', 'id','sources_for_article','comments_for_article','user'));
+      return view('articles.show', compact('article', 'id','sources_for_article','comments_for_article','reader'));
     }
 
 

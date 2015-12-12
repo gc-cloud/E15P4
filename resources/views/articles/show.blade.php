@@ -43,9 +43,14 @@
         @endforeach
       </div>
       <div class='form-group' id="dynamicCommentInput">
-        <h4 class="user inline">{{$user->name}}</h4>
-        <input type="text" name="user_id" value='{{ $user->id }}' readonly hidden><br>
-        {!!Form::text('comment', null, array('class'=>'form-control','placeholder'=>'Leave a comment'))!!}<br>
+        <h4 class="user inline">{{$reader->name}}</h4>
+        @if(!$user)
+          [Login to use your Name]
+        @endif
+        <input type="text" name="user_id" value='{{ $reader->id }}' readonly hidden><br>
+        {!!Form::text('comment', null, array('class'=>'form-control','placeholder'=>'Leave a comment'))!!}
+
+        <br>
         {!! Form::submit('Post', array('class' => 'btn btn-small btn-info')) !!}
       </div>
     {!! Form::close() !!}
