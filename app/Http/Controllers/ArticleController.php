@@ -82,11 +82,9 @@ class ArticleController extends Controller
     //public function store(ArticleRequest $request)
     public function store(Request $request)
     {
-
       /* Instantiate a new article . Set the $fillable parameters to those on the request.
       If validation is successfule save the article in the database*/
       $article = \App\Article::create($request->input());
-
 
       /* Custom Validator.  If rules are not met we get a list of all values
       to and pass them to the create view to repopulate the original fields.
@@ -156,8 +154,14 @@ class ArticleController extends Controller
         $comments_for_article[] = $comment;
       }
 
-
-      return view('articles.show', compact('article', 'id','sources_for_article','comments_for_article'));
+      /* If user is logged in, set their name, else set to guest */
+      if(\Auth::check()){
+        $user = \Auth::user();
+      }else{
+        $user = \App\User::where('email','guest@zudbu.com')->first();
+      }
+      // dump($user);
+      return view('articles.show', compact('article', 'id','sources_for_article','comments_for_article','user'));
     }
 
 

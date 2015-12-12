@@ -56,6 +56,7 @@ Route::group(['middleware' => 'auth'], function() {
 Route::get('/','WelcomeController@index');
 Route::get('/articles/{main_category?}','ArticleController@index');
 Route::get('/articles/show/{id?}','ArticleController@show');
+Route::post('/articles/comment/{id?}','CommentController@store');
 
 /* Route to show logs in local environment
 ------------------------------------------*/

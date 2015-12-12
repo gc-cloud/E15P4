@@ -1,4 +1,3 @@
-
 function addInput(divName){
           var newdiv = document.createElement('div');
           newdiv.innerHTML = '<label>Source / URL :</label>'+

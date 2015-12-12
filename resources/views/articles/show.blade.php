@@ -30,16 +30,26 @@
   <div>
       <a href='/'>-> All articles</a><br>
   </div>
-  <h3>Comments</h3>
-  <hr>
-  <div>
-    @foreach($comments_for_article as $comment)
-      <h4 class="user inline">{{$comment->user->name}} </h4>
-      <p > {{$comment->comment}}</p>
-    <hr>
-    @endforeach
-  </div>
 
 
+  {!! Form::open(array('url' => 'articles/comment/1','class'=>'border')) !!}
+      <h2>Comments</h2>
+      <hr>
+      <div>
+        @foreach($comments_for_article as $comment)
+          <h4 class="user inline">{{$comment->user->name}} </h4>
+          <p > {{$comment->comment}}</p>
+        <hr>
+        @endforeach
+      </div>
+      <div class='form-group' id="dynamicCommentInput">
+        <h4 class="user inline">{{$user->name}}</h4>
+        <input type="text" name="user_id" value='{{ $user->id }}' readonly hidden><br>
+        {!!Form::text('comment', null, array('class'=>'form-control','placeholder'=>'Leave a comment'))!!}<br>
+        {!! Form::submit('Post', array('class' => 'btn btn-small btn-info')) !!}
+      </div>
+    {!! Form::close() !!}
+    {{-- Script for  dynamic addition of elements --}}
+    <script src="/js/Zudbu.js" ></script>
 
 @stop

@@ -32,14 +32,13 @@
           {!!Form::text('ids[]',$source->id,array('hidden'))!!}
           {!!Form::text('sources[]', $source->source,array('class'=>'form-control'))!!}<br>
           {!!Form::url('urls[]', $source->url, array('class'=>'form-control'))!!}<br>
-
         @endforeach
       </div>
 
     <div class='form-group'>
-      {!! Form::button('Add Sources', array('onClick'=>'addInput("dynamicSourceInput");', 'class' => 'btn btn-primary')) !!}
-      {!! Form::submit('Save Article', array('class' => 'btn btn-primary')) !!}
+      {!! Form::button('Add Sources', array('onClick'=>'addInput("dynamicSourceInput");', 'class' => 'btn btn-link')) !!}    
     </div>
+    {!! Form::submit('Save Article', array('class' => 'btn btn-primary')) !!}
   {!! Form::close() !!}
 
 {{-- Script for  dynamic addition of elements --}}

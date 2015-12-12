@@ -25,16 +25,13 @@
       {!!Form::label('Source /  URL')!!}
       {!!Html::link('sources/delete/'.'0',' [delete]')!!}
       {!!Form::text('ids[]',0,array('hidden'))!!}
-      {!!Form::text('sources[]', null,array('class'=>'form-control'))!!}<br>
-      {!!Form::url('urls[]', null, array('class'=>'form-control'))!!}<br>
+      {!!Form::text('sources[]', null,array('class'=>'form-control','placeholder'=>'Source'))!!}<br>
+      {!!Form::url('urls[]', null, array('class'=>'form-control','placeholder'=>'URL'))!!}<br>
     </div>
-
-
-
     <div class='form-group'>
-      {!! Form::button('Add Sources', array('onClick'=>'addInput("dynamicSourceInput");', 'class' => 'btn btn-primary')) !!}
-      {!! Form::submit('Save Article', array('class' => 'btn btn-primary')) !!}
+      {!! Form::button('Add Sources', array('onClick'=>'addInput("dynamicSourceInput");', 'class' => 'btn btn-link')) !!}
     </div>
+      {!! Form::submit('Save Article', array('class' => 'btn btn-primary')) !!}
   {!! Form::close() !!}
   {{-- Script for  dynamic addition of elements --}}
   <script src="/js/Zudbu.js" ></script>
