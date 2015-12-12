@@ -43,14 +43,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Home</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/articles/body">Body</a></li>
-            <li><a href="/articles/mind">Mind</a></li>
-            <li><a href="/articles/spirit">Spirit</a></li>
-
+            <li {!!\Request::is("/")? 'class="active"' : ''!!}><a href="/">Home</a></li>
+            <li {!!\Request::is("articles/body")? 'class="active"' : ''!!}><a href="/articles/body">Body</a></li>
+            <li {!!\Request::is("articles/mind")? 'class="active"'  : ''!!}><a href="/articles/mind">Mind</a></li>
+            <li {!!\Request::is("articles/spirit")? 'class="active"'  : ''!!}><a href="/articles/spirit">Spirit</a></li>
             <!-- show contribute menu to authenticated users -->
             @if($user)
             <li class="dropdown">
