@@ -3,6 +3,7 @@
 @section('title')
     <h2>{{ $article->title }}</h2>
 
+
 @stop
 
 @section('content')
@@ -10,6 +11,7 @@
 
 @section('body')
   <div class="border">
+    <img src="/images/articles/article_{{$article->id}}_pic.jpg" class="img-responsive">
     @if($article->id)
       <h2>The bottomline</h2>
       <p>{{$article->bottomline}}</p>

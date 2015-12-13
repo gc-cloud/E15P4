@@ -124,10 +124,8 @@ class ArticleController extends Controller
 
       /* Save image if it was provided */
       if($request->file('image')){
-        $imageName = $article->id.'.'.$request->file('image')->getClientOriginalExtension();
-        $request->file('image')->move(
-            base_path() . '/public/images/', $imageName
-        );
+        $imageName = 'image-article-'.$article->id.'.'.$request->file('image')->getClientOriginalExtension();
+        $request->file('image')->move(base_path().'/public/images/articles', $imageName);
       } else {
         //set default image here
       }

@@ -44,19 +44,11 @@ body {
 }
 
 /* Center and crop slides to fit screen size */
-.slide-01{
-  background: url('../images/broccoli.jpg') no-repeat center center;
-  background-size: cover;
+.slide{
+   /*Note: background image url is to be set dynamically in html form*/
+   background:  no-repeat center center;
+   background-size: cover;
 }
-.slide-02{
-  background: url('../images/fitness.jpg') no-repeat center center;
-  background-size: cover;
-}
-.slide-03{
-  background: url('../images/meditation.jpg') no-repeat center center;
-  background-size: cover;
-}
-
 
 /* Center align the text within the three columns below the carousel */
 .marketing .col-lg-4 {
