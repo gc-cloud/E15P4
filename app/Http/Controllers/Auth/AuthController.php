@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
+
+
+
 class AuthController extends Controller
 {
     /*
@@ -65,6 +68,8 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
+        /*
+
         /* Get the role id of a reader */
         $role = \App\Role::where('role','reader')->first();
 
@@ -76,7 +81,6 @@ class AuthController extends Controller
 
         ]);
     }
-
 
 
     /**

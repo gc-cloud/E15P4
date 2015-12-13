@@ -10,29 +10,34 @@
 
 
 @section('body')
-<form method='POST' action='/register' class="border">
-    {!! csrf_field() !!}
+{!! Form::open(array('url' => '/register', 'class' => 'form border', 'files' => true)) !!}
 
     <div class='form-group'>
-        <span class="glyphicon glyphicon-user"></span><label for='name'> Name</label>
-        <input type='text' name='name' id='name' value='{{ old('name') }}' class="form-control">
+        <span class="glyphicon glyphicon-user"></span>
+        {!! Form::label('Name') !!}
+        {!! Form::text('name', null, array('placeholder'=>'Name','class'=>'form-control','id'=>'name')) !!}
+        <!-- to-do: add old values try exist or default null -->
     </div>
 
     <div class='form-group'>
-        <span class="glyphicon glyphicon-envelope"></span><label for='email'> Email</label>
-        <input type='text' name='email' id='email' value='{{ old('email') }}' class="form-control">
+        <span class="glyphicon glyphicon-envelope"></span>
+        {!! Form::label('Email') !!}
+        {!! Form::text('email', null, array('placeholder'=>'email','class'=>'form-control','id'=>'email')) !!}
     </div>
 
     <div class='form-group'>
-        <span class="glyphicon glyphicon-lock"></span><label for='password'> Password</label>
-        <input type='password' name='password' id='password' class="form-control">
+        <span class="glyphicon glyphicon-lock"></span>
+        {!! Form::label('Password') !!}
+        {!! Form::password('password',array('placeholder'=>'password','class'=>'form-control','id'=>'password')) !!}
     </div>
 
     <div class='form-group'>
-        <span class="glyphicon glyphicon-lock"></span><label for='password_confirmation'> Confirm Password</label>
-        <input type='password' name='password_confirmation' id='password_confirmation' class="form-control">
+        <span class="glyphicon glyphicon-lock"></span>
+        {!! Form::label('Confirm Password') !!}
+        {!! Form::password('password_confirmation',array('placeholder'=>'confirm password','class'=>'form-control','id'=>'password_confirmation')) !!}
     </div>
+      {!! Form::submit('Register!', array('class' => 'btn btn-primary')) !!}
+{!! Form::close() !!}
 
-    <button type='submit' class='btn btn-primary'>Register</button>
-</form>
+
 @stop

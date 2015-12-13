@@ -122,6 +122,13 @@ class ArticleController extends Controller
       $sourceModel->updateArticleSources($article->sources, $request, $article->id);
 
 
+      /* Save image provided */
+      $imageName = $article->id.'.'.$request->file('image')->getClientOriginalExtension();
+      $request->file('image')->move(
+          base_path() . '/public/images/', $imageName
+      );
+
+
       /* Confirm article was saved.  Send to edit selection page */
       \Session::flash('flash_message','Your article was saved.');
       $show_edit = TRUE;

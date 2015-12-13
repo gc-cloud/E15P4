@@ -25,6 +25,11 @@
   <input type="text" name="author_id" value='{{ $author->id }}' readonly hidden><br>
 </div>
 
+<div class="form-group">
+    <span class="glyphicon glyphicon-camera"></span>
+    {!! Form::label('Photo') !!}
+    {!! Form::file('image', null) !!}
+</div>
 
   <script src="/js/Zudbu.js" ></script>
   <script src='/tinymce/tinymce.min.js'></script>

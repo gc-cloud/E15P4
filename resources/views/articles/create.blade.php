@@ -14,7 +14,7 @@
 
 {{-- Form::model binds the fields to the existing values--}}
 
-{!! Form::model($article,array('url' => 'articles/create','class'=>'border')) !!}
+{!! Form::model($article,array('url' => 'articles/create','class'=>'border','files' => true)) !!}
 
     @include('articles.content')
     <div class='form-group'>
