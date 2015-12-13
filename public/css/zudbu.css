@@ -130,6 +130,25 @@ ul.errors {
   color: #a0a0b0;
 }
 
+/* Article search - show
+------------------------------------------------ */
+.img-thumbnail{
+  width: 120px;
+  height: 80px;
+  float: left;
+  margin-right: 1em;
+}
+
+
+.result {
+  border-width:thin;
+  border-style: solid;
+  border-color: #ddd;
+  border-radius: 5px;
+  background-color: #efefef;
+  padding: .5em;
+}
+
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 

@@ -54,11 +54,13 @@
 @section('body')
   <h1>All Articles.</h1>
   @foreach($articles as $article)
-      <div class="border">
-          <h2>{{ $article->title }}</h2>
-          <p> {{$article->bottomline}}</p>
-          <a href='/articles/show/{{$article->id}}'> more</a><br>
-          <!-- <img src='{{ $article->mainImage }}'> ADD a cool image here-->
+      <div class="result">
+        <a href='/articles/show/{{$article->id}}'>
+          <img src="/images/articles/article_{{$article->id}}_pic.jpg" class="img-thumbnail">
+        </a>
+        <h2>{{ $article->title }}</h2>
+        <p> {{$article->bottomline}}</p>
+      <br>
       </div>
       <br>
   @endforeach

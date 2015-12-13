@@ -21,11 +21,11 @@
   <h2> Are you sure you want to delete "{{ $article->title }}" ?</h2>
   <form>
     <br>
-    <button type="submit" class="btn btn-danger btn-sm" formaction="/articles/delete/{{ $article->id }}">
-    <span class="glyphicon glyphicon-trash"></span> Yes, delete
-    </button>
-    <button type="submit" class="btn btn-default btn-sm" formaction="/articles/edit/search">
+    <button type="submit" class="btn btn-danger btn-sm" formaction="/articles/edit/search">
     <span class="glyphicon glyphicon-circle-arrow-left"></span> No, go back
+    </button>
+    <button type="submit" class="btn btn-success btn-sm" formaction="/articles/delete/{{ $article->id }}">
+    <span class="glyphicon glyphicon-trash"></span> Yes, delete
     </button>
   </form>
 @stop
