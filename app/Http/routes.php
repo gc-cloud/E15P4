@@ -48,9 +48,9 @@ Route::post('/articles/comment/','CommentController@store');
 
 /* Route to show logs in local environment
 ------------------------------------------*/
-if(App::environment('local')){
+//if(App::environment('local')){
   Route::match(['get','post'],'logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
-};
+//};
 
 /* Test
 -----------------------------------------*/

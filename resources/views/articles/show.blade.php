@@ -16,7 +16,7 @@
       <h2>Why</h2>
       <p>{!!$article->body!!}</p>
       <!-- <img src='{{ $article->mainImage }}'> ADD a cool image here-->
-      <h3>Sources</h3>
+      <h2>Sources</h2>
       <ul>
       @foreach($sources_for_article as $source)
         <li><a href='{{$source->url}}'>{{$source->source}}</a></li>
