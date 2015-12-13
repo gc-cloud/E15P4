@@ -1,31 +1,31 @@
 @extends('layouts.master')
 
 @section('title')
-    <h2> Delete Article</h2>
+    <h2> Delete Article: {{ $article->title }}</h2>
 @stop
 
 @section('content')
 @stop
 
 @section('body')
-<h2> Are you sure you want to delete :<em> {{ $article->title }}</em> ?</h2>
-<h2><a href="/articles/delete/{{ $article->id }}"> Yes, delete forever </a></h2>
-<h2><a href="/articles/edit/search"> No,  go back to my articles </a></h2>
   <div class="border">
     @if($article->id)
-      <h3>The bottomline</h3>
+      <h2>The bottomline</h2>
       <p>{{$article->bottomline}}</p>
-      <h3>Why</h3>
-      <p>{{$article->body}}</p>
-      <!-- <img src='{{ $article->mainImage }}'> ADD a cool image here-->
-      <h3>References</h3>
-      <p> Here we will display a list of references</p>
+      <h2>Why</h2>
+      <p>{!!$article->body!!}</p>
     @else
-        <h1>No Article specified</h1>
+        <h2>No Article specified</h2>
     @endif
-      <!-- To do, display only for contributors -->
-      @if(isset($show_edit))
-        <a href='/articles/edit/{{$article->id}}'>Edit</a><br>
-      @endif
   </div>
+  <h2> Are you sure you want to delete "{{ $article->title }}" ?</h2>
+  <form>
+    <br>
+    <button type="submit" class="btn btn-danger btn-sm" formaction="/articles/delete/{{ $article->id }}">
+    <span class="glyphicon glyphicon-trash"></span> Yes, delete
+    </button>
+    <button type="submit" class="btn btn-default btn-sm" formaction="/articles/edit/search">
+    <span class="glyphicon glyphicon-circle-arrow-left"></span> No, go back
+    </button>
+  </form>
 @stop

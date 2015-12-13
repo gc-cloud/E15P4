@@ -11,9 +11,9 @@
 @section('body')
   <div class="border">
     @if($article->id)
-      <h3>The bottomline</h3>
+      <h2>The bottomline</h2>
       <p>{{$article->bottomline}}</p>
-      <h3>Why</h3>
+      <h2>Why</h2>
       <p>{!!$article->body!!}</p>
       <!-- <img src='{{ $article->mainImage }}'> ADD a cool image here-->
       <h3>Sources</h3>
@@ -24,7 +24,7 @@
       </ul>
 
     @else
-      <h1>No Article specified</h1>
+      <h2>No Article specified</h2>
     @endif
   </div>
   <div>
