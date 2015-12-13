@@ -9,9 +9,13 @@
 @stop
 
 @section('body')
+
+
+
 {{-- Form::model binds the fields to the existing values--}}
 
 {!! Form::model($article,array('url' => 'articles/create','class'=>'border')) !!}
+
     @include('articles.content')
     <div class='form-group'>
       {!!Form::label('Categories:')!!}<br>
@@ -23,7 +27,6 @@
     <div class='form-group' id="dynamicSourceInput">
       <h2>Sources:</h2>
       {!!Form::label('Source /  URL')!!}
-      {!!Html::link('sources/delete/'.'0',' [delete]')!!}
       {!!Form::text('ids[]',0,array('hidden'))!!}
       {!!Form::text('sources[]', null,array('class'=>'form-control','placeholder'=>'Source'))!!}<br>
       {!!Form::url('urls[]', null, array('class'=>'form-control','placeholder'=>'URL'))!!}<br>
@@ -34,5 +37,5 @@
       {!! Form::submit('Save Article', array('class' => 'btn btn-primary')) !!}
   {!! Form::close() !!}
   {{-- Script for  dynamic addition of elements --}}
-  <script src="/js/Zudbu.js" ></script>
+
 @stop

@@ -26,9 +26,11 @@
       {{-- Add / edit references  --}}
       <div class='form-group' id="dynamicSourceInput">
         <h2>Sources:</h2>
-        @foreach($sources_for_article as $source)
+        @foreach($sources_for_article as $key=>$source)
           {!!Form::label('Source /  URL')!!}
-          {!!Html::link('sources/delete/'.$source->id,' [delete]')!!}
+          @if($key >0)
+            {!!link_to('sources/delete/'.$source->id, '' , $attributes = array('class'=>'glyphicon glyphicon-trash'), null)!!}
+          @endif
           {!!Form::text('ids[]',$source->id,array('hidden'))!!}
           {!!Form::text('sources[]', $source->source,array('class'=>'form-control'))!!}<br>
           {!!Form::url('urls[]', $source->url, array('class'=>'form-control'))!!}<br>
@@ -36,7 +38,7 @@
       </div>
 
     <div class='form-group'>
-      {!! Form::button('Add Sources', array('onClick'=>'addInput("dynamicSourceInput");', 'class' => 'btn btn-link')) !!}    
+      {!! Form::button('Add Sources', array('onClick'=>'addInput("dynamicSourceInput");', 'class' => 'btn btn-link')) !!}
     </div>
     {!! Form::submit('Save Article', array('class' => 'btn btn-primary')) !!}
   {!! Form::close() !!}

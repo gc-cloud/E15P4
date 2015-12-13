@@ -56,7 +56,7 @@ class ArticlesTableSeeder extends Seeder
               the week or an equivalent combination of moderate- and vigorous-intensity activity.
               </li>
              </ul>',
-      'author_id' => 1,
+      'author_id' => 6,
       ]);
 
 
@@ -83,7 +83,7 @@ class ArticlesTableSeeder extends Seeder
                  <p> The take away message is that you should try to limit your consumption of processed
                  meat and follow a diet based on fresh products.  It is important that these
                  products contain diverse and sufficient amouts of protein and other nutrients.</p>',
-      'author_id' => 1,
+      'author_id' => 7,
       ]);
 
       DB::table('articles')->insert([
@@ -121,7 +121,7 @@ class ArticlesTableSeeder extends Seeder
                 have a healthy heart. For the latter, you are
                  better off eating in moderation (a mediterranean diet
                  is a good idea), reducing your stress levels, and exercising regularly</p>',
-      'author_id' => 1,
+      'author_id' => 6,
       ]);
 
 
@@ -155,7 +155,7 @@ class ArticlesTableSeeder extends Seeder
                    an uncomfortable bed, or a TV or computer in the bedroom</li>
                    <li>For children, avoid long periods of daily television exposure</li>
                 </ul>',
-      'author_id' => 2,
+      'author_id' => 7,
       ]);
 
       DB::table('articles')->insert([
@@ -176,7 +176,7 @@ class ArticlesTableSeeder extends Seeder
                 <p>The literature suggests that ongoing practice is important to maximize
                 the benefits.  Practice makes perfect!  <p></p>
                 <ul> ',
-      'author_id' => 2,
+      'author_id' => 6,
       ]);
 
       DB::table('articles')->insert([
@@ -205,7 +205,7 @@ class ArticlesTableSeeder extends Seeder
                   <li>Choice reaction time</li>
                   <li>Spatial working memory</li>
                 </ul>',
-      'author_id' => 2,
+      'author_id' => 7,
       ]);
 
       DB::table('articles')->insert([
@@ -264,7 +264,7 @@ class ArticlesTableSeeder extends Seeder
                 </ul>
                 <p>Of these five areas, the highest marker was attendance to religious
                 services, which is consistent with the social bond theory</p>',
-      'author_id' => 2,
+      'author_id' => 3,
       ]);
 
     }

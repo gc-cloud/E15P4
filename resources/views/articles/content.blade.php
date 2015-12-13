@@ -1,5 +1,10 @@
 {{-- This is used by the edit and create blades --}}
 
+@section('head')
+  <!-- Configure tinymce -->
+
+@stop
+
 <div class='form-group'>
   <h2>Title:</h2>
   {!!Form::text('title',null,array('class'=>'form-control','placeholder'=>'Title'))!!}<br>
@@ -12,10 +17,20 @@
 
 <div class='form-group'>
   <h2>Body</h2>
-  {!!Form::textarea('body',null,array('class'=>'form-control','placeholder'=>'Body'))!!}<br>
+  {!!Form::textarea('body',null,array('id'=>'body','placeholder'=>'Body'))!!}<br>
 </div>
 
 <div class='form-group invisible'>
   <input type="text" name="author" value='{{ $author->name }}' readonly hidden><br>
   <input type="text" name="author_id" value='{{ $author->id }}' readonly hidden><br>
 </div>
+
+
+  <script src="/js/Zudbu.js" ></script>
+  <script src='/tinymce/tinymce.min.js'></script>
+  <script>
+  tinymce.init({
+    selector: '#body', menubar:false,
+    toolbar: 'removeformat bold italic underline |alignleft aligncenter alignright alignjustify | fontsizeselect |  bullist numlist outdent indent | undo redo |'
+  });
+  </script>
