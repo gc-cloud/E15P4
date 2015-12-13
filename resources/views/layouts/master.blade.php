@@ -35,7 +35,6 @@
 
   <body>
 
-
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -52,8 +51,10 @@
             <li {!!\Request::is("articles/body")? 'class="active"' : ''!!}><a href="/articles/body">Body</a></li>
             <li {!!\Request::is("articles/mind")? 'class="active"'  : ''!!}><a href="/articles/mind">Mind</a></li>
             <li {!!\Request::is("articles/spirit")? 'class="active"'  : ''!!}><a href="/articles/spirit">Spirit</a></li>
-            <!-- show contribute menu to authenticated users -->
+
+
             @if($user)
+            <!-- show contribute menu to authenticated users -->
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contribute<span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -78,15 +79,14 @@
                   <input type='password' name='password' id='password' placeholder="Password" value='{{ old('password') }}' class="form-control">
               </div>
 
-              <!-- <div class='form-group'>
+              <!-- Future: remember me
+              <div class='form-group'>
                   <input type='checkbox' name='remember' id='remember'>
                   <label for='remember' class='checkboxLabel'>Remember me</label>
               </div> -->
               <button type='submit' class='btn btn-primary'>Login</button>
               <p class="headeritem">Not a user?<a href='/register'>  Register </a></p>
               @endif
-
-
           {!! Form::close() !!}
 
           <!-- Future: Search box -->
@@ -102,8 +102,6 @@
       </div>
     </nav>
 
-
-
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
@@ -114,7 +112,7 @@
                <h3>{{Session::get('flash_message') }}</h3>
            </div>
         @endif
-        <h1 class="inline">Zudbu</h1> <!--To do: Replace with a nice logo-->
+        <h1 class="inline">Zudbu</h1> <!--Future: Site logo-->
         <p> nurture your body, mind and spirit.</p>
 
         @yield('title')

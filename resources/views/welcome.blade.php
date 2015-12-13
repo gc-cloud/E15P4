@@ -19,26 +19,29 @@
   </ol>
   <div class="carousel-inner" role="listbox">
     <div class="item active slide-01">
-          <div class="carousel-caption">
-          <h1>Broccoli?.</h1>
-          <p>WHO lists processed meats as carcinogenic.</p>
-          <p><a class="btn btn-lg btn-primary" href="#" role="button">More &raquo;</a></p>
-        </div>
+      <img src="images/broccoli.jpg">
+      <div class="carousel-caption">
+        <h1>Broccoli?.</h1>
+        <p>WHO lists processed meats as carcinogenic.</p>
+        <p><a class="btn btn-lg btn-primary" href="articles/show/2" role="button">More &raquo;</a></p>
       </div>
+    </div>
     <div class="item slider-size slide-02">
-          <div class="carousel-caption">
-          <h1>Working out.</h1>
-          <p>30-45 minutes 3 times a week is ideal</p>
-          <p><a class="btn btn-lg btn-primary" href="#" role="button">More &raquo;</a></p>
-        </div>
+      <img src="images/fitness.jpg">
+      <div class="carousel-caption">
+        <h1>Working out.</h1>
+        <p>30 minutes 5 times a week is ideal</p>
+        <p><a class="btn btn-lg btn-primary" href="articles/show/1" role="button">More &raquo;</a></p>
       </div>
+    </div>
     <div class="item slider-size slide-03">
-          <div class="carousel-caption">
-          <h1>Live Longer.</h1>
-          <p>Find a sense of purpose.</p>
-          <p><a class="btn btn-lg btn-primary" href="#" role="button">More &raquo;</a></p>
-        </div>
+      <img src="images/meditation.jpg">
+      <div class="carousel-caption">
+        <h1>Inner Peace.</h1>
+        <p>Mindfulness Meditation Improves Quality of Life.</p>
+        <p><a class="btn btn-lg btn-primary" href="articles/show/5" role="button">More &raquo;</a></p>
       </div>
+    </div>
   </div>
   <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -52,24 +55,6 @@
 @stop
 
 @section('body')
-  <!-- <div class="row">
-    <div class="col-md-4">
-      <h2>Body</h2>
-      <p>Healthy eating. Maintain a healthy environment. Stretching. Breathing. Working out. Yoga. Massage.  Sleeping. Resting. Sex. Cosmetics. </p>
-      <p><a class="btn btn-default" href="#" role="button">View articles &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-      <h2>Mind</h2>
-      <p>Learning new things. Concentration and focus. Board games. Daydreaming. Reading. Doing new things. Writing. Crosswords, logic games and puzzles. </p>
-      <p><a class="btn btn-default" href="#" role="button">View articles &raquo;</a></p>
-   </div>
-    <div class="col-md-4">
-      <h2>Spirit</h2>
-      <p>Meditation.  Purpose. Awareness. Gratitude. Music. Gardening. Letting go. Friends and family. Social networks. Hobbies. Volunteer. </p>
-      <p><a class="btn btn-default" href="#" role="button">View articles &raquo;</a></p>
-    </div>
-  </div> -->
-
   <h1>All Articles.</h1>
   @foreach($articles as $article)
       <div class="border">

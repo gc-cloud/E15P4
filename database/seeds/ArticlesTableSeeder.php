@@ -12,8 +12,8 @@ class ArticlesTableSeeder extends Seeder
     public function run()
     {
       DB::table('articles')->insert([
-      'title' => 'Exercise: How much?',
-      'bottomline' => 'Exercise 150 minutes spread over multiple times a week.',
+      'title' => 'Working Out',
+      'bottomline' => '30 minutes 5 times a week is ideal',
       'body' => '
             <p>There is strong evidence linking  adequate levels of physical activity
             with numerous health benefits such as:</p>
@@ -62,7 +62,7 @@ class ArticlesTableSeeder extends Seeder
 
       DB::table('articles')->insert([
       'title' => 'Broccoli?',
-      'bottomline' => 'Processed meat contains various chemicals that are harmful to health.',
+      'bottomline' => 'WHO lists processed meat as carcinogenic.',
       'body' => '<p>Processed meat is meat that has been preserved by curing, salting, smoking,
                   addition of preservatives, or canning.</p>
 
@@ -75,10 +75,12 @@ class ArticlesTableSeeder extends Seeder
                    <li>Beef Jerky</li>
                    <li>Canned Meat</li>
                  </ul>
-                 <p>During processing, meat  ends up containing various chemicals that are harmful to health. Several studies
-                 have linked processed meat with increased risk or diseases including high blood
-                 pressure, heart disease, bowel and stomach cancer. In a controversial move,
-                 the World Health Organization added processed meat to their list or carcinogens in 2015</p>
+                 <p>During processing, meat  ends up containing various chemicals
+                 that are harmful to health. Several studies have linked processed
+                 meat with increased risk or diseases including high blood pressure,
+                 heart disease, bowel and stomach cancer. In a controversial move,
+                 the World Health Organization added processed meat to their list
+                 of carcinogens in 2015</p>
 
                  <p> The take away message is that you should try to limit your consumption of processed
                  meat and follow a diet based on fresh products.  It is important that these
@@ -160,7 +162,7 @@ class ArticlesTableSeeder extends Seeder
 
       DB::table('articles')->insert([
       'title' => 'Inner peace',
-      'bottomline' => 'Meditation helps you find inner peace',
+      'bottomline' => 'Mindfulness Meditation improves Quality of Life',
       'body' => '
                 <p>Once considered ritual, the benefits of mindfulness meditation (in which people learn
                 to watch their thoughts and feelings without judging them) have been
@@ -181,7 +183,8 @@ class ArticlesTableSeeder extends Seeder
 
       DB::table('articles')->insert([
       'title' => 'Meditation and intelligence',
-      'bottomline' => 'Mindfulness Meditation can improve learning effectiveness, attention and memory .',
+      'bottomline' => 'Mindfulness Meditation can improve learning effectiveness,
+      attention and memory .',
       'body' => '
                 <p>Studies have shown that mindfulness meditation may improve well-being in
                 healthy individuals.  A study published in 2014 reported that an 8 week
@@ -240,7 +243,8 @@ class ArticlesTableSeeder extends Seeder
 
       DB::table('articles')->insert([
       'title' => 'Spirituality and addictions',
-      'bottomline' => 'Regular spiritual practice is associated with significantly higher remission for drug abuse.',
+      'bottomline' => 'Regular spiritual practice is associated with significantly
+      higher remission for drug abuse.',
       'body' => '
                 <p>The connection between religion/spirituality and deviance,
                 was first made by Durkheim who defined
