@@ -133,10 +133,15 @@ ul.errors {
 /* Article search - show
 ------------------------------------------------ */
 .img-thumbnail{
-  width: 120px;
-  height: 80px;
+  width: 150px;
+  height: 88px;
   float: left;
   margin-right: 1em;
+}
+
+.img-centered{
+  margin: auto;
+  width: 100%;
 }
 
 

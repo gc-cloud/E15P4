@@ -150,6 +150,13 @@ class ArticleController extends Controller
 
       $article = \App\Article::with('sources', 'comments')->find($id);
 
+
+      /* If article does not exist handle gracefully*/
+      if(is_null($article)) {
+          \Session::flash('flash_message','Article not found.');
+          return redirect('\articles');
+      }
+
       /* Get sources currently assigned to  this Article */
       $sources_for_article = [];
       foreach ($article->sources as $source) {
@@ -181,7 +188,7 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-      /* Get Article to Edit*/
+      /* Get Article to Edit. Handle gracefully if not found*/
       $article = \App\Article::with('categories','author','sources')->find($id);
       if(is_null($article)) {
           \Session::flash('flash_message','Article not found.');
@@ -266,7 +273,12 @@ class ArticleController extends Controller
      */
     public function getConfirmDelete($id)
     {
+        /* Delete Article, handle gracefully if not found */
         $article = \App\Article::find($id);
+        if(is_null($article)) {
+            \Session::flash('flash_message','Article not found.');
+            return redirect('\articles');
+        }
         return view('articles.delete',compact('article'));
     }
 

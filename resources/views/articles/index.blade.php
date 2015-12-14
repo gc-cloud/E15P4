@@ -11,7 +11,7 @@
 @foreach($articles as $article)
     <div class="result">
         <a href='/articles/show/{{$article->id}}'>
-          <img src="/images/articles/article_{{$article->id}}_pic.jpg" class="img-thumbnail">
+          <img src="/images/articles/article_{{$article->id}}_thumb.jpg" class="img-thumbnail">
         </a>
         <h2>{{ $article->title }}</h2>
         <p> {{$article->bottomline}}<a href='/articles/show/{{$article->id}}'> Read full article</a></p>
