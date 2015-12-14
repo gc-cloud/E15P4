@@ -105,8 +105,9 @@ ul.errors {
   display: none;
 }
 
-.inline {
+.logo {
   display: inline;
+  margin-top: .5em;
 }
 
 .headeritem {
@@ -143,6 +144,9 @@ ul.errors {
   margin: auto;
   width: 100%;
 }
+
+.right{
+  text-align: right;}
 
 
 .result {

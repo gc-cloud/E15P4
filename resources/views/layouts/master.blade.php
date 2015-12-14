@@ -66,7 +66,7 @@
           </ul>
 
           <!-- Sign-in/Register or Logout -->
-          {!! Form::open(array('url' => '/login','class' => 'navbar-form navbar-right')) !!}
+          {!! Form::open(array('url' => '/login','class' => 'navbar-form  right')) !!}
           <a name="login"></a>
           @if($user)
               <p class="headeritem">Logged in as {{ $user->name }} <a href='/logout'> [ Logout ]</a></p>
@@ -112,12 +112,12 @@
                <h3>{{Session::get('flash_message') }}</h3>
            </div>
         @endif
-        <h1 class="inline">Zudbu</h1> <!--Future: Site logo-->
+        <h1 class="logo">Zudbu</h1> <!--Future: Site logo-->
         <p> nurture your body, mind and spirit.</p>
 
         @yield('title')
         @yield('content')
-      </div>
+      </div>s
     </div>
 
   <!-- Expanded content goes here -->

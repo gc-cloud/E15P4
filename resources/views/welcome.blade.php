@@ -60,7 +60,6 @@
         </a>
         <h2>{{ $article->title }}</h2>
         <p> {{$article->bottomline}}</p>
-      <br>
       </div>
       <br>
   @endforeach
