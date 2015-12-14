@@ -20,7 +20,7 @@
       <h2>Sources</h2>
       <ul>
       @foreach($sources_for_article as $source)
-        <li><a href='{{$source->url}}'>{{$source->source}}</a></li>
+        <li><a href='{{$source->url}}' target="_blank">{{$source->source}}</a></li>
       @endforeach
       </ul>
 

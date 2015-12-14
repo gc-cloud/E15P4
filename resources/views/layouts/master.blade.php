@@ -34,7 +34,6 @@
   </head>
 
   <body>
-
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -45,6 +44,9 @@
             <span class="icon-bar"></span>
           </button>
         </div>
+
+
+
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li {!!\Request::is("/")? 'class="active"' : ''!!}><a href="/">Home</a></li>
@@ -52,19 +54,17 @@
             <li {!!\Request::is("articles/mind")? 'class="active"'  : ''!!}><a href="/articles/mind">Mind</a></li>
             <li {!!\Request::is("articles/spirit")? 'class="active"'  : ''!!}><a href="/articles/spirit">Spirit</a></li>
 
-
-            @if($user)
-            <!-- show contribute menu to authenticated users -->
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contribute<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="/articles/create">New Article</a></li>
-                <li><a href="/articles/edit/search">Edit/Delete Article</a></li>
-              </ul>
-            </li>
-            @endif
+            <!-- Contribute options only avalable to contributors or administrators users -->
+            @if($user AND ($user->role->role==='administrator' OR $user->role->role==='contributor'))
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contribute<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/articles/create">New Article{{$user->role_id}}</a></li>
+                  <li><a href="/articles/edit/search">Edit/Delete Article</a></li>
+                </ul>
+              </li>
+              @endif
           </ul>
-
           <!-- Sign-in/Register or Logout -->
           {!! Form::open(array('url' => '/login','class' => 'navbar-form  right')) !!}
           <a name="login"></a>
@@ -74,11 +74,9 @@
               <div class='form-group'>
                   <input type='text' name='email' id='email' placeholder="Email" value='{{ old('email') }}' class="form-control">
               </div>
-
               <div class='form-group'>
                   <input type='password' name='password' id='password' placeholder="Password" value='{{ old('password') }}' class="form-control">
               </div>
-
               <!-- Future: remember me
               <div class='form-group'>
                   <input type='checkbox' name='remember' id='remember'>
@@ -88,7 +86,6 @@
               <p class="headeritem">Not a user?<a href='/register'>  Register </a></p>
               @endif
           {!! Form::close() !!}
-
           <!-- Future: Search box -->
           <!-- {!! Form::open(array('url' => '/articles','class'=>'form navbar-form navbar-left searchform')) !!}
             {!! Form::text('search', null,

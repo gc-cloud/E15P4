@@ -58,7 +58,7 @@ class UsersTableSeeder extends Seeder
         'name' => 'Jamal',
         'email' => 'jamal@harvard.edu',
         'password' => bcrypt('helloworld'),
-        'role_id' => 3,
+        'role_id' => 1,
       ]);
 
 
