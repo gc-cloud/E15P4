@@ -8,6 +8,9 @@
 @stop
 
 @section('body')
+  <div class="spaced">
+    <a href='/'>Show All Articles <span class="glyphicon glyphicon-circle-arrow-right"></span></a>
+  </div>
   <div class="border">
     <img src="/images/articles/article_{{$article->id}}_pic.jpg" class="img-responsive img-centered img-rounded">
     @if($article->id)
@@ -26,10 +29,9 @@
       <h2>No Article specified</h2>
     @endif
   </div>
-  <div>
-      <a href='/'>-> All articles</a><br>
+  <div class="spaced">
+    <a href='/'>Show All Articles <span class="glyphicon glyphicon-circle-arrow-right"></span></a>
   </div>
-
 
   {!! Form::open(array('url' => 'articles/comment/','class'=>'border')) !!}
       <h2>Comments</h2>
@@ -48,9 +50,7 @@
         @endif
         <input type="text" name="user_id" value='{{ $reader->id }}' hidden="hidden" readonly="readonly"><br>
         <input type="text" name="article_id" value='{{ $article->id }}' hidden="hidden" readonly="readonly"><br>
-
         {!!Form::text('comment', null, array('class'=>'form-control','placeholder'=>'Leave a comment'))!!}
-
         <br>
         {!! Form::submit('Post', array('class' => 'btn btn-small btn-info')) !!}
       </div>
