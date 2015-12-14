@@ -13,7 +13,7 @@ class CommentsTableSeeder extends Seeder
     {
       /* Create an array of articles and comments. */
         $articles =[
-          'Exercise: How much?' =>[
+          'Working Out' =>[
               'Good to know that older people can workout!',
               'I am combining aerobic and strength training and feel great after two weeks',
               'Since I starter swimming I sleep better and am more focused',
