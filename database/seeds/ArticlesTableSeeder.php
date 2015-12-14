@@ -13,7 +13,7 @@ class ArticlesTableSeeder extends Seeder
     {
       DB::table('articles')->insert([
       'title' => 'Working Out',
-      'bottomline' => '30 minutes 5 times a week is ideal',
+      'bottomline' => '30 minutes 5 times a week is ideal.',
       'body' => '
             <p>There is strong evidence linking  adequate levels of physical activity
             with numerous health benefits such as:</p>
@@ -162,7 +162,7 @@ class ArticlesTableSeeder extends Seeder
 
       DB::table('articles')->insert([
       'title' => 'Inner peace',
-      'bottomline' => 'Mindfulness Meditation improves Quality of Life',
+      'bottomline' => 'Mindfulness Meditation improves Quality of Life.',
       'body' => '
                 <p>Once considered ritual, the benefits of mindfulness meditation (in which people learn
                 to watch their thoughts and feelings without judging them) have been
@@ -184,7 +184,7 @@ class ArticlesTableSeeder extends Seeder
       DB::table('articles')->insert([
       'title' => 'Meditation and intelligence',
       'bottomline' => 'Mindfulness Meditation can improve learning effectiveness,
-      attention and memory .',
+      attention and memory.',
       'body' => '
                 <p>Studies have shown that mindfulness meditation may improve well-being in
                 healthy individuals.  A study published in 2014 reported that an 8 week
@@ -213,7 +213,7 @@ class ArticlesTableSeeder extends Seeder
 
       DB::table('articles')->insert([
       'title' => 'Achieve Unity',
-      'bottomline' => 'Spirituality may enhance physical, psychological and cognitive well being',
+      'bottomline' => 'Spirituality may enhance physical, psychological and cognitive well being.',
       'body' => '
                 <p>Spirituality is considered an important aspect of wellness.
                 Research suggests that it may lead to enhanced psychological
