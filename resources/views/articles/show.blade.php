@@ -2,8 +2,6 @@
 
 @section('title')
     <h2>{{ $article->title }}</h2>
-
-
 @stop
 
 @section('content')
