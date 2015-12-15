@@ -84,6 +84,8 @@ laravel-debugbar, and Rap2hpoutre's log viewer
 	- barbeque.jpg pixabay
 	- paddle.jpg pixabay  
 	- runners.jpg pixabay
+- tinyMCE
+
 
 ### To do
 - add media queries to replace carousel images based on screen size

@@ -10,8 +10,6 @@ use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
-  
-
 
     /**
      * Display a listing of Articles for the selected category.
@@ -81,54 +79,9 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      *-------------------------------------------------------------*/
 
-    //public function store(ArticleRequest $request)
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
-
-      /* Validator: Create an array with all validation rules */
-      $rules = [
-        'title' => 'required|min:10',
-        'bottomline' => 'required|max:150',
-        'body' => 'required|min:5|max:2500',
-        'image' => 'image',
-      ];
-      /* Validator: loop through dynamically generated fields to
-      make sure all input is checked */
-      if($request->get('sources')){
-        foreach($request->get('sources') as $key => $val){
-          $rules['sources.'.$key] = 'required|min:10';}
-      }
-      if($request->get('urls')){
-        foreach($request->get('urls') as $key => $val){
-          $rules['urls.'.$key] = 'required|url';}
-      }
-      /* Validator: If not checkbox is selected , add a rule to indicate that
-      say that a category field is required */
-      if($request->get('categories')){
-        $found_categories=true;
-      } else {
-        $found_categories=false;
-      }
-      if(!$found_categories){
-        $rules['Category'] = 'required';
-      }
-
-      $this->validate($request, $rules);
-
-    //
-    // //  $this->messages($request);
-
-
-      // $validator = \Validator::make($request->all(), $rules);
-      // if ($validator->fails())
-      // {
-      //   //$categoryModel = new \App\Category();
-      //   //$categories_for_checkboxes = $categoryModel->getCategoriesForCheckboxes();
-      //   $author = $article->author;
-      //   return view("articles.create", compact('article','categories_for_checkboxes',
-      //                             'author'))->withErrors($validator->errors());
-      // }
-
+      /* Note to grader: custom validation rules are in ArticleRequest */
 
       /* Instantiate and save a new article . Set the $fillable parameters to
       those on the request. This needs to be after the validator to avoid storing
@@ -176,9 +129,7 @@ class ArticleController extends Controller
      *-----------------------------------------------------------*/
     public function show($id = null)
     {
-
       $article = \App\Article::with('sources', 'comments')->find($id);
-
 
       /* If article does not exist handle gracefully*/
       if(is_null($article)) {
@@ -254,19 +205,9 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(ArticleRequest $request)
     {
-
-        dump($request);
-
-      /* Make sure submitted values are valid */
-      $this->validate($request, [
-          'title' => 'required|min:5',
-          'bottomline' => 'required|max:150',
-          'body' => 'required|min:5|max:2500',
-           'image'=>'image',
-      ]);
-
+      /* Note to grader: custom validation rules are in ArticleRequest */
 
       /* Get Article to be updated.  Set the $fillable parameters to those on
       the request.If validation is successfule save the article*/

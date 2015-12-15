@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use App\Http\Requests\Request;
 
 
-class Article2Request extends Request
+class ArticleRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,30 +24,33 @@ class Article2Request extends Request
      */
     public function rules()
     {
+      /* Validator: Create an array with all validation rules */
       $rules = [
         'title' => 'required|min:10',
         'bottomline' => 'required|max:150',
         'body' => 'required|min:5|max:2500',
+        'image' => 'image',
       ];
-
-      /*Loop through Source fields and validate */
+      /* Validator: loop through dynamically generated fields to
+      make sure all input is checked */
       if($this->request->get('sources')){
-        foreach($this->request->get('sources') as $key => $val)
-        {
-          $rules['sources.'.$key] = 'required|min:10';
-        }
+        foreach($this->request->get('sources') as $key => $val){
+          $rules['sources.'.$key] = 'required|min:10';}
       }
-
-
-      /*Loop through URL fields and validate */
       if($this->request->get('urls')){
-        foreach($this->request->get('urls') as $key => $val)
-        {
-          $rules['urls.'.$key] = 'required|url';
-        }
+        foreach($this->request->get('urls') as $key => $val){
+          $rules['urls.'.$key] = 'required|url';}
       }
-      /*Future: develop custom validation rule to analyze number of
-      Categories and confirm at least one has been selected*/
+      /* Validator: If not checkbox is selected , add a rule to indicate that
+      say that a category field is required */
+      if($this->request->get('categories')){
+        $found_categories=true;
+      } else {
+        $found_categories=false;
+      }
+      if(!$found_categories){
+        $rules['Category'] = 'required';
+      }
 
       return $rules;
     }

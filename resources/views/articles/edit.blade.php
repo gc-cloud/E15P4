@@ -31,9 +31,9 @@
           @if($key >0)
             {!!link_to('sources/delete/'.$source->id, '' , $attributes = array('class'=>'glyphicon glyphicon-trash'), null)!!}
           @endif
-          {!!Form::text('ids[]',$source->id,array('hidden'))!!}
-          {!!Form::text('sources[]', $source->source,array('class'=>'form-control'))!!}<br>
-          {!!Form::url('urls[]', $source->url, array('class'=>'form-control'))!!}<br>
+          {!!Form::text('ids[0]',$source->id,array('hidden'))!!}
+          {!!Form::text('sources[0]', $source->source,array('class'=>'form-control'))!!}<br>
+          {!!Form::url('urls[0]', $source->url, array('class'=>'form-control'))!!}<br>
         @endforeach
       </div>
 
