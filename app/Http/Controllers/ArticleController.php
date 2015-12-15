@@ -10,6 +10,8 @@ use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
 {
+  
+
 
     /**
      * Display a listing of Articles for the selected category.
@@ -56,14 +58,13 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      *----------------------------------------------------*/
-    public function create(Request $request)
+    public function create(Request $request) // TO:do check if $request is needed
     {
       /* Get list of all categories */
       $categoryModel = new \App\Category();
       $categories_for_checkboxes = $categoryModel->getCategoriesForCheckboxes();
 
-
-      /* Author is logged-in user*/
+      /* Author is logged-in user */
       $author = \Auth::user();
 
       /* Instantiate a new article and pass it to the view re-populate
@@ -71,6 +72,7 @@ class ArticleController extends Controller
       $article = new \App\Article();
       return view('articles.create', compact('article','categories_for_checkboxes', 'author'));
     }
+
 
     /**
      * Store a newly created article in the database.
@@ -82,31 +84,58 @@ class ArticleController extends Controller
     //public function store(ArticleRequest $request)
     public function store(Request $request)
     {
-      /* Instantiate a new article . Set the $fillable parameters to those on the request.
-      If validation is successfule save the article in the database*/
-      $article = \App\Article::create($request->input());
 
-      /* Custom Validator.  If rules are not met we get a list of all values
-      to and pass them to the create view to repopulate the original fields.
-      To-do: move to ArticleRequest. */
+      /* Validator: Create an array with all validation rules */
       $rules = [
         'title' => 'required|min:10',
         'bottomline' => 'required|max:150',
         'body' => 'required|min:5|max:2500',
+        'image' => 'image',
       ];
-      $validator = \Validator::make($request->all(), $rules);
-      if ($validator->fails())
-      {
-        $categoryModel = new \App\Category();
-        $categories_for_checkboxes = $categoryModel->getCategoriesForCheckboxes();
-        $author = $article->author;
-        return view("articles.create", compact('article','categories_for_checkboxes',
-                                  'author'))->withErrors($validator->errors());
+      /* Validator: loop through dynamically generated fields to
+      make sure all input is checked */
+      if($request->get('sources')){
+        foreach($request->get('sources') as $key => $val){
+          $rules['sources.'.$key] = 'required|min:10';}
+      }
+      if($request->get('urls')){
+        foreach($request->get('urls') as $key => $val){
+          $rules['urls.'.$key] = 'required|url';}
+      }
+      /* Validator: If not checkbox is selected , add a rule to indicate that
+      say that a category field is required */
+      if($request->get('categories')){
+        $found_categories=true;
+      } else {
+        $found_categories=false;
+      }
+      if(!$found_categories){
+        $rules['Category'] = 'required';
       }
 
-      $article->save();
+      $this->validate($request, $rules);
 
-      /* When article is saved, loop categories and save in pivot
+    //
+    // //  $this->messages($request);
+
+
+      // $validator = \Validator::make($request->all(), $rules);
+      // if ($validator->fails())
+      // {
+      //   //$categoryModel = new \App\Category();
+      //   //$categories_for_checkboxes = $categoryModel->getCategoriesForCheckboxes();
+      //   $author = $article->author;
+      //   return view("articles.create", compact('article','categories_for_checkboxes',
+      //                             'author'))->withErrors($validator->errors());
+      // }
+
+
+      /* Instantiate and save a new article . Set the $fillable parameters to
+      those on the request. This needs to be after the validator to avoid storing
+      incorrect articles in the database*/
+      $article = \App\Article::create($request->input());
+
+      /* After article is saved, loop categories and save in pivot
       table. Since articles and categories have a many to many relationship
       we use the sync method  */
       if ($request->categories){
@@ -135,7 +164,7 @@ class ArticleController extends Controller
       $show_edit = TRUE;
       $title = "Articles owned by ".\Auth::user()->name;
       $articles = \App\Article::where('author_id',\Auth::id())->orderBy('id','DESC')->get();
-      return view("articles.index", compact('article','articles','show_edit','title'));
+  //    return view("articles.index", compact('article','articles','show_edit','title'));
 
     }
 
@@ -228,12 +257,16 @@ class ArticleController extends Controller
     public function update(Request $request)
     {
 
+        dump($request);
+
       /* Make sure submitted values are valid */
       $this->validate($request, [
           'title' => 'required|min:5',
           'bottomline' => 'required|max:150',
           'body' => 'required|min:5|max:2500',
+           'image'=>'image',
       ]);
+
 
       /* Get Article to be updated.  Set the $fillable parameters to those on
       the request.If validation is successfule save the article*/

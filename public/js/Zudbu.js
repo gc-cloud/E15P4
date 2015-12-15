@@ -1,4 +1,4 @@
-var counter =0;
+var counter = 1;
 function addInput(divName){
           var newdiv = document.createElement('div');
           newdiv.id = 'new'+counter;
