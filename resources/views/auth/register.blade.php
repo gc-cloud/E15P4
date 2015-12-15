@@ -15,8 +15,7 @@
     <div class='form-group'>
         <span class="glyphicon glyphicon-user"></span>
         {!! Form::label('Name') !!}
-        {!! Form::text('name', null, array('placeholder'=>'Name','class'=>'form-control','id'=>'name')) !!}
-        <!-- to-do: add old values try exist or default null -->
+        {!! Form::text('name1', null, array('placeholder'=>'Name','class'=>'form-control','id'=>'name1')) !!}
     </div>
 
     <div class='form-group'>
