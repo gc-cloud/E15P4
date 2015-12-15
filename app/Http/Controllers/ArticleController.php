@@ -81,6 +81,8 @@ class ArticleController extends Controller
 
     public function store(ArticleRequest $request)
     {
+
+      dump($request);
       /* Note to grader: custom validation rules are in ArticleRequest */
 
       /* Instantiate and save a new article . Set the $fillable parameters to

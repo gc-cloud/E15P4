@@ -27,9 +27,9 @@
     <div class='form-group' id="dynamicSourceInput">
       <h2>Sources:</h2>
       {!!Form::label('Source /  URL')!!}
-      {!!Form::text('ids[0]',0,array('hidden'))!!}
-      {!!Form::text('sources[0]', null,array('class'=>'form-control','placeholder'=>'Source'))!!}<br>
-      {!!Form::url('urls[0]', null, array('class'=>'form-control','placeholder'=>'URL'))!!}<br>
+      {!!Form::text('ids[new0]',0,array('hidden'))!!}
+      {!!Form::text('sources[new0]', null,array('class'=>'form-control','placeholder'=>'Source'))!!}<br>
+      {!!Form::url('urls[new0]', null, array('class'=>'form-control','placeholder'=>'URL'))!!}<br>
     </div>
     <div class='form-group'>
       {!! Form::button('Add Sources', array('onClick'=>'addInput("dynamicSourceInput");', 'class' => 'btn btn-link')) !!}
