@@ -22,9 +22,10 @@ Route::get('/register', 'Auth\AuthController@getRegister');
 Route::post('/register', 'Auth\AuthController@postRegister');
 
 
-/* Edit and create routes -  available only to logged in Users
+/* Edit and create routes -  available only to logged in Users with
+contribute roles
 ---------------------------------------------------------------*/
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'contribute'], function() {
     Route::get('/articles/create', 'ArticleController@create');
     Route::post('/articles/create', 'ArticleController@store');
     Route::get('/articles/edit/search', 'ArticleController@showOwnArticles');
