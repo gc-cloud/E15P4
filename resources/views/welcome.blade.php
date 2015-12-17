@@ -54,7 +54,7 @@
 @section('body')
   <h1>All Articles.</h1>
   @foreach($articles as $article)
-      <div class="result megalink">
+      <div class="result relative">
           <a href='/articles/show/{{$article->id}}'>
             <span class="megaLink">
               <img src="/images/articles/article_{{$article->id}}_thumb.jpg" class="img-thumbnail">
