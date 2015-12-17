@@ -82,15 +82,14 @@ class ArticleController extends Controller
     public function store(ArticleRequest $request)
     {
 
-      dump($request);
       /* Note to grader: custom validation rules are in ArticleRequest */
 
-      /* Instantiate and save a new article . Set the $fillable parameters to
-      those on the request. This needs to be after the validator to avoid storing
-      incorrect articles in the database*/
+      /* Instantiate and save a new article . This needs to be after the
+      validator ( in ArticleRequest) to avoid storing incorrect articles
+      in the database*/
       $article = \App\Article::create($request->input());
 
-      /* After article is saved, loop categories and save in pivot
+      /* After article is saved, get categories and save in pivot
       table. Since articles and categories have a many to many relationship
       we use the sync method  */
       if ($request->categories){
@@ -101,7 +100,7 @@ class ArticleController extends Controller
       }
       $article->categories()->sync($categories);
 
-      /* Update sources.*/
+      /* Update sources with custom method in Source Model.*/
       $sourceModel = new \App\Source();
       $sourceModel->updateArticleSources($article->sources, $request, $article->id);
 
@@ -158,7 +157,8 @@ class ArticleController extends Controller
       }else{
         $reader = \App\User::where('email','guest@zudbu.com')->first();
       }
-      return view('articles.show', compact('article', 'id','sources_for_article','comments_for_article','reader'));
+      return view('articles.show', compact('article', 'id','sources_for_article',
+                                              'comments_for_article','reader'));
     }
 
 
@@ -280,6 +280,7 @@ class ArticleController extends Controller
       /* If article found remove references and delete */
       if($article->categories()){
         $article->categories()->detach();
+        
 
 
       }

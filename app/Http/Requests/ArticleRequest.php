@@ -26,7 +26,7 @@ class ArticleRequest extends Request
     {
       /* Validator: Create an array with all validation rules */
       $rules = [
-        'title' => 'required|min:10',
+        'title' => 'required|min:5',
         'bottomline' => 'required|max:150',
         'body' => 'required|min:5|max:2500',
         'image' => 'image',
@@ -37,8 +37,8 @@ class ArticleRequest extends Request
       fields come in pairs with the same key*/
       if($this->request->get('sources')){
         foreach($this->request->get('sources') as $key => $val){
-          $rules['sources.'.$key] = 'required|min:10';
-          $rules['urls.'.$key] = 'required|url';
+          $rules['sources.'.$key] = 'required';
+          $rules['urls.'.$key] = 'required|ActiveUrl';
         }
       }
       /* Validator: If not checkbox is selected , add a rule to indicate that
@@ -65,34 +65,12 @@ class ArticleRequest extends Request
         {
           $messages['sources.'.$key.'.required'] = 'The Source field # '.$key.' is required.';
           $messages['sources.'.$key.'.min'] = 'The Source field # '.$key.' must be at least 10 characters.';
-          $messages['urls.'.$key.'.required'] = 'The URL field # '.$key.' is required.';
-          $messages['urls.'.$key.'.url'] = 'The URL field # '.$key.' must be properly formatted.';
+          $messages['urls.'.$key.'.required'] = 'All URL fields are required.';
+          $messages['urls.'.$key.'.url'] = 'The URL ['.$key.'] does not seem to be working.';
         }
       }
 
       return $messages;
 
     }
-
-
-
-  /* Override native response so we can redirect to page with a parameter that
-  can be used to replicate the dynamic fields that were submitted */
-  public function response(array $errors)
-  {
-      if ($this->ajax() || $this->wantsJson()) {
-          return new JsonResponse($errors, 422);
-      }
-
-      $countsources = count($this->request->get('sources'));
-
-      \Session::flash('flash_message','Override RESPONSE ACTIVE. Total Sources: '.$countsources);
-      dump($this->request);
-
-       return $this->redirector->to($this->getRedirectUrl())
-                                      ->withInput($this->except($this->dontFlash))
-                                      ->withErrors($errors, $this->errorBag)
-                                      ->with('countsources',$countsources);
-
-  }
 }

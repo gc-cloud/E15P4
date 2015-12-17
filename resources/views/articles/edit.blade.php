@@ -23,12 +23,12 @@
       @endforeach
     </div>
 
-      {{-- Add / edit references  --}}
       <div class='form-group' id="dynamicSourceInput">
         <h2>Sources:</h2>
+      {{-- Generate sources dynamically keeping old values.  First pair of source/url cannot be deleted--}}
         @foreach($sources_for_article as $key=>$source)
           {!!Form::label('Source /  URL')!!}
-          @if($key >0)
+          @if($key > 0)
             {!!link_to('sources/delete/'.$source->id, '' , $attributes = array('class'=>'glyphicon glyphicon-trash'), null)!!}
           @endif
           {!!Form::text('ids['.$source->id.']',$source->id,array('hidden'))!!}

@@ -26,25 +26,23 @@
           <input type="checkbox" name="categories[{{ $category_id }}]" value='{{ $category_id }}' checked> {{ $category_name }} <br>
        @endforeach
     </div>
-    {{-- Add / edit references. We start with one set. THe user can add more with javasript  --}}
+    {{-- Add / edit references. We start with one set. The user can add more with javasript  --}}
     <div class='form-group' id="dynamicSourceInput">
       <h2>Sources:</h2>
 
-      {!!Form::label('Source /  URL')!!}
-      {!!Form::text('ids[new0]',0,array('hidden'))!!}
-      {!!Form::text('sources[new0]', null,array('class'=>'form-control','placeholder'=>'Source'))!!}<br>
-      {!!Form::url('urls[new0]', null, array('class'=>'form-control','placeholder'=>'URL', 'onLoad'=>'addInput("dynamicSourceInput"'))!!}<br>
-      {!!old('title')!!}
-      {!!old('sources.new0')!!}
-      {!!old('sources.new1')!!}
-      {!!count(old('sources'))!!}<br>
-      @foreach(old('sources') as $key => $source)
-       sources[{!!$key!!}]= {!!$source!!}<br>
-       <input type="text" name="sources[{!!$key!!}]" value="{!!$source!!}"><br>
-       @endforeach()
-
-
-
+      {{-- Generate sources dynamically keeping old values.  At least one pair of source/url is created--}}
+      @if(!count(old('sources')))
+        {!!Form::label('Source /  URL')!!}
+        {!!Form::text('ids[new0]',0,array('hidden'))!!}
+        {!!Form::text('sources[new0]', null,array('class'=>'form-control','placeholder'=>'Source'))!!}<br>
+        {!!Form::url('urls[new0]', null, array('class'=>'form-control','placeholder'=>'URL'))!!}<br>
+      @else
+        @foreach(old('sources') as $key => $source)
+           {!!Form::label('Source /  URL')!!}
+           <input type="text" class = "form-control" name="sources[{!!$key!!}]" placeholder="source" value="{!!$source!!}"><br>
+           <input type="text" class = "form-control" name="urls[{!!$key!!}]" placeholder="URL" value="{!!old('urls.'.$key.'')!!}"><br>
+         @endforeach()
+      @endif
 
 
     </div>
