@@ -10,11 +10,14 @@
 
 @section('body')
 
+
+
 {{-- Form::model binds the fields to the existing values--}}
+
 
 {!! Form::model($article,array('url' => 'articles/create','class'=>'border','files' => true)) !!}
 
-    @include('articles.content')
+    @include('articles.content');
 
     <div class='form-group'>
       {!!Form::label('Categories:')!!}<br>

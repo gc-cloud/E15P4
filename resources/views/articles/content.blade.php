@@ -1,8 +1,6 @@
 {{-- This is used by the edit and create blades --}}
 
 @section('head')
-  <!-- Configure tinymce -->
-
 @stop
 
 <div class='form-group'>
@@ -31,11 +29,11 @@
     {!! Form::file('image', null) !!}
 </div>
 
-  <script src="/js/Zudbu.js" ></script>
-  <script src='/tinymce/tinymce.min.js'></script>
-  <script>
-  tinymce.init({
-    selector: '#body', menubar:false,
-    toolbar: 'removeformat bold italic underline |alignleft aligncenter alignright alignjustify | fontsizeselect |  bullist numlist outdent indent | undo redo |'
-  });
-  </script>
+<script src="/js/Zudbu.js" ></script>
+<script src='/tinymce/tinymce.min.js'></script>
+<script>
+tinymce.init({
+  selector: '#body', menubar:false,
+  toolbar: 'removeformat bold italic underline |alignleft aligncenter alignright alignjustify | fontsizeselect |  bullist numlist outdent indent | undo redo |'
+});
+</script>
