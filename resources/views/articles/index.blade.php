@@ -13,8 +13,7 @@
         <a href='/articles/show/{{$article->id}}'>
           <span class="megaLink">
             <img src="/images/articles/article_{{$article->id}}_thumb.jpg" class="img-thumbnail">
-          </span>
-        </a>
+
         <h2 >{{ $article->title }}</h2>
         <p> {{$article->bottomline}}<a href='/articles/show/{{$article->id}}'> Read full article</a></p>
         @if(isset($show_edit))
@@ -22,6 +21,8 @@
           <a href='/articles/edit/{{$article->id}}'><span class="glyphicon glyphicon-pencil"></span> Edit</a>
           <a href='/articles/confirm-delete/{{$article->id}}'><span class="glyphicon glyphicon-trash"></span> Delete</a><br>
         @endif
+      </span>
+    </a>
     </div>
     <br>
 @endforeach
