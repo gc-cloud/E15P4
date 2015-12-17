@@ -84,10 +84,15 @@ class ArticleRequest extends Request
           return new JsonResponse($errors, 422);
       }
 
-      $countURL = count($this->request->get('urls'));
-      \Session::flash('flash_message','Override RESPONSE ACTIVE. Total Sources: '.$countURL);
-      return $this->redirector->to($this->getRedirectUrl())
+      $countsources = count($this->request->get('sources'));
+
+      \Session::flash('flash_message','Override RESPONSE ACTIVE. Total Sources: '.$countsources);
+      dump($this->request);
+
+       return $this->redirector->to($this->getRedirectUrl())
                                       ->withInput($this->except($this->dontFlash))
-                                      ->withErrors($errors, $this->errorBag);
+                                      ->withErrors($errors, $this->errorBag)
+                                      ->with('countsources',$countsources);
+
   }
 }

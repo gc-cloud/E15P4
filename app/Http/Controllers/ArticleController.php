@@ -119,7 +119,7 @@ class ArticleController extends Controller
       $show_edit = TRUE;
       $title = "Articles owned by ".\Auth::user()->name;
       $articles = \App\Article::where('author_id',\Auth::id())->orderBy('id','DESC')->get();
-  //    return view("articles.index", compact('article','articles','show_edit','title'));
+      return view("articles.index", compact('article','articles','show_edit','title'));
 
     }
 

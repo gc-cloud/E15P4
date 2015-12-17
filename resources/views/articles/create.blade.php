@@ -14,9 +14,12 @@
 
 {{-- Form::model binds the fields to the existing values--}}
 
+
 {!! Form::model($article,array('url' => 'articles/create','class'=>'border','files' => true)) !!}
 
-    @include('articles.content')
+    @include('articles.content');
+
+
     <div class='form-group'>
       {!!Form::label('Categories:')!!}<br>
         @foreach($categories_for_checkboxes as $category_id => $category_name)
@@ -26,10 +29,23 @@
     {{-- Add / edit references. We start with one set. THe user can add more with javasript  --}}
     <div class='form-group' id="dynamicSourceInput">
       <h2>Sources:</h2>
+
       {!!Form::label('Source /  URL')!!}
       {!!Form::text('ids[new0]',0,array('hidden'))!!}
       {!!Form::text('sources[new0]', null,array('class'=>'form-control','placeholder'=>'Source'))!!}<br>
-      {!!Form::url('urls[new0]', null, array('class'=>'form-control','placeholder'=>'URL'))!!}<br>
+      {!!Form::url('urls[new0]', null, array('class'=>'form-control','placeholder'=>'URL', 'onLoad'=>'addInput("dynamicSourceInput"'))!!}<br>
+      {!!old('title')!!}
+      {!!old('sources.new0')!!}
+      {!!old('sources.new1')!!}
+      {!!count(old('sources'))!!}
+      @foreach(old('sources') as $source)
+        'sure<br>'. {!!$source!!}
+      @endforeach()
+
+
+
+
+
     </div>
     <div class='form-group'>
       {!! Form::button('Add Sources', array('onClick'=>'addInput("dynamicSourceInput");', 'class' => 'btn btn-link')) !!}
