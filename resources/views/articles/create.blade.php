@@ -37,10 +37,11 @@
       {!!old('title')!!}
       {!!old('sources.new0')!!}
       {!!old('sources.new1')!!}
-      {!!count(old('sources'))!!}
-      @foreach(old('sources') as $source)
-        'sure<br>'. {!!$source!!}
-      @endforeach()
+      {!!count(old('sources'))!!}<br>
+      @foreach(old('sources') as $key => $source)
+       sources[{!!$key!!}]= {!!$source!!}<br>
+       <input type="text" name="sources[{!!$key!!}]" value="{!!$source!!}"><br>
+       @endforeach()
 
 
 
