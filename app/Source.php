@@ -26,7 +26,6 @@ class Source extends Model
       $source->delete();
     }
     if ($request->urls && $request->sources){
-      dump($request->sources);
       foreach ($request->sources as $key => $value) {
         $source = new Source;
         $source->source = $request->sources[$key];

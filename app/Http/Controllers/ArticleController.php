@@ -279,10 +279,7 @@ class ArticleController extends Controller
 
       /* If article found remove references and delete */
       if($article->categories()){
-        $article->categories()->detach();
-        
-
-
+        $article->categories()->detach();  
       }
       \Session::flash('flash_message',' Your article was deleted.');
       $article->delete();
