@@ -55,8 +55,11 @@
   <h1>All Articles.</h1>
   @foreach($articles as $article)
       <div class="result megalink">
-          <a href='/articles/show/{{$article->id}}'><span class="megaLink"></span></a>
-          <img src="/images/articles/article_{{$article->id}}_thumb.jpg" class="img-thumbnail">
+          <a href='/articles/show/{{$article->id}}'>
+            <span class="megaLink">
+              <img src="/images/articles/article_{{$article->id}}_thumb.jpg" class="img-thumbnail">
+            </span>
+          </a>
           <h2 >{{ $article->title }}</h2>
           <p> {{$article->bottomline}}<a href='/articles/show/{{$article->id}}'> Read full article</a></p>
           @if(isset($show_edit))
