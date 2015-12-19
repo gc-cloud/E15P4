@@ -10,7 +10,7 @@
 
 <div class='form-group'>
   <h2>Bottomline:<h2>
-  {!!Form::text('bottomline',null,array('class'=>'form-control','placeholder'=>'Bottomine'))!!}<br>
+  {!!Form::text('bottomline',null,array('class'=>'form-control','placeholder'=>'Bottomline'))!!}<br>
 </div>
 
 <div class='form-group'>
