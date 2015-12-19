@@ -1,4 +1,4 @@
-{{-- This is used by the edit and create blades --}}
+{{-- Shared form fields used by the edit and create blades --}}
 
 @section('head')
 @stop
@@ -24,15 +24,19 @@
 </div>
 
 <div class="form-group">
-    <h2>Pictures</h2>
-    <!-- To-do: add javascript to populate old photo values on edit.
-    Browsers do not allow default for security -->
-    <span class="glyphicon glyphicon-camera"></span>
-    {!! Form::label('Main Photo (suggested size: 940x350)') !!}
-    {!! Form::file('imageName',['value'=>'old(imageName)']) !!}
-    {!! Form::label('Thumbnail (suggested size: 150x88)') !!}
-    {!! Form::file('thumbName',null) !!}
-
+    <h2>Pictures </h2>
+    <p> For security, uploading new images needs to be confirmed everytime the form is submitted</p>
+    <div class='form-group' id="upload">
+        {!! Form::button('Upload New Images', array('onClick'=>'showImages();', 'class' => 'btn-sm btn-primary')) !!}
+    <div>
+    <div class='form-group' id="images" style="display:none">
+      <span class="glyphicon glyphicon-camera"></span>
+      {!! Form::label('Main Photo (suggested size: 940x350)') !!}
+      {!! Form::file('imageName',['value'=>'old(imageName)']) !!}
+      <span class="glyphicon glyphicon-camera"></span>
+      {!! Form::label('Thumbnail (suggested size: 150x88)') !!}
+      {!! Form::file('thumbName',null) !!}
+  </div>
 </div>
 
 <script src="/js/Zudbu.js" ></script>

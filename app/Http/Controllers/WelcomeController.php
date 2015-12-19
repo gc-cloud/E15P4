@@ -17,8 +17,6 @@ class WelcomeController extends Controller
   {
     /* Retrieve all the articles, pass to view */
     $articles = \App\Article::orderBy('id','DESC')->get();
-    return view("welcome", compact('articles'));
+    return view("articles.welcome", compact('articles'));
   }
-
-
 }

@@ -25,7 +25,7 @@
 
       <div class='form-group' id="dynamicSourceInput">
         <h2>Sources:</h2>
-      {{-- Generate sources dynamically keeping old values.  First pair of source/url cannot be deleted--}}
+      {{-- Generate sources dynamically keeping old values.  First pair of source/url fields cannot be deleted--}}
         @foreach($sources_for_article as $key=>$source)
           {!!Form::label('Source /  URL')!!}
           @if($key > 0)

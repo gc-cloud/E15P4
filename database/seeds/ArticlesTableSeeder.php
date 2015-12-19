@@ -134,7 +134,7 @@ class ArticlesTableSeeder extends Seeder
 
 
       DB::table('articles')->insert([
-      'title' => 'Is sleeping really necessary?',
+      'title' => 'Is sleeping necessary?',
       'bottomline' => 'A good night\'s sleep keeps you healthy and sharp.',
       'body' => '
                 <p>Sleep is important for good health. Not getting enough
@@ -192,7 +192,7 @@ class ArticlesTableSeeder extends Seeder
       ]);
 
       DB::table('articles')->insert([
-      'title' => 'Meditation and intelligence',
+      'title' => 'Meditate, be well',
       'bottomline' => 'Mindfulness Meditation can improve learning effectiveness,
       attention and memory.',
       'body' => '

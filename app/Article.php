@@ -76,4 +76,31 @@ class Article extends Model
       });
       return $articles;
      }
+
+
+     /* Handle file upload for images .  Set defaults if no images are provided */
+     public function uploadImages($request){
+       if($request->file('imageName')){
+         $imageName = 'article_'.$this->id.'_pic.'.$request->file('imageName')->getClientOriginalExtension();
+         $request->file('imageName')->move(base_path().'/public/images/articles/', $imageName);
+         $imagePath = '/images/articles/'.$imageName;
+       } elseif (!$this->imagePath){
+         $imagePath = '/images/articles/zudbu.jpg';
+       } else {
+         $imagePath = $this->imagePath;
+       }
+       if($request->file('thumbName')){
+         $thumbName = 'article_'.$this->id.'_thumb.'.$request->file('thumbName')->getClientOriginalExtension();
+         $request->file('thumbName')->move(base_path().'/public/images/articles/', $thumbName);
+         $thumbPath = '/images/articles/'.$thumbName;
+       } elseif (!$this->thumbPath){
+         $thumbPath = '/images/articles/zudbu_thumb.jpg';
+       } else{
+          $thumbPath = $this->thumbPath;
+       }
+       $this->imagePath = $imagePath;
+       $this->thumbPath = $thumbPath;
+       $this->update();
+     }
+
 }

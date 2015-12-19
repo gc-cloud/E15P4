@@ -38,7 +38,7 @@ class CommentsTableSeeder extends Seeder
             there is a lot of money to be made with the marketing too! ',
             'Very well researched posting, thanks for sharing',
             'The article is right, at some point there was a shift in habits'],
-          'Is sleeping really necessary?' =>[
+          'Is sleeping necessary?' =>[
             'Thanks for the tips, I read on an iPad at night and have been
             trouble sleeping lately.  ',
             'I had no idea that lack of sleep was related to heart disease',
@@ -49,7 +49,7 @@ class CommentsTableSeeder extends Seeder
             'I think mind, body and spirit are one and the same',
             'Anybody knows where can I learn to meditate?',
             'After three weeks of meditating I am feeling the benefits'],
-          'Meditation and intelligence' =>[
+          'Meditate, be well' =>[
             'I\'m really into maximizing my potential.  Very interesting article',
             '"Non pharmacological cognitive enhancers", great link!',
             'My school is super hard.  I\'m going to try meditation ',

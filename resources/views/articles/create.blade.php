@@ -29,7 +29,6 @@
       {{-- Generate sources dynamically keeping old values.  At least one pair of source/url is created--}}
       @if(!count(old('sources')))
         {!!Form::label('Source /  URL')!!}
-        {!!Form::text('ids[new0]',0,array('hidden'))!!}
         {!!Form::text('sources[new0]', null,array('class'=>'form-control','placeholder'=>'Source'))!!}<br>
         {!!Form::url('urls[new0]', null, array('class'=>'form-control','placeholder'=>'URL'))!!}<br>
       @else

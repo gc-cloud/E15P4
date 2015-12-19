@@ -106,24 +106,8 @@ class ArticleController extends Controller
       $sourceModel->updateArticleSources($article->sources, $request, $article->id);
 
 
-      /* Save provided image and path or set to default if image not provided  */
-      if($request->file('imageName')){
-        $imageName = 'article_'.$article->id.'_pic.'.$request->file('imageName')->getClientOriginalExtension();
-        $request->file('imageName')->move(base_path().'/public/images/articles/', $imageName);
-        $imagePath = '/images/articles/'.$imageName;
-      } else {
-        $imagePath = '/images/articles/zudbu.jpg';
-      }
-      if($request->file('thumbName')){
-        $thumbName = 'article_'.$article->id.'_thumb.'.$request->file('thumbName')->getClientOriginalExtension();
-        $request->file('thumbName')->move(base_path().'/public/images/articles/', $thumbName);
-        $thumbPath = '/images/articles/'.$thumbName;
-      } else {
-        $thumbPath = '/images/articles/zudbu_thumb.jpg';
-      }
-      $article->imagePath = $imagePath;
-      $article->thumbPath = $thumbPath;
-      $article->update();
+      /* Save provided images or set to default */
+      $article->uploadImages($request);
 
       /* Confirm article was saved.  Send to edit selection page */
       \Session::flash('flash_message','Your article was saved.');
@@ -222,31 +206,14 @@ class ArticleController extends Controller
     public function update(ArticleRequest $request)
     {
       /* Note to grader: custom validation rules are in ArticleRequest */
-      
+
       /* Get Article to be updated.  Set the $fillable parameters to those on
       the request.If validation is successful save the article*/
       $article = \App\Article::with('sources')->find($request->id);
       $article->fill($request->input())->update();
 
-      /* Save provided image and path or set to default if image not provided  */
-      if($request->file('imageName')){
-        $imageName = 'article_'.$article->id.'_pic.'.$request->file('imageName')->getClientOriginalExtension();
-        $request->file('imageName')->move(base_path().'/public/images/articles/', $imageName);
-        $imagePath = '/images/articles/'.$imageName;
-      } else {
-        $imagePath = '/images/articles/zudbu.jpg';
-      }
-      if($request->file('thumbName')){
-        $thumbName = 'article_'.$article->id.'_thumb.'.$request->file('thumbName')->getClientOriginalExtension();
-        $request->file('thumbName')->move(base_path().'/public/images/articles/', $thumbName);
-        $thumbPath = '/images/articles/'.$thumbName;
-      } else {
-        $thumbPath = '/images/articles/zudbu_thumb.jpg';
-      }
-      $article->imagePath = $imagePath;
-      $article->thumbPath = $thumbPath;
-      $article->update();
-
+      /* Save provided image or set to default */
+      $article->uploadImages($request);
 
 
       /* Save categories in pivot table.  Use sync method
