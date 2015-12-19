@@ -26,7 +26,7 @@
 
     <div class='form-group'>
         <span class="glyphicon glyphicon-lock"></span>
-        {!! Form::label('password,''Password') !!}
+        {!! Form::label('password','Password') !!}
         {!! Form::password('password',array('placeholder'=>'password','class'=>'form-control','id'=>'password')) !!}
     </div>
 
