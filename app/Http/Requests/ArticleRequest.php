@@ -66,7 +66,7 @@ class ArticleRequest extends Request
           $messages['sources.'.$key.'.required'] = 'All source fields are required [ID:'.$key.'].';
           $messages['sources.'.$key.'.min'] = 'Source fields must be at least 10 characters [ID:'.$key.'].';
           $messages['urls.'.$key.'.required'] = 'All URL fields are required [ID:'.$key.'].';
-          $messages['urls.'.$key.'.url'] = 'URL fields must be active and reachable [ID:'.$key.'].';
+          $messages['urls.'.$key.'.active_url'] = 'URL fields must be active and reachable [ID:'.$key.'].';
         }
       }
 
