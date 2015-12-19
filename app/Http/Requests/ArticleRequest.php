@@ -63,10 +63,10 @@ class ArticleRequest extends Request
       if($this->request->get('sources')){
         foreach($this->request->get('sources') as $key => $val)
         {
-          $messages['sources.'.$key.'.required'] = 'The Source field # '.$key.' is required.';
-          $messages['sources.'.$key.'.min'] = 'The Source field # '.$key.' must be at least 10 characters.';
-          $messages['urls.'.$key.'.required'] = 'All URL fields are required.';
-          $messages['urls.'.$key.'.url'] = 'The URL ['.$key.'] does not seem to be working.';
+          $messages['sources.'.$key.'.required'] = 'All source fields are required [ID:'.$key.'].';
+          $messages['sources.'.$key.'.min'] = 'Source fields must be at least 10 characters [ID:'.$key.'].';
+          $messages['urls.'.$key.'.required'] = 'All URL fields are required [ID:'.$key.'].';
+          $messages['urls.'.$key.'.url'] = 'URL fields must be well formed (e.g. http://www.zudbu.com) [ID:'.$key.'].';
         }
       }
 
