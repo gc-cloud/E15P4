@@ -38,7 +38,7 @@ class ArticleRequest extends Request
       if($this->request->get('sources')){
         foreach($this->request->get('sources') as $key => $val){
           $rules['sources.'.$key] = 'required';
-          $rules['urls.'.$key] = 'required|url';
+          $rules['urls.'.$key] = 'required|active_url';
         }
       }
       /* Validator: If not checkbox is selected , add a rule to indicate that
