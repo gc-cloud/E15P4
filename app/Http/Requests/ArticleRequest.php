@@ -38,7 +38,7 @@ class ArticleRequest extends Request
       if($this->request->get('sources')){
         foreach($this->request->get('sources') as $key => $val){
           $rules['sources.'.$key] = 'required';
-          $rules['urls.'.$key] = 'required|active_url';
+          $rules['urls.'.$key] = 'required|url|active_url';
         }
       }
       /* Validator: If not checkbox is selected , add a rule to indicate that
@@ -66,7 +66,8 @@ class ArticleRequest extends Request
           $messages['sources.'.$key.'.required'] = 'All source fields are required [ID:'.$key.'].';
           $messages['sources.'.$key.'.min'] = 'Source fields must be at least 10 characters [ID:'.$key.'].';
           $messages['urls.'.$key.'.required'] = 'All URL fields are required [ID:'.$key.'].';
-          $messages['urls.'.$key.'.active_url'] = 'URL fields must be active and reachable [ID:'.$key.'].';
+          $messages['urls.'.$key.'.active_url'] = 'Source URL fields must be active [ID:'.$key.'].';
+          $messages['urls.'.$key.'.url'] = 'Source URL fields must be well formed (e.g. http://full_path_to_source) [ID:'.$key.'].';
         }
       }
 
