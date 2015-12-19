@@ -59,7 +59,6 @@
           </ul>
           <!-- Sign-in/Register or Logout -->
           {!! Form::open(array('url' => '/login','class' => 'navbar-form  right')) !!}
-          <a name="login"></a>
           @if($user)
               <p class="headeritem">Logged in as {{ $user->name }} <a href='/logout'> [ Logout ]</a></p>
           @else

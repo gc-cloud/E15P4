@@ -26,7 +26,7 @@
         <p><a class="btn btn-lg btn-primary" href="articles/show/2" role="button">More &raquo;</a></p>
       </div>
     </div>
-    <div class="item slider-size slide"style="background-image: url('images/articles/article_1_pic.jpg')">
+    <div class="item slider-size slide" style="background-image: url('images/articles/article_1_pic.jpg')">
       <a href="articles/show/1"><span class="expanded-60"></span></a>
       <div class="carousel-caption">
         <h1>Working out.</h1>

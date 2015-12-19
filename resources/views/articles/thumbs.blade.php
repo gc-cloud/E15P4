@@ -3,7 +3,7 @@
     <div class="result relative row">
       <a href='/articles/show/{{$article->id}}'><span class="expanded"></span></a>
       <div class="col-lg-2 col-md-3 col-xs-4">
-        <img  class="img-thumbnail vertical-align" src="{{$article->thumbPath}}" >
+        <img  class="img-thumbnail vertical-align" src="{{$article->thumbPath}}" alt="Article Thumbnail" >
       </div>
       <div class="col-lg-10 col-md-8 col-xs-8">
         <h2>{{$article->title }}</h2>
