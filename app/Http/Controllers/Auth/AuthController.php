@@ -68,7 +68,6 @@ class AuthController extends Controller
      */
     protected function create(array $data)
     {
-        /*
 
         /* Get the role id of a reader */
         $role = \App\Role::where('role','reader')->first();
@@ -78,7 +77,6 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'role_id' => $role->id,
-
         ]);
     }
 
