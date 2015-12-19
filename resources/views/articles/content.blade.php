@@ -25,12 +25,14 @@
 
 <div class="form-group">
     <h2>Pictures</h2>
+    <!-- To-do: add javascript to populate old photo values on edit.
+    Browsers do not allow default for security -->
     <span class="glyphicon glyphicon-camera"></span>
     {!! Form::label('Main Photo (suggested size: 940x350)') !!}
     {!! Form::file('imageName',['value'=>'old(imageName)']) !!}
     {!! Form::label('Thumbnail (suggested size: 150x88)') !!}
     {!! Form::file('thumbName',null) !!}
-    {!! Form::file('thumbPath',array('value'=>'mydefault')) !!}
+
 </div>
 
 <script src="/js/Zudbu.js" ></script>
