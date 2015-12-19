@@ -15,7 +15,7 @@
     <div class='form-group'>
         <span class="glyphicon glyphicon-user"></span>
         {!! Form::label('Name') !!}
-        {!! Form::text('name1', null, array('placeholder'=>'Name','class'=>'form-control','id'=>'name1')) !!}
+        {!! Form::text('name', null, array('placeholder'=>'Name','class'=>'form-control','id'=>'name')) !!}
     </div>
 
     <div class='form-group'>
