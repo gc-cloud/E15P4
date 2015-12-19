@@ -32,7 +32,7 @@
 
     <div class='form-group'>
         <span class="glyphicon glyphicon-lock"></span>
-        {!! Form::label('confirm_password', 'Confirm Password') !!}
+        {!! Form::label('password_confirmation', 'Confirm Password') !!}
         {!! Form::password('password_confirmation',array('placeholder'=>'confirm password','class'=>'form-control','id'=>'password_confirmation')) !!}
     </div>
       {!! Form::submit('Register!', array('class' => 'btn btn-primary')) !!}
