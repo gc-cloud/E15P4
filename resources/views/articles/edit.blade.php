@@ -10,7 +10,7 @@
 
 @section('body')
   {{-- Form::model binds the fields to the existing values--}}
-  {!! Form::model($article, array('url' => 'articles/edit/{{$article_id}}','class'=>'border')) !!}
+  {!! Form::model($article, array('url' => 'articles/edit/{{$article_id}}','class'=>'border','files' => true)) !!}
     @include('articles.content')
     <input type='hidden' name='id' value='{{ $article->id }}'>
 

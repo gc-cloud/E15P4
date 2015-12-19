@@ -57,6 +57,8 @@ class ArticlesTableSeeder extends Seeder
               </li>
              </ul>',
       'author_id' => 6,
+      'imagePath' => '/images/articles/article_1_pic.jpg',
+      'thumbPath' => '/images/articles/article_1_thumb.jpg',
       ]);
 
 
@@ -86,6 +88,8 @@ class ArticlesTableSeeder extends Seeder
                  meat and follow a diet based on fresh products.  It is important that these
                  products contain diverse and sufficient amouts of protein and other nutrients.</p>',
       'author_id' => 7,
+      'imagePath' => '/images/articles/article_2_pic.jpg',
+      'thumbPath' => '/images/articles/article_2_thumb.jpg',
       ]);
 
       DB::table('articles')->insert([
@@ -124,6 +128,8 @@ class ArticlesTableSeeder extends Seeder
                  better off eating in moderation (a mediterranean diet
                  is a good idea), reducing your stress levels, and exercising regularly</p>',
       'author_id' => 6,
+      'imagePath' => '/images/articles/article_3_pic.jpg',
+      'thumbPath' => '/images/articles/article_3_thumb.jpg',
       ]);
 
 
@@ -158,6 +164,8 @@ class ArticlesTableSeeder extends Seeder
                    <li>For children, avoid long periods of daily television exposure</li>
                 </ul>',
       'author_id' => 7,
+      'imagePath' => '/images/articles/article_4_pic.jpg',
+      'thumbPath' => '/images/articles/article_4_thumb.jpg',
       ]);
 
       DB::table('articles')->insert([
@@ -179,6 +187,8 @@ class ArticlesTableSeeder extends Seeder
                 the benefits.  Practice makes perfect!  <p></p>
                 <ul> ',
       'author_id' => 6,
+      'imagePath' => '/images/articles/article_5_pic.jpg',
+      'thumbPath' => '/images/articles/article_5_thumb.jpg',
       ]);
 
       DB::table('articles')->insert([
@@ -209,6 +219,8 @@ class ArticlesTableSeeder extends Seeder
                   <li>Spatial working memory</li>
                 </ul>',
       'author_id' => 7,
+      'imagePath' => '/images/articles/article_6_pic.jpg',
+      'thumbPath' => '/images/articles/article_6_thumb.jpg',
       ]);
 
       DB::table('articles')->insert([
@@ -239,6 +251,8 @@ class ArticlesTableSeeder extends Seeder
                 living with Sickle Cell Disease may be significant in coping with the disease,
                 managing pain, affecting hospitalizations, and affecting quality of life.</p>',
       'author_id' => 2,
+      'imagePath' => '/images/articles/article_7_pic.jpg',
+      'thumbPath' => '/images/articles/article_7_thumb.jpg',
       ]);
 
       DB::table('articles')->insert([
@@ -269,6 +283,8 @@ class ArticlesTableSeeder extends Seeder
                 <p>Of these five areas, the highest marker was attendance to religious
                 services, which is consistent with the social bond theory</p>',
       'author_id' => 3,
+      'imagePath' => '/images/articles/article_8_pic.jpg',
+      'thumbPath' => '/images/articles/article_8_thumb.jpg',
       ]);
 
     }

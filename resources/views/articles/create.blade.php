@@ -12,15 +12,15 @@
 
 {{-- Form::model binds the fields to the existing values--}}
 
-{!! Form::model($article,array('url' => 'articles/create','class'=>'border','files' => true)) !!}
+{!! Form::model($article,array('url' => 'articles/create','class'=>'border','novalidate' => 'novalidate','files' => true)) !!}
 
     @include('articles.content')
 
     <div class='form-group'>
-      {!!Form::label('Categories:')!!}<br>
-        @foreach($categories_for_checkboxes as $category_id => $category_name)
-          <input type="checkbox" name="categories[{{ $category_id }}]" value='{{ $category_id }}' checked> {{ $category_name }} <br>
-       @endforeach
+      <h2>Categories:</h2>
+      @foreach($categories_for_checkboxes as $category_id => $category_name)
+        <input type="checkbox" name="categories[{{ $category_id }}]" value='{{ $category_id }}' checked> {{ $category_name }} <br>
+      @endforeach
     </div>
     {{-- Add / edit references. We start with one set. The user can add more with javasript  --}}
     <div class='form-group' id="dynamicSourceInput">

@@ -12,7 +12,7 @@
     <a href='/'>Show All Articles <span class="glyphicon glyphicon-circle-arrow-right"></span></a>
   </div>
   <div class="border">
-    <img src="/images/articles/article_{{$article->id}}_pic.jpg" class="img-responsive img-centered img-rounded">
+    <img src="{{$article->imagePath}}" class="img-responsive img-centered img-rounded">
     @if($article->id)
       <h2>The bottomline</h2>
       <p>{{$article->bottomline}}</p>

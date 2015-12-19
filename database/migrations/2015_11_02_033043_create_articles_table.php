@@ -16,6 +16,8 @@ class CreateArticlesTable extends Migration
           $table->increments('id');
           $table->string('title');
           $table->string('bottomline');
+          $table->string('imagePath');
+          $table->string('thumbPath');
           $table->text('body');
           $table->integer('author_id')->unsigned();
           $table->foreign('author_id')->references('id')

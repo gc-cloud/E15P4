@@ -29,7 +29,7 @@ class ArticleRequest extends Request
         'title' => 'required|min:5',
         'bottomline' => 'required|max:150',
         'body' => 'required|min:5|max:2500',
-        'image' => 'image',
+        'image' => 'mimes:jpg,jpeg,png,bmp,gif,svg',
       ];
 
       /* Validator: loop through dynamically generated fields to

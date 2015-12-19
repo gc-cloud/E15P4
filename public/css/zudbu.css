@@ -139,20 +139,35 @@ ul.errors {
 .relative{
   position: relative;
 }
-.megaLink{
+
+
+.front {
+  z-index:3;
+}
+
+
+
+/* Covers the specified area - useful to set
+clickable areas when applied to an <a> element
+----------------------------------------------*/
+.expanded{
   position:absolute;
   width:100%;
-  height:100%;
+  height:80%;
   top:0;
   left: 0;
-
-  /* edit: added z-index */
-  z-index: 1;
-
-  /* edit: fixes overlap error in IE7/8,
-  make sure you have an empty gif*/
-  background-image: url('');*/
+  z-index: 11;
 }
+
+.expanded-60{
+  position:absolute;
+  width:60%;
+  height:80%;
+  top:0%;
+  left: 20%;
+  z-index: 11;
+}
+
 
 /* Article search - show
 ------------------------------------------------ */
@@ -172,6 +187,7 @@ ul.errors {
   text-align: right;}
 
 
+/* Box for a search result */
 .result {
   border-width:thin;
   border-style: solid;
