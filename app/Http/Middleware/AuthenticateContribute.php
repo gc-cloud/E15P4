@@ -35,6 +35,18 @@ class AuthenticateContribute
 
     public function handle($request, Closure $next)
     {
+
+      /* First, make sure the user is logged in */
+      if ($this->auth->guest()) {
+          if ($request->ajax()) {
+              return response('Unauthorized.', 401);
+          } else {
+              \Session::flash('flash_message','You must be logged in to access this page.');
+              return redirect()->guest('/');
+          }
+      }
+
+      /* Now, make sure the user has the appropriate rights */
       if ($this->auth->check())
       {
         if ($this->auth->user()->role_id == 3)
@@ -45,5 +57,10 @@ class AuthenticateContribute
           return redirect()->guest('/');
         }
       }
+
+      /* Return next request for other cases */
+      return $next($request);
+
     }
+
 }
