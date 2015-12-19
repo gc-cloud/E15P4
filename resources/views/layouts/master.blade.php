@@ -63,10 +63,10 @@
               <p class="headeritem">Logged in as {{ $user->name }} <a href='/logout'> [ Logout ]</a></p>
           @else
               <div class='form-group'>
-                  <input type='text' name='email' id='email' placeholder="Email" value='{{ old('email') }}' class="form-control">
+                  <input type='text' name='email' id='email_login' placeholder="Email" value='{{ old('email') }}' class="form-control">
               </div>
               <div class='form-group'>
-                  <input type='password' name='password' id='password' placeholder="Password" value='{{ old('password') }}' class="form-control">
+                  <input type='password' name='password' id='password_login' placeholder="Password" value='{{ old('password') }}' class="form-control">
               </div>
               <button type='submit' class='btn btn-primary'>Login</button>
           @endif
