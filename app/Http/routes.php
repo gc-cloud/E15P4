@@ -25,7 +25,7 @@ Route::post('/register', 'Auth\AuthController@postRegister');
 /* Edit and create routes -  available only to logged in Users with
 contribute roles
 ---------------------------------------------------------------*/
-Route::group(['middleware' => 'contribute'], function() {
+//Route::group(['middleware' => 'contribute'], function() {
     Route::get('/articles/create', 'ArticleController@create');
     Route::post('/articles/create', 'ArticleController@store');
     Route::get('/articles/edit/search', 'ArticleController@showOwnArticles');
@@ -36,7 +36,7 @@ Route::group(['middleware' => 'contribute'], function() {
     Route::get('/articles/delete/{id?}', 'ArticleController@destroy');
     Route::get('/sources/delete/{id?}', 'SourceController@destroy');
 
-});
+//});
 
 
 /* Main Application Routes - Allow everyone to browse articles
