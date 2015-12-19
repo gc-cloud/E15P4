@@ -193,8 +193,7 @@ class ArticlesTableSeeder extends Seeder
 
       DB::table('articles')->insert([
       'title' => 'Meditate, be well',
-      'bottomline' => 'Mindfulness Meditation can improve learning effectiveness,
-      attention and memory.',
+      'bottomline' => 'Mindfulness Meditation can improve well-being.',
       'body' => '
                 <p>Studies have shown that mindfulness meditation may improve well-being in
                 healthy individuals.  A study published in 2014 reported that an 8 week
@@ -257,8 +256,8 @@ class ArticlesTableSeeder extends Seeder
 
       DB::table('articles')->insert([
       'title' => 'Spirituality and addictions',
-      'bottomline' => 'Regular spiritual practice is associated with significantly
-      higher remission for drug abuse.',
+      'bottomline' => 'Regular spiritual practice is associated with
+      higher remission of addictions',
       'body' => '
                 <p>The connection between religion/spirituality and deviance,
                 was first made by Durkheim who defined

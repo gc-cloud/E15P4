@@ -26,8 +26,8 @@ class ArticleRequest extends Request
     {
       /* Validator: Create an array with all validation rules */
       $rules = [
-        'title' => 'required|min:5',
-        'bottomline' => 'required|max:150',
+        'title' => 'required|min:5|max:30',
+        'bottomline' => 'required|max:65',
         'body' => 'required|min:5|max:2500',
         'image' => 'mimes:jpg,jpeg,png,bmp,gif,svg',
       ];
