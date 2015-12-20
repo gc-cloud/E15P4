@@ -122,8 +122,6 @@ Description: Store valid categories for articles ( e.g. body, mind, spirit)
 Description: Link categories  and articles
 ***
 
-
-
 ## 8. Known issues
 - New dynamically generated sources not kept if validation fails in edit pages
 - Repeated Flash message shows with the following sequence: edit- update - edit
