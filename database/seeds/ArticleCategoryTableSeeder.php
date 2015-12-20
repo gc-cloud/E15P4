@@ -16,10 +16,6 @@ class ArticleCategoryTableSeeder extends Seeder
         'category_id' => 1,
       ]);
 
-      DB::table('article_category')->insert([
-        'article_id' => 1,
-        'category_id' => 2,
-      ]);
 
       DB::table('article_category')->insert([
         'article_id' => 2,
@@ -90,7 +86,7 @@ class ArticleCategoryTableSeeder extends Seeder
       /* For the comments seeder we use an alternate approach with loops. First,
       we create an array or the articles we want to associate postings,
 
-      categories with 
+      categories with
         # The *key* will be the article title, and the *value* will be an array of categories.
         $articles =[
           'Exercise: How much?' => ['body', 'mind','spirit','exercise','stress'],
