@@ -1,8 +1,6 @@
-
-<h1>Contact Us</h1>
 @extends('layouts.master')
 @section('title')
-  <h2>Register</h2>
+  <h2>Contact Us</h2>
 @stop
 
 @section('content')
@@ -27,10 +25,9 @@
     <div class='form-group'>
         <span class="glyphicon glyphicon-lock"></span>
         {!! Form::label('message', 'Message') !!}
-        {!! Form::text('message',array('placeholder'=>'Your message','class'=>'form-control','id'=>'password_confirmation')) !!}
+        {!!Form::textarea('message',null,array('id'=>'message','placeholder'=>'Your message', 'class'=>'form-control'))!!}
     </div>
       {!! Form::submit('Register!', array('class' => 'btn btn-primary')) !!}
 {!! Form::close() !!}
-
 
 @stop
