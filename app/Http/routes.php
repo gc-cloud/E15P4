@@ -45,6 +45,7 @@ Route::get('/','WelcomeController@index');
 Route::get('/about','WelcomeController@about');
 Route::get('/privacy','WelcomeController@privacy');
 Route::get('/contact','WelcomeController@contact');
+Route::post('/contact','WelcomeController@contactConfirm');
 Route::get('/articles/{main_category?}','ArticleController@index');
 Route::get('/articles/show/{id?}','ArticleController@show');
 Route::post('/articles/comment/','CommentController@store');

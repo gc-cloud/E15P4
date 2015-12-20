@@ -42,5 +42,27 @@ class WelcomeController extends Controller
       return view("general.contact");
   }
 
+  /**
+   * Display Contact Page
+   *----------------------------------*/
+  public function contactConfirm(Request $request)
+  {
+    /* Validator: Create an array with all validation rules */
+    $rules = [
+      'name' => 'required',
+      'email' => 'required|email',
+      'message' => 'required',
+    ];
+
+    $this->validate($request,$rules);
+
+    $name = $request->name;
+    $message = 'Thank you for contacting us ' .$name;
+
+    \Session::flash('flash_message',$message);
+    return redirect('/');
+  }
+
+
 
 }

@@ -27,7 +27,7 @@
         {!! Form::label('message', 'Message') !!}
         {!!Form::textarea('message',null,array('id'=>'message','placeholder'=>'Your message', 'class'=>'form-control'))!!}
     </div>
-      {!! Form::submit('Register!', array('class' => 'btn btn-primary')) !!}
+      {!! Form::submit('Send!', array('class' => 'btn btn-primary')) !!}
 {!! Form::close() !!}
 
 @stop
