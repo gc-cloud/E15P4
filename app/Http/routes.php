@@ -45,6 +45,12 @@ Route::get('/','WelcomeController@index');
 Route::get('/articles/{main_category?}','ArticleController@index');
 Route::get('/articles/show/{id?}','ArticleController@show');
 Route::post('/articles/comment/','CommentController@store');
+Route::get('/about',function(){
+  return View::make("general.about");
+});
+Route::get('/privacy',function(){
+  return View::make("general.privacy");
+});
 
 /* Show logs in local environment
 ------------------------------------------*/

@@ -26,6 +26,7 @@
   </head>
 
   <body>
+    <div <div id="wrapper"> <!-- Main area with content, footer at the bottom -->> <!-- Main area with content, footer at the bottom -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -74,6 +75,7 @@
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
+
     {{-- Main jumbotron for primary message  --}}
     <div class="jumbotron">
       <div class="container">
@@ -84,23 +86,31 @@
              <h3>{{Session::get('flash_message') }}</h3>
           </div>
         @endif
-        <h1 class="logo"> Zudbu <img class="logo" src="/images/zudbu_logo.png" alt="Zudbu Logo"></h1>
+        <h1 > Zudbu <img  class="logo" src="/images/zudbu_logo.png" alt="Zudbu Logo"></h1>
         <p> nurture your body, mind and spirit.</p>
         @yield('title')
         @yield('content')
       </div>
     </div>
+
     <!-- Expanded content goes here -->
-    <div class="container">
+    <div class="container" id="content">
       @yield('body')
     </div>
     <!-- Footer -->
+
     <div class="container">
-      <hr>
       <footer>
-        <p>&copy; Zudbu 2015</p>
+        <ul class="footerItem">
+          <li>&copy; Zudbu 2015</li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
       </footer>
     </div>
+  </div>
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

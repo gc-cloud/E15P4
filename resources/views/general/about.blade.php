@@ -9,7 +9,9 @@
 
 @section('body')
   <p>
-    Zudbu is dedicated to providing reliable information to people interested in
+    Zudbu's mission is to increase wellnes.  We believe that the best way to
+    do this is by focusing on prevention.  Hence our we are dedicated to
+    providing reliable information to people interested in
     nurturing their body, mind and spirit.
     <ul>
       <li>Reliable:  based on scientific research,  verifiable, from reputable sources.</li>
@@ -25,10 +27,5 @@
     outcomes are not in line with the spend, with the US ranking last in a list of
     11 developed countries.
   </p>
-  <p>
-    The goal of Zudbu is to inform those interested in  prevention
-    activities and well-being in general. There are many internet sites that
-    provide advice about well being, but the information they contain is not
-    always supported by evidence .  Zudbu’s intent is to fill this gap.
-  </p>
+
 @stop

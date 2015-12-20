@@ -1,5 +1,11 @@
 /* Override Bootstrap defaults with Zudbu specific CSS to */
 
+html, body {
+	margin:0;
+	padding:0;
+	height:100%;
+}
+
 body {
     font-family: 'Ubuntu Condensed', sans-serif;
 }
@@ -117,6 +123,8 @@ ul.errors {
   display: inline;
   width: 55px;
   height: 55px;
+  /*margin-top: 25px;
+  padding-top: 10px;*/
 }
 
 .headeritem {
@@ -150,6 +158,43 @@ ul.errors {
 }
 
 
+
+
+
+/* Keep footer at bottom.  Inspired by cssreset.com
+----------------------------------------------------*/
+ /* Make sure the value for 'padding-bottom' on #content is equal to or
+  greater than the height of #footer.*/
+#wrapper {
+	min-height:100%;
+	position:relative;
+}
+
+#content {
+	/*padding-bottom:25px; /* Height of the footer element */*/
+}
+
+
+footer{
+  width:60%;
+  padding-top: 10px;
+  margin-left: 20%;
+  margin-right: 20%;
+  height:25px;
+  position:absolute;
+  bottom:0;
+}
+
+.footerItem li{
+  display: block;
+  padding: 10px 10px;
+  text-decoration: none;
+  list-style-type: none;
+  float: left;
+  position:relative;
+	bottom:0;
+  text-align: center;
+}
 
 /* Covers the specified area - useful to set
 clickable areas when applied to an <a> element

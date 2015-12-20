@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    <h2>Zudbu Privacy</h2>
+    <h2>Privacy Policy</h2>
 @stop
 
 @section('content')
@@ -9,15 +9,22 @@
 
 @section('body')
   <p>
-    Zudbu's intent is to provide public service. We do not collect any information
-    on our users except for:
+    To achieve our mission of increasing wellness, we need to collect
+    a small set of information including:
     <ul>
-      <li>User profile information provided during registration, comments,
-      authoring of articles</li>
-      <li>IP addresses of  anonymous users posting comments</li>
+      <li>User information provided during registration</li>
+      <li>Posted comments and user</li>
+      <li>IP addresses of anonymous comments</li>
+      <li>Article ownership</li>
     </ul>
-    Inn addition, we limit our communications to the minimum needed to perform our
-    functions such as confirming registration, receeipt of contact requests, and
-    password resets.
+  </p>
+  <p>
+    We limit our communications to the essentials needed to provide our
+    services
+    <ul>
+      <li>Confirming registration</li>
+      <li>Confirm and answer contact requests</li>
+      <li>Send emails for password resets</li>
+    </ul>
   </p>
 @stop

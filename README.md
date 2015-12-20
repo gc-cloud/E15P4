@@ -153,3 +153,4 @@ Description: Link categories  and articles
 - [Creative Commons](https://creativecommons.org/publicdomain/zero/1.0/deed.en)
 - Rich text editor from [tinyMCE](https://www.tinymce.com)
 - Zudbu default image by my good friend Karen Ackles
+-  Footer at bottom solution inspired by [cssreset.com](http://www.cssreset.com/2010/css-tutorials/how-to-keep-footer-at-bottom-of-page-with-css/)
