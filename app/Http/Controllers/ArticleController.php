@@ -22,11 +22,15 @@ class ArticleController extends Controller
       /* Eager load articles with categories, most recent first. */
       $articles = \App\Article::with('categories')->orderBy('id','DESC')->get();
 
-      /* If a category is given, filter $articles,otherwise display all articles
+      /* If a category is given, filter $articles. If no category,  display all
+       articles. Redirect to home page if category is not defined.
       We use $selected_articles to track the ID's of the articles that apply. */
       if(!$main_category){
          $title = 'All Articles';
-      } else {
+      } elseif ($main_category != 'body' && $main_category != "mind" && $main_category != "spirit") {
+        \Session::flash('flash_message','Category not found.');
+        return redirect('/');
+      } else{
         /* Find the articles that belong to the category selected */
         $title = 'Articles to nurture your '.ucfirst ($main_category);
         $articleModel = new \App\Article();
