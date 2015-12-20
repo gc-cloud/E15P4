@@ -98,7 +98,7 @@ the Login status
 | Sources:delete a source         | PUT?  | /articles/delete/{id?}        |SourceController@destroy          |
 
 
-### Database
+## 7. Database
 
 - #### Table name: roles
 Store valid roles for users ( e.g. author, reader)
@@ -124,7 +124,7 @@ Description: Link categories  and articles
 
 
 
-### 8. Known issues
+## 8. Known issues
 - New dynamically generated sources not kept if validation fails in edit pages
 - Repeated Flash message shows with the following sequence: edit- update - edit
 ***
