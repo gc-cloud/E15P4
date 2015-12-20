@@ -47,20 +47,33 @@ class WelcomeController extends Controller
    *----------------------------------*/
   public function contactConfirm(Request $request)
   {
-    /* Validator: Create an array with all validation rules */
-    $rules = [
-      'name' => 'required',
-      'email' => 'required|email',
-      'message' => 'required',
-    ];
+    /* Validate input */
+    $rules = [  'name' => 'required',
+                'email' => 'required|email',
+                'message' => 'required',];
 
     $this->validate($request,$rules);
 
-    $name = $request->name;
-    $message = 'Thank you for contacting us ' .$name;
+    $name = $request->get('name');
+    $email = $request->get('email');
 
-    \Session::flash('flash_message',$message);
-    return redirect('/');
+    $content = [ 'name'=>$name,
+                 'email' =>$email,
+                 'message' =>$request->get('message'),];
+
+
+    \Mail::send('emails.contact',$content,
+               function($message){
+                  $message->from('support@zudbu.com');
+                  $message->to('gcastaneda@yattas.com','Jerry')
+                  ->subject('Contact request submission');
+    });
+
+    $name = $request->name;
+    $thankyou = 'Thank you for contacting us ' .$name.'!';
+
+    \Session::flash('flash_message',$thankyou);
+     return redirect('/');
   }
 
 

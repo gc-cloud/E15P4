@@ -8,7 +8,7 @@
 @stop
 
 @section('body')
-{!! Form::open(array('url' => '/contact', 'class' => 'form border', 'files' => true)) !!}
+{!! Form::open(array('url' => '/contact', 'class' => 'form border')) !!}
 
     <div class='form-group'>
         <span class="glyphicon glyphicon-user"></span>

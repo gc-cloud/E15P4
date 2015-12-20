@@ -154,3 +154,5 @@ Description: Link categories  and articles
 - Rich text editor from [tinyMCE](https://www.tinymce.com)
 - Zudbu default image by my good friend Karen Ackles
 -  Footer at bottom solution inspired by [cssreset.com](http://www.cssreset.com/2010/css-tutorials/how-to-keep-footer-at-bottom-of-page-with-css/)
+- email HTTP Library: Guzzlehttp 4.0
+- email Service provider: Mandrill
