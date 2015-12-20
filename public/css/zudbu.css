@@ -171,7 +171,7 @@ ul.errors {
 }
 
 #content {
-	padding-bottom:25px; /* Height of the footer element */
+	padding-bottom:50px; /* Height of the footer element */
 }
 
 
@@ -180,7 +180,7 @@ footer{
   padding-top: 10px;
   margin-left: 20%;
   margin-right: 20%;
-  height:25px;
+  height:50px;
   position:absolute;
   bottom:0;
 }
