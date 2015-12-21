@@ -119,20 +119,22 @@ ul.errors {
   margin-bottom: 1em;
 }
 
-#logo {
+#logoAll {
 	padding-top: .8em;
 }
 
-.logo {
+#logoText{
+	color: #507070;
+	text-decoration: none;
+}
+
+#logoImg {
   display: inline;
 	max-width: 12%;
 	max-height: 12%;
 }
 
-.logoText a:link, a:visited, a:hover, a:active {
-	color: #507070;
-	text-decoration: none;
-}
+
 
 .headeritem {
   color: #9d9d9d;

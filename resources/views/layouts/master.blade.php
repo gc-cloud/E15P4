@@ -39,7 +39,7 @@
              <h3>{{Session::get('flash_message') }}</h3>
           </div>
         @endif
-        <h1 id="logo"><a class="logoText" href="/"> Zudbu <img  class="logo img-responsive"
+        <h1 id="logoAll"><a id="logoText" href="/"> Zudbu <img  id="logoImg" class="img-responsive"
           src="/images/zudbu_logo.png" alt="Zudbu Logo"></a></h1>
         <p> nurture your body, mind and spirit.</p>
         @yield('title')
