@@ -119,6 +119,7 @@ the authentication status
 
 
 ## 7. Database
+Migration and seeding files are provided for all database tables
 
 - #### Table name: roles
 Store valid roles for users ( e.g. author, reader)
@@ -145,13 +146,17 @@ Description: Link categories  and articles
 Description: Keep password reset tokens
 ***
 
-## 8. Known issues
+## 8. Code
+- All code is properly indented and well commented. If you have any concerns please let us know!
+- Whenever possible, php/laravel code,  html, javascript and css are reused to avoid duplication.   
+
+## 9. Known issues
 - New dynamically generated sources not kept if validation fails in edit pages
 - Incorrect flash message shows with the following sequence: edit- update - edit
 
 ***
 
-## 9. Possible enhancements
+## 10. Possible enhancements
 - Icons for responsive header
 - Crop images on load
 - Create thumb image on load
@@ -161,7 +166,7 @@ Description: Keep password reset tokens
 - Give users ability to close flash messages
 ***
 
-## 10. Acknowledgements
+## 11. Acknowledgements
 - All mages:  - Pictures licensed [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0), via       Wikimedia Commons (except when noted)
 - Zudbu's default article image by my good friend [Karen Ackles](http://kackles.deviantart.com/)
 - Rich text editor from [tinyMCE](https://www.tinymce.com)
