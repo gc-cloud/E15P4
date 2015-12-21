@@ -26,7 +26,7 @@
   </head>
 
   <body>
-    <div div id="wrapper"> <!-- Main area with content, footer at the bottom -->
+    <div id="wrapper"> <!-- Main area with content, footer at the bottom -->
     @include('layouts.navigation')
 
     {{-- Main jumbotron for primary message  --}}
