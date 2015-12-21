@@ -1,6 +1,8 @@
 <body>
   <h1><img src="<?php echo $message->embed(public_path().'/images/zudbu_logo.png'); ?>"> Zudbu </h1>
-  <p>Dear <?php echo $name; ?>, </p>
+  <br>
+  <hr>
+  <p>Dear {!!$name!!} </p>
   <p>We received the following message from you:</p>
 
   <p><em><?php echo $body; ?></em></p>

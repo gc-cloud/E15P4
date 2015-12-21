@@ -63,7 +63,7 @@ class WelcomeController extends Controller
                function($message) use ($request){
                   $message->from('support@zudbu.com','Zudbu');
                   $message->to($request->get('email'),$request->get('name'));
-                  $message->subject('Contact request submission');
+                  $message->subject('Contact form received');
                   $message->bcc('support@zudbu.com','Zudbu');
     });
 
