@@ -40,7 +40,8 @@
     <div class='form-group'>
       {!! Form::button('Add Sources', array('onClick'=>'addInput("dynamicSourceInput");', 'class' => 'btn btn-link')) !!}
     </div>
-    {!! Form::submit('Save Article', array('class' => 'btn btn-primary')) !!}
+    {!! Form::submit(' Save ', array('class' => 'btn btn-primary')) !!}
+    {!! Form::button('Cancel', array('type'=>'submit','class' => 'btn btn-danger', 'formaction'=>'/articles/edit/search')) !!}
   {!! Form::close() !!}
 
 {{-- Script for  dynamic addition of elements --}}

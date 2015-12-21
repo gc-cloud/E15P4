@@ -119,10 +119,19 @@ ul.errors {
   margin-bottom: 1em;
 }
 
+#logo {
+	margin-top: .5em;
+}
+
 .logo {
   display: inline;
   width: 55px;
   height: 55px;
+}
+
+.logoText a:link, a:visited, a:hover, a:active {
+	color: #507070;
+	text-decoration: none;
 }
 
 .headeritem {
@@ -154,9 +163,6 @@ ul.errors {
 .front {
   z-index:3;
 }
-
-
-
 
 
 /* Keep footer at bottom.  Inspired by cssreset.com

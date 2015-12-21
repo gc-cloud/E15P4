@@ -35,13 +35,13 @@ Route::group(['middleware' => 'contribute'], function() {
     Route::get('/articles/create', 'ArticleController@create');
     Route::post('/articles/create', 'ArticleController@store');
     Route::get('/articles/edit/search', 'ArticleController@showOwnArticles');
+    Route::post('/articles/edit/search', 'ArticleController@showOwnArticles');
     Route::get('/articles/edit/{id?}', 'ArticleController@edit');
     Route::post('/articles/edit/{id?}', 'ArticleController@update');
     Route::put('/articles/edit/{id?}', 'ArticleController@destroy');
     Route::get('/articles/confirm-delete/{id?}', 'ArticleController@getConfirmDelete');
     Route::get('/articles/delete/{id?}', 'ArticleController@destroy');
     Route::get('/sources/delete/{id?}', 'SourceController@destroy');
-
 });
 
 /* Main Application Routes - Allow everyone to browse articles
