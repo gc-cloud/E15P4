@@ -32,8 +32,8 @@ Zudbu [youtube video](https://youtu.be/0cRXNDGhfog).
 
 ## 6. Functionality Features
 ### User Experience
-- Zudbu should be easy to use, intuitive and accessible  
-- Information will be disclosed progressively, allowing readers to easily find
+- Zudbu is easy to use, intuitive and accessible  
+- Information is disclosed progressively, allowing readers to easily find
 the depth of information they want
 - The site is fully responsive and was tested on extra large and large PC screens,
 tablets and phones.  The focus on responsiveness is to support easy access to
@@ -42,9 +42,9 @@ content
 
 ### Authentication
 - Zudbu has role based user authentication (guest, reader, administrator).  
-- **Guest role (unregistered visitors**  Browse site, send contact form, post anonymous comments, register
-- **Reader role (jamal@harvard.edu)**  Guest + named comments to articles, login/logout, password reset
-- **Contributor (jill@harvard.edu)**  Reader + create, edit and delete own articles (body, sources, pictures)
+	- **Guest role (unregistered visitors**  Browse site, send contact form, post anonymous comments, register
+	- **Reader role (jamal@harvard.edu)**  Guest + named comments to articles, login/logout, password reset
+	- **Contributor (jill@harvard.edu)**  Reader + create, edit and delete own articles (body, sources, pictures)
 
 
 - Authentication uses custom middleware (AuthenticateContribute)
