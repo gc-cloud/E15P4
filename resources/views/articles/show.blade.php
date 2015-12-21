@@ -46,7 +46,7 @@
       <div class='form-group' id="dynamicCommentInput">
         <h4 class="user inline">{{$reader->name}}</h4>
         @if(!$user)
-          [Login or <a href='/register'>  Register </a> to post with your name]
+          [<a href='/login'>Login  </a> or <a href='/register'>  Register </a> to post with your name]
         @endif
         <input type="text" name="user_id" value='{{ $reader->id }}' hidden="hidden" readonly="readonly"><br>
         <input type="text" name="article_id" value='{{ $article->id }}' hidden="hidden" readonly="readonly"><br>

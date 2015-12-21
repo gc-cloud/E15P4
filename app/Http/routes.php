@@ -21,6 +21,12 @@ Route::get('/logout', 'Auth\AuthController@getLogout');
 Route::get('/register', 'Auth\AuthController@getRegister');
 Route::post('/register', 'Auth\AuthController@postRegister');
 
+/*Password reset
+------------------------------------------*/
+Route::controllers([
+   'password' => 'Auth\PasswordController',
+]);
+
 
 /* Edit and create routes -  available only to logged in Users with
 contribute roles
@@ -49,6 +55,7 @@ Route::post('/contact','WelcomeController@contactConfirm');
 Route::get('/articles/{main_category?}','ArticleController@index');
 Route::get('/articles/show/{id?}','ArticleController@show');
 Route::post('/articles/comment/','CommentController@store');
+
 
 
 /* Show logs in local environment
