@@ -42,28 +42,26 @@ content
 
 ### Authentication
 - Zudbu has role based user authentication (guest, reader, administrator).  
-	- **Guest role (unregistered visitors**  Browse site, send contact form, post anonymous comments, register
-	- **Reader role (jamal@harvard.edu)**  Guest + named comments to articles, login/logout, password reset
-	- **Contributor (jill@harvard.edu)**  Reader + create, edit and delete own articles (body, sources, pictures)
+	- **Guest role (unregistered visitors)**:  Browse site, send contact form, post anonymous comments, register
+	- **Reader role (jamal@harvard.edu)**:  guest access + named comments to articles, login/logout, password reset
+	- **Contributor (jill@harvard.edu)**:  reader access + create, edit and delete own articles (body, sources, pictures)
 
 
-- Authentication uses custom middleware (AuthenticateContribute)
+- Authentication uses custom middleware (AuthenticateContribute.php)
 - Articles can only be modified or deleted by the original contributor
 - Anonymous visitors have the option to register or sign-in
 - Articles can be browsed by all visitors
 - Visibility of menu options for Contribute, Login and Register is based on
 authentication status
 - Password reset functionality is available, where users receive an email with a token.  
-- Contact us forms send confirmation emails to users
+- Contact Us forms send confirmation emails to users
 
 
 ### Forms
-- Whenever practical, the app leverages Laravel's blade template and Laravel Collective
-HTML and Form helpers
+- Whenever practical, the app leverages Laravel's blade template and Laravel's Collective HTML and Form helpers
 - The article create and article edit form are the main points of content management.
-These forms provide the ability to dynamically add new fields so the content
-managers can add as many references as they wish.  This was achieved combining
-client side javascript with server-side php scripting.  
+These forms provide the ability to dynamically add new fields. This way, the content
+managers can add as many references as they wish.  This feature was achieved combiningclient side javascript with server-side php scripting.  
 - The create and edit forms also provide the ability to upload images. A default
 image is used if the content manager does not provide one
 - Additional forms are used for login, registration, password resets, and contact us
@@ -111,7 +109,13 @@ the authentication status
 | Articles: confirm delete article| GET   | /articles/confirm-delete/{id?}|ArticleController@getConfirmDelete|
 | Articles: delete an article     | GET   | /articles/delete/{id?}        |ArticleController@destroy         |
 | Articles: post new comment      | GET   | /articles/comment/{id?}       |CommentController@store           |
-| Sources:delete a source         | PUT?  | /articles/delete/{id?}        |SourceController@destroy          |
+| Sources:delete a source         | PUT  	| /articles/delete/{id?}        |SourceController@destroy          |
+| About         									| GET  	| /about       									|WelcomeController@about        	 |
+| Privacy         								| GET  	| /privacy        							|WelcomeController@privacy         |
+| Contact        									| GET  	| /contact    									|WelcomeController@contact         |
+| Contact        									| POST  | /contact        							|WelcomeController@contactConfirm  |
+| Sources:delete a source         | ALL 	| /password/{*}       					|PasswordController          			 |
+
 
 
 ## 7. Database
@@ -144,6 +148,7 @@ Description: Keep password reset tokens
 ## 8. Known issues
 - New dynamically generated sources not kept if validation fails in edit pages
 - Incorrect flash message shows with the following sequence: edit- update - edit
+
 ***
 
 ## 9. Possible enhancements
@@ -158,8 +163,8 @@ Description: Keep password reset tokens
 
 ## 10. Acknowledgements
 - All mages:  - Pictures licensed [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0), via       Wikimedia Commons (except when noted)
+- Zudbu's default article image by my good friend [Karen Ackles](http://kackles.deviantart.com/)
 - Rich text editor from [tinyMCE](https://www.tinymce.com)
-- Zudbu's default article image by my good friend Karen Ackles
 -  Footer at bottom solution inspired by [cssreset.com](http://www.cssreset.com/2010/css-tutorials/how-to-keep-footer-at-bottom-of-page-with-css/)
 - email HTTP Library: Guzzlehttp 4.0
 - barryvdh/laravel-debugbar and rap2hpoutre/laravel-log-viewer were invaluable during development
