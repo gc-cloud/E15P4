@@ -24,8 +24,8 @@
 
     <div class='form-group'>
         <span class="glyphicon glyphicon-lock"></span>
-        {!! Form::label('message', 'Message') !!}
-        {!!Form::textarea('message',null,array('id'=>'message','placeholder'=>'Your message', 'class'=>'form-control'))!!}
+        {!! Form::label('body', 'Message') !!}
+        {!!Form::textarea('body',null,array('id'=>'body','placeholder'=>'Your message', 'class'=>'form-control'))!!}
     </div>
       {!! Form::submit('Send!', array('class' => 'btn btn-primary')) !!}
 {!! Form::close() !!}

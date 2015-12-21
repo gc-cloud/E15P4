@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Mail;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -43,34 +44,29 @@ class WelcomeController extends Controller
   }
 
   /**
-   * Display Contact Page
+   * Handle submission of contact form
    *----------------------------------*/
   public function contactConfirm(Request $request)
   {
     /* Validate input */
     $rules = [  'name' => 'required',
                 'email' => 'required|email',
-                'message' => 'required',];
-
+                'body' => 'required',];
     $this->validate($request,$rules);
 
-    $name = $request->get('name');
-    $email = $request->get('email');
+    /* Collect the info to be passed to the message */
+    $content = [ 'name'=>$request->get('name'),
+                 'body' =>$request->get('body'),];
 
-    $content = [ 'name'=>$name,
-                 'email' =>$email,
-                 'message' =>$request->get('message'),];
-
-
-    \Mail::send('emails.contact',$content,
-               function($message){
-                  $message->from('support@zudbu.com');
-                  $message->to('gcastaneda@yattas.com','Jerry')
-                  ->subject('Contact request submission');
+    /* Send message */
+    Mail::send('emails.contact',$content,
+               function($message) use ($request){
+                  $message->from('support@zudbu.com','Zudbu');
+                  $message->to($request->get('email'),$request->get('name'))
+                    ->subject('Contact request submission');
     });
 
-    $name = $request->name;
-    $thankyou = 'Thank you for contacting us ' .$name.'!';
+    $thankyou = 'Thank you for contacting us ' .$request->name.'!';
 
     \Session::flash('flash_message',$thankyou);
      return redirect('/');
