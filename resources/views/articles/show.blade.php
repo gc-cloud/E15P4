@@ -52,7 +52,7 @@
         <input type="text" name="article_id" value='{{ $article->id }}' hidden="hidden" readonly="readonly"><br>
         {!!Form::text('comment', null, array('class'=>'form-control','placeholder'=>'Leave a comment'))!!}
         <br>
-        {!! Form::submit('Post', array('class' => 'btn btn-small btn-info')) !!}
+        {!! Form::submit('Post', array('class' => 'btn btn-small btn-primary')) !!}
       </div>
     {!! Form::close() !!}
     {{-- Script for  dynamic addition of elements --}}
