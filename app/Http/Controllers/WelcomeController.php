@@ -62,13 +62,14 @@ class WelcomeController extends Controller
     Mail::send('emails.contact',$content,
                function($message) use ($request){
                   $message->from('support@zudbu.com','Zudbu');
-                  $message->to($request->get('email'),$request->get('name'))
-                    ->subject('Contact request submission');
+                  $message->to($request->get('email'),$request->get('name'));
+                  $message->subject('Contact request submission');
+                  $message->bcc('support@zudbu.com','Zudbu');
     });
 
-    $thankyou = 'Thank you for contacting us ' .$request->name.'!';
+    $thanks = 'Thank you for contacting us ' .$request->name.'!';
 
-    \Session::flash('flash_message',$thankyou);
+    \Session::flash('flash_message',$thanks);
      return redirect('/');
   }
 
