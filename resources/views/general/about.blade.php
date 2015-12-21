@@ -8,8 +8,7 @@
 @stop
 
 @section('body')
-  <p>
-    Zudbu's mission is to increase wellnes.  We believe that the best way to
+  <p>Zudbu's mission is to increase wellnes.  We believe that the best way to
     do this is by focusing on prevention.  Hence our we are dedicated to
     providing reliable information to people interested in
     nurturing their body, mind and spirit.
@@ -18,7 +17,7 @@
       <li>Nurturing body, mind and spirit: Promoting overall health and well-being
       with a focus on prevention</li>
     </ul>
-  </p>
+  </p>  
   <p>
     The main reasoning behind the creation of Zudbu is the realization that our
     healthcare spend is too much and in the wrong place  (i.e., healing preventable
