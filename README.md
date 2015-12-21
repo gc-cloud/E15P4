@@ -14,6 +14,8 @@ Zudbu is not about providing medical advice to individuals that require treatmen
 
 ## 2. Planning Document
 [P4 Gerardo Castaneda](https://docs.google.com/document/d/1rWIdzVCenmaKI4ymeBS9thRywOPw0vuIh7tHsz6Q9Qg/edit?usp=sharing)
+
+The planning document was frequently updated while I was building this project and contains additional details about the site, testing, database tables relations, etc.  
 ***
 
 ## 3. Repository Location
@@ -25,7 +27,7 @@ The current version of Zudbu can be accessed at [p4.zudbu.com](http://p4.zudbu.c
 ***
 
 ## 5. Demo location
-Zudbu [youtube video](https://youtu.be/AZXvgetbxvw).
+Zudbu [youtube video](https://youtu.be/0cRXNDGhfog).
 ***
 
 ## 6. Functionality Features
@@ -36,18 +38,23 @@ the depth of information they want
 - The site is fully responsive and was tested on extra large and large PC screens,
 tablets and phones.  The focus on responsiveness is to support easy access to
 content
+- Rich text editor for users with contribute access
 
 ### Authentication
 - Zudbu has role based user authentication (guest, reader, administrator).  
-	- **jill@harvard.edu: Admin role.**  Can create, edit and delete own articles
-	- **jamal@harvard.edu: Reader role.**  Can poset named comments to articles
-	- **Unregistered visitors: Guest role.**  Can post Guest comments to articles
+- **Guest role (unregistered visitors**  Browse site, send contact form, post anonymous comments, register
+- **Reader role (jamal@harvard.edu)**  Guest + named comments to articles, login/logout, password reset
+- **Contributor (jill@harvard.edu)**  Reader + create, edit and delete own articles (body, sources, pictures)
+
+
 - Authentication uses custom middleware (AuthenticateContribute)
 - Articles can only be modified or deleted by the original contributor
 - Anonymous visitors have the option to register or sign-in
 - Articles can be browsed by all visitors
 - Visibility of menu options for Contribute, Login and Register is based on
 authentication status
+- Password reset functionality is available, where users receive an email with a token.  
+- Contact us forms send confirmation emails to users
 
 
 ### Forms
@@ -59,12 +66,12 @@ managers can add as many references as they wish.  This was achieved combining
 client side javascript with server-side php scripting.  
 - The create and edit forms also provide the ability to upload images. A default
 image is used if the content manager does not provide one
-- Additional forms are used for login and registration
+- Additional forms are used for login, registration, password resets, and contact us
 
 ### Eloquent
 - Articles can be browsed by category (body, mind, spirit).  
 - Any article can belong to multiple categories
-- Users with admin access can edit and delete their own Articles
+- Users with contribute access can only edit and delete their own Articles
 
 ### Validation
 - Custom validation rules and messages are coded on in ArticleRequest:
@@ -129,30 +136,31 @@ Description: Store valid categories for articles ( e.g. body, mind, spirit)
 
 - #### Table name: articles_categories
 Description: Link categories  and articles
+
+- #### Table name: password_resets
+Description: Keep password reset tokens
 ***
 
 ## 8. Known issues
 - New dynamically generated sources not kept if validation fails in edit pages
-- Repeated Flash message shows with the following sequence: edit- update - edit
+- Incorrect flash message shows with the following sequence: edit- update - edit
 ***
 
-## 9. Planned future enhancements
+## 9. Possible enhancements
 - Icons for responsive header
-- Ability to format images on load
-- Ability to create thumb image on main photo load
-- Add overlay login
-- Pics for users
-- Email for password reset
-- social media integration
+- Crop images on load
+- Create thumb image on load
+- Add overlay for login for posting comments
+- Add pics for users
+- Social media integration
 - Give users ability to close flash messages
-- Social media sign in
 ***
 
 ## 10. Acknowledgements
 - All mages:  - Pictures licensed [CC BY-SA 4.0](http://creativecommons.org/licenses/by-sa/4.0), via       Wikimedia Commons (except when noted)
-- [Creative Commons](https://creativecommons.org/publicdomain/zero/1.0/deed.en)
 - Rich text editor from [tinyMCE](https://www.tinymce.com)
-- Zudbu default image by my good friend Karen Ackles
+- Zudbu's default article image by my good friend Karen Ackles
 -  Footer at bottom solution inspired by [cssreset.com](http://www.cssreset.com/2010/css-tutorials/how-to-keep-footer-at-bottom-of-page-with-css/)
 - email HTTP Library: Guzzlehttp 4.0
-- email Service provider: Mandrill
+- barryvdh/laravel-debugbar and rap2hpoutre/laravel-log-viewer were invaluable during development
+- Thanks to the staff and peers at CSCIE15 for their support and help with questions
