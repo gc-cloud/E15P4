@@ -17,8 +17,7 @@
       <li>Nurturing body, mind and spirit: Promoting overall health and well-being
       with a focus on prevention</li>
     </ul>
-  </p>  
-  <p>
+
     The main reasoning behind the creation of Zudbu is the realization that our
     healthcare spend is too much and in the wrong place  (i.e., healing preventable
     diseases or ailments).  For perspective, according to Forbes, the annual US.
