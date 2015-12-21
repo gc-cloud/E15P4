@@ -120,13 +120,13 @@ ul.errors {
 }
 
 #logo {
-	margin-top: .5em;
+	padding-top: .8em;
 }
 
 .logo {
   display: inline;
-  width: 55px;
-  height: 55px;
+	max-width: 12%;
+	max-height: 12%;
 }
 
 .logoText a:link, a:visited, a:hover, a:active {
