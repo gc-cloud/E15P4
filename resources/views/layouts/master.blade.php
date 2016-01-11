@@ -58,7 +58,7 @@
     <div class="container">
       <footer>
         <ul class="footerItem">
-          <li>&copy; Zudbu 2015</li>
+          <li>&copy; Facts4Wellness 2016</li>
           <li><a href="/about">About</a></li>
           <li><a href="/privacy">Privacy</a></li>
           <li><a href="/contact">Contact</a></li>
