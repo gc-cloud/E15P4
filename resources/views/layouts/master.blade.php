@@ -42,7 +42,7 @@
           </div>
         @endif
         <h1 id="logoAll"><a id="logoText" href="/"><img  id="logoImg" class="img-responsive"
-          src="/images/zudbu_logo.png" alt="Zudbu Logo"> facts4wellness.com </a></h1>
+          src="/images/zudbu_logo.png" alt="Zudbu Logo"> Facts4Wellness.com </a></h1>
         <p> Simple and reliable information for wellness enthusiasts.</p>
         @yield('title')
         @yield('content')
