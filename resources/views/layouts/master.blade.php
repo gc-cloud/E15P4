@@ -43,7 +43,7 @@
         @endif
         <h1 id="logoAll"><a id="logoText" href="/"><img  id="logoImg" class="img-responsive"
           src="/images/zudbu_logo.png" alt="Zudbu Logo"> Facts4Wellness.com </a></h1>
-        <p> Simple and reliable information to nurture your mind, body and spirit.</p>
+        <p> Simple and reliable information to nurture your body, mind, and spirit.</p>
         @yield('title')
         @yield('content')
       </div>
