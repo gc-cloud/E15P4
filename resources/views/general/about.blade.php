@@ -15,7 +15,7 @@
     <ul>
       <li>Reliable:  based on scientific research,  verifiable, from reputable sources.</li>
       <li>Simple:  Get to the point.  Drilldown on details and non essential information
-        only when reader wants to.</li>
+        only if the reader wants to.</li>
       <li>Nurturing body, mind and spirit: Promoting overall health and well-being
       with a focus on prevention</li>
     </ul>
