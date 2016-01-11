@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    <h2>About Zudbu</h2>
+    <h2>About Facts4Wellness</h2>
 @stop
 
 @section('content')
