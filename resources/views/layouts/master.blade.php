@@ -5,11 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
+    <meta name="description" content="Simple and reliable wellness facts. Simple wellness facts. Reliable wellness facts.
+    Easy wellness.  Simple and reliable health facts. Simple health facts. Reliable health facts. Easy health facts. Body, mind and spirit.
+    Unity. Well-being. Diet. Fitness. Meditation.">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Zudbu</title>
+    <title>Facts4Wellness</title>
 
     <!-- CSS -->
     <link href="/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -39,9 +41,9 @@
              <h3>{{Session::get('flash_message') }}</h3>
           </div>
         @endif
-        <h1 id="logoAll"><a id="logoText" href="/"> Zudbu <img  id="logoImg" class="img-responsive"
-          src="/images/zudbu_logo.png" alt="Zudbu Logo"></a></h1>
-        <p> nurture your body, mind and spirit.</p>
+        <h1 id="logoAll"><a id="logoText" href="/"><img  id="logoImg" class="img-responsive"
+          src="/images/zudbu_logo.png" alt="Zudbu Logo"> facts4wellness.com </a></h1>
+        <p> Simple and reliable information for wellness enthusiasts.</p>
         @yield('title')
         @yield('content')
       </div>
