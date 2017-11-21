@@ -61,10 +61,12 @@ class WelcomeController extends Controller
     /* Send message */
     Mail::send('emails.contact',$content,
                function($message) use ($request){
-                  $message->from('admin@facts4wellness.com','facts4wellness');
-                  $message->to($request->get('email'),$request->get('name'));
+                  $message->from($request->get('email'),$request->get('name'));
+                  //  $message->from('admin@facts4wellness.com','facts4wellness');
+                  $message->to('admin@facts4wellness.com','facts4wellness');
+                  // $message->to($request->get('email'),$request->get('name'));
                   $message->subject('Contact form received');
-                  $message->bcc('admin@facts4wellness.com','facts4wellness');
+                  // $message->bcc('admin@facts4wellness.com','facts4wellness');
     });
 
     $thanks = 'Thank you for contacting us ' .$request->name.'!';
