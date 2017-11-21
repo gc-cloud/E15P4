@@ -10,7 +10,7 @@
 
   <?php
     echo '<h1> Hello Visitor! </h1>';
-    echo '<h1> This is a place-holder for Project 4 - Something Awesome </h1>';
+    echo '<h1> You are in universe 4 </h1>';
     echo '<br/>';
 
     echo 'The requesting browser is: ';
@@ -31,13 +31,6 @@ if (strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE') !== FALSE) {
 echo '<br/>';
 ?>
 
-<!-- Check some interesting variables-->
-<?php
-  echo 'Server name: ';
-  echo $_SERVER['SERVER_NAME'] . '<br/>';
-  echo 'Document root: ';
-  echo  $_SERVER['DOCUMENT_ROOT'].'<br/>';
-?>
 
 
 </body>
